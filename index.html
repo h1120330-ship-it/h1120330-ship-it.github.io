@@ -36,6 +36,7 @@
         }
 
         .img-zoom {
+            position: relative;
             overflow: hidden;
             border-radius: 0.75rem;
         }
@@ -46,6 +47,25 @@
 
         .img-zoom:hover img {
             transform: scale(1.1);
+        }
+
+        /* 標記遮罩樣式 */
+        .photo-label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 86, 179, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            pointer-events: none;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 10px;
         }
 
         .nav-link {
@@ -103,15 +123,16 @@
     <!-- 首頁區塊 -->
     <section id="home" class="flex flex-col items-center justify-center min-h-[70vh] text-center bg-white">
         <div class="relative mb-8">
-            <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-blue-500 shadow-xl">
-                <!--  -->
+            <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-blue-500 shadow-xl relative">
+                <!-- 照片位置：個人大頭照 (建議比例 1:1) -->
                 <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400" alt="個人照" class="w-full h-full object-cover">
+                <div class="photo-label">個人大頭照</div>
             </div>
             <div class="absolute bottom-2 right-2 bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center border-4 border-white">
-                <i class="fas fa-pen text-sm"></i>
+                <i class="fas fa-camera"></i>
             </div>
         </div>
-        <h2 class="text-4xl font-bold text-blue-800 mb-2">張博筌</h2>
+        <h2 class="text-4xl font-bold text-blue-800 mb-2">你的姓名</h2>
         <p class="text-gray-600 max-w-lg mx-auto leading-relaxed">
             歡迎來到我的學習歷程網頁。這裡紀錄了我在高中期間對資訊技術的探索、自主學習的成果以及豐富的校園生活。
         </p>
@@ -125,20 +146,20 @@
         </div>
         <div class="bg-white rounded-2xl shadow-sm p-8 border border-blue-50 card-hover">
             <div class="flex flex-col md:flex-row gap-8">
-                <div class="md:w-1/2 img-zoom">
-                    <!--  -->
-                    <img src="https://images.unsplash.com/photo-1551288049-bbda48652ad8?auto=format&fit=crop&q=80&w=800" alt="專題照片" class="w-full h-64 md:h-full object-cover rounded-xl">
+                <div class="md:w-1/2 img-zoom min-h-[300px]">
+                    <!-- 照片位置：自主學習成果截圖 (例如報告封面、程式運行畫面) -->
+                    <img src="https://images.unsplash.com/photo-1551288049-bbda48652ad8?auto=format&fit=crop&q=80&w=800" alt="專題照片" class="w-full h-full object-cover rounded-xl">
+                    <div class="photo-label text-xl">自主學習專案主圖</div>
                 </div>
                 <div class="md:w-1/2 flex flex-col justify-center">
                     <span class="inline-block w-fit bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-bold mb-4">專題名稱：Python 數據分析實踐</span>
                     <h4 class="text-2xl font-bold mb-4 text-blue-900">利用開源數據探索城市交通趨勢</h4>
                     <p class="text-gray-600 mb-6">
-                        這是我為期 18 週的自主學習計畫。我學習了 Python 的 Pandas 與 Matplotlib 函式庫，並針對台北市微笑單車的租借數據進行清洗與視覺化分析，最終產出了一份完整的分析報告。
+                        這是我為期 18 週的自主學習計畫。我學習了 Python 的 Pandas 與 Matplotlib 函式庫，並針對台北市微笑單車的租借數據進行清洗與視覺化分析。
                     </p>
                     <div class="flex flex-wrap gap-2">
                         <span class="bg-blue-50 px-3 py-1 rounded text-sm text-blue-600 font-medium">Python</span>
                         <span class="bg-blue-50 px-3 py-1 rounded text-sm text-blue-600 font-medium">數據科學</span>
-                        <span class="bg-blue-50 px-3 py-1 rounded text-sm text-blue-600 font-medium">自主學習</span>
                     </div>
                 </div>
             </div>
@@ -156,29 +177,29 @@
                 <!-- 專題一 -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-sm card-hover flex flex-col">
                     <div class="h-56 img-zoom">
-                        <!--  -->
+                        <!-- 照片位置：資訊專題一 (例如硬體實作照、作品圖) -->
                         <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" alt="專題一照片" class="w-full h-full object-cover">
+                        <div class="photo-label">資訊專題一 照片</div>
                     </div>
                     <div class="p-6">
                         <h4 class="text-xl font-bold text-blue-800 mb-2">智慧型宿舍管理系統</h4>
                         <p class="text-gray-600 mb-4 text-sm leading-relaxed">
                             運用 Arduino 與感測器開發的物聯網專題。解決了宿舍冷氣開關自動化與電力監測的問題。
                         </p>
-                        <button class="text-blue-600 font-bold hover:underline text-sm">查看完整文件 →</button>
                     </div>
                 </div>
                 <!-- 專題二 -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-sm card-hover flex flex-col">
                     <div class="h-56 img-zoom">
-                        <!--  -->
+                        <!-- 照片位置：資訊專題二 (例如遊戲截圖、程式碼頁面) -->
                         <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800" alt="專題二照片" class="w-full h-full object-cover">
+                        <div class="photo-label">資訊專題二 照片</div>
                     </div>
                     <div class="p-6">
                         <h4 class="text-xl font-bold text-blue-800 mb-2">Unity 2D 冒險遊戲開發</h4>
                         <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-                            獨立使用 C# 編寫角色控制邏輯。在這次專題中我學會了物件導向程式設計（OOP）的核心概念。
+                            獨立使用 C# 編寫角色控制邏輯。在這次專題中我學會了物件導向程式設計的核心概念。
                         </p>
-                        <button class="text-blue-600 font-bold hover:underline text-sm">查看 Demo 影片 →</button>
                     </div>
                 </div>
             </div>
@@ -201,35 +222,32 @@
                     </li>
                     <li class="flex items-start">
                         <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
-                        <p class="text-gray-600 font-medium">協辦年度社團聯合展覽，優化報到系統。</p>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
-                        <p class="text-gray-600 font-medium">參加北區資訊專題競賽，獲得佳作肯定。</p>
+                        <p class="text-gray-600 font-medium">代表社團參加北區資訊專題競賽。</p>
                     </li>
                 </ul>
             </div>
             <div class="md:w-1/2 grid grid-cols-2 gap-4">
                 <div class="img-zoom h-48">
-                    <!--  -->
+                    <!-- 照片位置：社團活動照片 1 (例如團體合照) -->
                     <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=400" alt="活動照 1" class="w-full h-full object-cover">
+                    <div class="photo-label">社團活動 1</div>
                 </div>
                 <div class="img-zoom h-48">
-                    <!--  -->
+                    <!-- 照片位置：社團活動照片 2 (例如教學現場、領獎照片) -->
                     <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=400" alt="活動照 2" class="w-full h-full object-cover">
+                    <div class="photo-label">社團活動 2</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 課堂成績表現 -->
+    <!-- 課堂成績表現 (此區塊主要使用圖表，不需要額外照片) -->
     <section id="grades" class="bg-white px-4">
         <div class="max-w-4xl mx-auto text-center">
             <div class="inline-block px-4 py-1 bg-blue-100 text-blue-600 rounded-full font-bold mb-4">ACADEMIC PERFORMANCE</div>
             <h3 class="text-3xl font-bold text-gray-800 mb-12">課堂成績表現</h3>
             
             <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <!-- 視覺化成績卡片 -->
                 <div class="bg-blue-50 p-6 rounded-xl border-t-4 border-blue-600 shadow-sm">
                     <div class="text-blue-600 text-3xl font-bold mb-2">95</div>
                     <div class="text-gray-700 font-bold">資訊科技</div>
@@ -243,32 +261,13 @@
                     <div class="text-gray-700 font-bold">英文</div>
                 </div>
             </div>
-
-            <div class="space-y-6 text-left max-w-2xl mx-auto">
-                <div>
-                    <div class="flex justify-between mb-2">
-                        <span class="font-bold">總體平均表現</span>
-                        <span class="text-blue-600 font-bold">91.6 %</span>
-                    </div>
-                    <div class="w-full bg-gray-200 rounded-full h-4">
-                        <div class="bg-blue-600 h-4 rounded-full" style="width: 91.6%"></div>
-                    </div>
-                </div>
-            </div>
-
-            <p class="mt-12 text-gray-500 italic">
-                * 專注於理科表現，特別在邏輯思維與程式實作相關課程中名列前茅。
-            </p>
+            <p class="text-gray-400 text-sm">此區塊建議使用圖表展示，無需額外照片</p>
         </div>
     </section>
 
     <!-- 頁尾 -->
     <footer class="bg-gray-900 text-white py-12 text-center">
         <p class="opacity-50 text-sm mb-4">© 2024 個人學習歷程數位檔案. Created with Passion.</p>
-        <div class="flex justify-center space-x-6 text-xl">
-            <a href="#" class="hover:text-blue-400 transition"><i class="fab fa-github"></i></a>
-            <a href="#" class="hover:text-blue-400 transition"><i class="fas fa-envelope"></i></a>
-        </div>
     </footer>
 
     <script>
@@ -281,7 +280,6 @@
             mobileMenu.classList.toggle('flex');
         });
 
-        // 點擊選單後自動關閉手機選單
         const mobileLinks = mobileMenu.querySelectorAll('a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -289,11 +287,7 @@
             });
         });
 
-        // 滾動動畫效果
-        const observerOptions = {
-            threshold: 0.15
-        };
-
+        // 滾動觀察器
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -301,12 +295,12 @@
                     entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('section').forEach(sec => {
             sec.style.opacity = '0';
             sec.style.transform = 'translateY(30px)';
-            sec.style.transition = 'all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1)';
+            sec.style.transition = 'all 0.8s ease-out';
             observer.observe(sec);
         });
     </script>
