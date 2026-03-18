@@ -3,244 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>個人學習歷程 | 藍白簡約版</title>
+    <title>個人學習歷程檔案</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* --- CSS 樣式區 --- */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+
         :root {
             --primary-blue: #0056b3;
-            --light-blue: #e3f2fd;
-            --accent-blue: #00d2ff;
-            --pure-white: #ffffff;
-            --text-main: #2c3e50;
-            --shadow: 0 8px 30px rgba(0,0,0,0.08);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --light-blue: #e7f1ff;
+            --accent-blue: #007bff;
         }
 
         body {
-            font-family: 'Segoe UI', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            font-family: 'Noto Sans TC', sans-serif;
             background-color: #f8fbff;
-            color: var(--text-main);
-            line-height: 1.6;
+            color: #333;
+            scroll-behavior: smooth;
         }
 
-        /* 導航欄 */
-        nav {
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px); /* 磨砂玻璃 */
-            height: 70px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            position: fixed;
-            top: 0;
+        .blue-gradient {
+            background: linear-gradient(135deg, #0056b3 0%, #00aaff 100%);
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 86, 179, 0.15);
+        }
+
+        .img-zoom {
+            overflow: hidden;
+            border-radius: 0.75rem;
+        }
+
+        .img-zoom img {
+            transition: transform 0.5s ease;
+        }
+
+        .img-zoom:hover img {
+            transform: scale(1.1);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
             width: 100%;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-blue);
-            letter-spacing: 1px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li { margin: 0 20px; }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        nav ul li a:hover { color: var(--primary-blue); }
-
-        /* 主視覺區 */
-        .hero {
-            height: 60vh;
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 0 20px;
-            margin-top: 70px;
-        }
-
-        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
-        .hero p { font-size: 1.2rem; opacity: 0.9; }
-
-        /* 內容區塊 */
-        .container {
-            max-width: 1000px;
-            margin: -50px auto 50px auto;
-            padding: 0 20px;
         }
 
         section {
-            background: var(--pure-white);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--light-blue);
+            padding: 80px 20px;
         }
-
-        h2 {
-            color: var(--primary-blue);
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--light-blue);
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        /* 技能標籤 */
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .tag {
-            background: var(--light-blue);
-            color: var(--primary-blue);
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        /* 專案卡片 */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            border-radius: 15px;
-            overflow: hidden;
-            background: #fff;
-            transition: transform 0.3s;
-            border: 1px solid #eee;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 45px rgba(0,86,179,0.1);
-        }
-
-        .card-img {
-            height: 150px;
-            background: var(--light-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-blue);
-            font-weight: bold;
-        }
-
-        .card-content { padding: 20px; }
-        .card-content h3 { margin-bottom: 10px; color: var(--primary-blue); }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: #999;
-            font-size: 0.9rem;
-        }
-
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">LEARN_LOG</div>
-        <ul>
-            <li><a href="#about">關於我</a></li>
-            <li><a href="#skills">能力指標</a></li>
-            <li><a href="#projects">專題作品</a></li>
-        </ul>
+    <!-- 導航欄 -->
+    <nav class="blue-gradient text-white p-4 sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold tracking-wider">學習歷程檔案</h1>
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="nav-link">首頁</a>
+                <a href="#independent" class="nav-link">自主學習</a>
+                <a href="#it-projects" class="nav-link">資訊專題</a>
+                <a href="#club" class="nav-link">社團活動</a>
+                <a href="#grades" class="nav-link">成績表現</a>
+            </div>
+            <button class="md:hidden text-2xl" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
     </nav>
 
-    <header class="hero">
-        <h1>我的學習歷程</h1>
-        <p>探索知識的邊界，記錄成長的足跡</p>
-    </header>
-
-    <div class="container">
-        <section id="about">
-            <h2>個人簡介</h2>
-            <p>你好！我是一名熱衷於自主學習的探索者。在這裡，我記錄了我在不同領域的嘗試與成果。這份網頁採用藍白配色，旨在傳達清晰、專業且充滿希望的學習態度。</p>
-        </section>
-
-        <section id="skills">
-            <h2>專業技能</h2>
-            <div class="skill-tags">
-                <span class="tag">網頁設計</span>
-                <span class="tag">數據分析</span>
-                <span class="tag">Python 基礎</span>
-                <span class="tag">專案管理</span>
-                <span class="tag">英文檢定</span>
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2>代表作品</h2>
-            <div class="project-grid">
-                <div class="card">
-                    <div class="card-img">PROJECT_01</div>
-                    <div class="card-content">
-                        <h3>智慧生活專案</h3>
-                        <p>探討物聯網如何改善居家生活品質的實證研究。</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-img" style="background: #bbdefb;">PROJECT_02</div>
-                    <div class="card-content">
-                        <h3>社區服務日誌</h3>
-                        <p>參與志工活動的深度反思與社會參與觀察筆記。</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-img">PROJECT_03</div>
-                    <div class="card-content">
-                        <h3>創意設計集</h3>
-                        <p>結合美學與功能性的數位插畫作品展示區。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- 手機選單 -->
+    <div id="mobileMenu" class="hidden blue-gradient text-white flex-col p-4 space-y-4 md:hidden">
+        <a href="#home" class="block">首頁</a>
+        <a href="#independent" class="block">自主學習</a>
+        <a href="#it-projects" class="block">資訊專題</a>
+        <a href="#club" class="block">社團活動</a>
+        <a href="#grades" class="block">成績表現</a>
     </div>
 
-    <footer>
-        &copy; 2026 學習歷程存檔中心 - Designed with Clarity
+    <!-- 首頁區塊 -->
+    <section id="home" class="flex flex-col items-center justify-center min-h-[70vh] text-center bg-white">
+        <div class="relative mb-8">
+            <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-blue-500 shadow-xl">
+                <!--  -->
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400" alt="個人照" class="w-full h-full object-cover">
+            </div>
+            <div class="absolute bottom-2 right-2 bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center border-4 border-white">
+                <i class="fas fa-pen text-sm"></i>
+            </div>
+        </div>
+        <h2 class="text-4xl font-bold text-blue-800 mb-2">張博筌</h2>
+        <p class="text-gray-600 max-w-lg mx-auto leading-relaxed">
+            歡迎來到我的學習歷程網頁。這裡紀錄了我在高中期間對資訊技術的探索、自主學習的成果以及豐富的校園生活。
+        </p>
+    </section>
+
+    <!-- 自主學習專題 -->
+    <section id="independent" class="max-w-6xl mx-auto">
+        <div class="flex items-center mb-10">
+            <div class="w-2 h-10 bg-blue-600 mr-4"></div>
+            <h3 class="text-3xl font-bold text-gray-800">自主學習專題</h3>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm p-8 border border-blue-50 card-hover">
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2 img-zoom">
+                    <!--  -->
+                    <img src="https://images.unsplash.com/photo-1551288049-bbda48652ad8?auto=format&fit=crop&q=80&w=800" alt="專題照片" class="w-full h-64 md:h-full object-cover rounded-xl">
+                </div>
+                <div class="md:w-1/2 flex flex-col justify-center">
+                    <span class="inline-block w-fit bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-bold mb-4">專題名稱：Python 數據分析實踐</span>
+                    <h4 class="text-2xl font-bold mb-4 text-blue-900">利用開源數據探索城市交通趨勢</h4>
+                    <p class="text-gray-600 mb-6">
+                        這是我為期 18 週的自主學習計畫。我學習了 Python 的 Pandas 與 Matplotlib 函式庫，並針對台北市微笑單車的租借數據進行清洗與視覺化分析，最終產出了一份完整的分析報告。
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-50 px-3 py-1 rounded text-sm text-blue-600 font-medium">Python</span>
+                        <span class="bg-blue-50 px-3 py-1 rounded text-sm text-blue-600 font-medium">數據科學</span>
+                        <span class="bg-blue-50 px-3 py-1 rounded text-sm text-blue-600 font-medium">自主學習</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 資訊科技專題 -->
+    <section id="it-projects" class="bg-blue-50 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex items-center mb-10">
+                <div class="w-2 h-10 bg-blue-600 mr-4"></div>
+                <h3 class="text-3xl font-bold text-gray-800">資訊科技專題</h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- 專題一 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm card-hover flex flex-col">
+                    <div class="h-56 img-zoom">
+                        <!--  -->
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" alt="專題一照片" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-blue-800 mb-2">智慧型宿舍管理系統</h4>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                            運用 Arduino 與感測器開發的物聯網專題。解決了宿舍冷氣開關自動化與電力監測的問題。
+                        </p>
+                        <button class="text-blue-600 font-bold hover:underline text-sm">查看完整文件 →</button>
+                    </div>
+                </div>
+                <!-- 專題二 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm card-hover flex flex-col">
+                    <div class="h-56 img-zoom">
+                        <!--  -->
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800" alt="專題二照片" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-blue-800 mb-2">Unity 2D 冒險遊戲開發</h4>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+                            獨立使用 C# 編寫角色控制邏輯。在這次專題中我學會了物件導向程式設計（OOP）的核心概念。
+                        </p>
+                        <button class="text-blue-600 font-bold hover:underline text-sm">查看 Demo 影片 →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 社團活動 -->
+    <section id="club" class="max-w-6xl mx-auto">
+        <div class="flex items-center mb-10">
+            <div class="w-2 h-10 bg-blue-600 mr-4"></div>
+            <h3 class="text-3xl font-bold text-gray-800">社團活動</h3>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm p-8 border border-gray-100 flex flex-col md:flex-row items-center gap-8">
+            <div class="md:w-1/2">
+                <h4 class="text-2xl font-bold text-blue-700 mb-4">資訊社 - 技術幹部</h4>
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                        <p class="text-gray-600 font-medium">策劃並擔任「網頁設計基礎」課程講師。</p>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                        <p class="text-gray-600 font-medium">協辦年度社團聯合展覽，優化報到系統。</p>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                        <p class="text-gray-600 font-medium">參加北區資訊專題競賽，獲得佳作肯定。</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="md:w-1/2 grid grid-cols-2 gap-4">
+                <div class="img-zoom h-48">
+                    <!--  -->
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=400" alt="活動照 1" class="w-full h-full object-cover">
+                </div>
+                <div class="img-zoom h-48">
+                    <!--  -->
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=400" alt="活動照 2" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 課堂成績表現 -->
+    <section id="grades" class="bg-white px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-block px-4 py-1 bg-blue-100 text-blue-600 rounded-full font-bold mb-4">ACADEMIC PERFORMANCE</div>
+            <h3 class="text-3xl font-bold text-gray-800 mb-12">課堂成績表現</h3>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- 視覺化成績卡片 -->
+                <div class="bg-blue-50 p-6 rounded-xl border-t-4 border-blue-600 shadow-sm">
+                    <div class="text-blue-600 text-3xl font-bold mb-2">95</div>
+                    <div class="text-gray-700 font-bold">資訊科技</div>
+                </div>
+                <div class="bg-blue-50 p-6 rounded-xl border-t-4 border-blue-400 shadow-sm">
+                    <div class="text-blue-400 text-3xl font-bold mb-2">88</div>
+                    <div class="text-gray-700 font-bold">數學</div>
+                </div>
+                <div class="bg-blue-50 p-6 rounded-xl border-t-4 border-blue-500 shadow-sm">
+                    <div class="text-blue-500 text-3xl font-bold mb-2">92</div>
+                    <div class="text-gray-700 font-bold">英文</div>
+                </div>
+            </div>
+
+            <div class="space-y-6 text-left max-w-2xl mx-auto">
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-bold">總體平均表現</span>
+                        <span class="text-blue-600 font-bold">91.6 %</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-4">
+                        <div class="bg-blue-600 h-4 rounded-full" style="width: 91.6%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="mt-12 text-gray-500 italic">
+                * 專注於理科表現，特別在邏輯思維與程式實作相關課程中名列前茅。
+            </p>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="bg-gray-900 text-white py-12 text-center">
+        <p class="opacity-50 text-sm mb-4">© 2024 個人學習歷程數位檔案. Created with Passion.</p>
+        <div class="flex justify-center space-x-6 text-xl">
+            <a href="#" class="hover:text-blue-400 transition"><i class="fab fa-github"></i></a>
+            <a href="#" class="hover:text-blue-400 transition"><i class="fas fa-envelope"></i></a>
+        </div>
     </footer>
 
     <script>
-        // 平滑捲動功能
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                window.scrollTo({
-                    top: target.offsetTop - 80,
-                    behavior: 'smooth'
-                });
+        // 手機選單切換
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+
+        // 點擊選單後自動關閉手機選單
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
             });
+        });
+
+        // 滾動動畫效果
+        const observerOptions = {
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(sec => {
+            sec.style.opacity = '0';
+            sec.style.transform = 'translateY(30px)';
+            sec.style.transition = 'all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1)';
+            observer.observe(sec);
         });
     </script>
 </body>
