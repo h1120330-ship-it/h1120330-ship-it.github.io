@@ -3,302 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>工業核心 | 學習歷程存檔</title>
+    <title>個人學習歷程 | 藍白簡約版</title>
     <style>
-        /* --- 變數與基礎設定 --- */
+        /* --- CSS 樣式區 --- */
         :root {
-            --hazard-yellow: #f1c40f;
-            --hazard-black: #2c3e50;
-            --terminal-green: #00ff41;
-            --iron-gray: #2d3436;
-            --rust-orange: #d35400;
-            --metal-gradient: linear-gradient(145deg, #333, #111);
+            --primary-blue: #0056b3;
+            --light-blue: #e3f2fd;
+            --accent-blue: #00d2ff;
+            --pure-white: #ffffff;
+            --text-main: #2c3e50;
+            --shadow: 0 8px 30px rgba(0,0,0,0.08);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: crosshair; /* 十字準心游標 */
         }
 
         body {
-            background-color: #0f0f0f;
-            color: #eee;
-            font-family: 'Courier New', Courier, monospace; /* 使用等寬字體模擬終端機 */
-            overflow-x: hidden;
+            font-family: 'Segoe UI', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            background-color: #f8fbff;
+            color: var(--text-main);
+            line-height: 1.6;
         }
 
-        /* --- 警示線裝飾 --- */
-        .hazard-bar {
-            width: 100%;
-            height: 15px;
-            background: repeating-linear-gradient(
-                45deg,
-                var(--hazard-yellow),
-                var(--hazard-yellow) 20px,
-                #000 20px,
-                #000 40px
-            );
+        /* 導航欄 */
+        nav {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px); /* 磨砂玻璃 */
+            height: 70px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
             position: fixed;
             top: 0;
+            width: 100%;
             z-index: 1000;
+            box-shadow: var(--shadow);
         }
 
-        /* --- 側邊導航 (重裝感) --- */
-        nav {
-            width: 80px;
-            height: 100vh;
-            background: var(--metal-gradient);
-            position: fixed;
-            left: 0;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li { margin: 0 20px; }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover { color: var(--primary-blue); }
+
+        /* 主視覺區 */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
-            padding-top: 50px;
-            border-right: 3px solid #444;
-            box-shadow: 5px 0 15px rgba(0,0,0,0.5);
-            z-index: 500;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 70px;
         }
 
-        nav a {
-            writing-mode: vertical-rl;
-            text-decoration: none;
-            color: #666;
-            font-weight: bold;
-            margin: 20px 0;
-            letter-spacing: 5px;
-            transition: 0.3s;
-            font-size: 14px;
-        }
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; }
 
-        nav a:hover, nav a.active {
-            color: var(--terminal-green);
-            text-shadow: 0 0 10px var(--terminal-green);
-        }
-
-        /* --- 主要容器 --- */
+        /* 內容區塊 */
         .container {
-            margin-left: 100px;
-            padding: 40px;
             max-width: 1000px;
+            margin: -50px auto 50px auto;
+            padding: 0 20px;
         }
 
-        header {
-            border-left: 10px solid var(--rust-orange);
-            padding-left: 20px;
-            margin-bottom: 60px;
-        }
-
-        header h1 {
-            font-size: 4rem;
-            text-transform: uppercase;
-            color: #fff;
-            letter-spacing: -2px;
-        }
-
-        header span {
-            color: var(--terminal-green);
-            background: rgba(0, 255, 65, 0.1);
-            padding: 2px 10px;
-        }
-
-        /* --- 區塊設計 --- */
         section {
-            background: #1a1a1a;
-            border: 1px solid #333;
+            background: var(--pure-white);
+            border-radius: 20px;
             padding: 40px;
-            margin-bottom: 40px;
-            position: relative;
-            box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--light-blue);
         }
 
-        section h2 {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-            color: var(--hazard-yellow);
+        h2 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--light-blue);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* 技能標籤 */
+        .skill-tags {
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        section h2::before {
-            content: "[0" attr(data-num) "]";
-            margin-right: 15px;
+        .tag {
+            background: var(--light-blue);
+            color: var(--primary-blue);
+            padding: 8px 18px;
+            border-radius: 50px;
             font-size: 0.9rem;
-            color: #555;
+            font-weight: bold;
         }
 
-        /* --- 進度條 (壓力表感) --- */
-        .skill-box {
-            margin-bottom: 25px;
-        }
-
-        .skill-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-        }
-
-        .meter {
-            height: 20px;
-            background: #000;
-            border: 1px solid #444;
-            padding: 2px;
-            position: relative;
-        }
-
-        .meter-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #1e3799, var(--terminal-green));
-            width: 0%;
-            transition: 2s cubic-bezier(0.1, 0, 0.3, 1);
-        }
-
-        /* --- 專案卡片 --- */
+        /* 專案卡片 */
         .project-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
-        .project-card {
-            border: 1px solid #444;
-            padding: 20px;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(255,255,255,0.02) 0px,
-                rgba(255,255,255,0.02) 1px,
-                transparent 1px,
-                transparent 2px
-            );
+        .card {
+            border-radius: 15px;
+            overflow: hidden;
+            background: #fff;
+            transition: transform 0.3s;
+            border: 1px solid #eee;
         }
 
-        .project-card h3 {
-            color: var(--terminal-green);
-            margin-bottom: 10px;
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 45px rgba(0,86,179,0.1);
         }
 
-        .status-light {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #ff0000;
-            margin-right: 10px;
-            box-shadow: 0 0 5px #ff0000;
-            animation: blink 1s infinite;
+        .card-img {
+            height: 150px;
+            background: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-weight: bold;
         }
 
-        @keyframes blink {
-            50% { opacity: 0.3; }
-        }
+        .card-content { padding: 20px; }
+        .card-content h3 { margin-bottom: 10px; color: var(--primary-blue); }
 
-        /* --- 背景裝飾 --- */
-        .bg-text {
-            position: fixed;
-            font-size: 15vw;
-            font-weight: 900;
-            color: rgba(255,255,255,0.02);
-            bottom: -20px;
-            right: -20px;
-            z-index: -1;
-            pointer-events: none;
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-size: 0.9rem;
         }
 
     </style>
 </head>
 <body>
 
-    <div class="hazard-bar"></div>
-
     <nav>
-        <a href="#home" class="active">SYSTEM_HOME</a>
-        <a href="#about">CORE_DATA</a>
-        <a href="#skills">ENGINE_STATUS</a>
-        <a href="#projects">OUTPUTS</a>
+        <div class="logo">LEARN_LOG</div>
+        <ul>
+            <li><a href="#about">關於我</a></li>
+            <li><a href="#skills">能力指標</a></li>
+            <li><a href="#projects">專題作品</a></li>
+        </ul>
     </nav>
 
-    <div class="bg-text">INDUSTRIAL</div>
+    <header class="hero">
+        <h1>我的學習歷程</h1>
+        <p>探索知識的邊界，記錄成長的足跡</p>
+    </header>
 
     <div class="container">
-        <header id="home">
-            <h1>USER_LOG<span>v2.0.4</span></h1>
-            <p>> 系統初始化中... 身份驗證通過。歡迎進入學習歷程存檔中心。</p>
-        </header>
-
-        <section id="about" data-num="1">
-            <h2>個人檔案 // PROFILE</h2>
-            <p style="color: #bbb; line-height: 1.6;">
-                這裡輸入你的自我介紹。例如：我專注於將複雜的邏輯轉化為可視化的成果，
-                擅長在限制條件下尋找最優解。目前正在探索工業自動化與前端互動的結合點。
-            </p>
+        <section id="about">
+            <h2>個人簡介</h2>
+            <p>你好！我是一名熱衷於自主學習的探索者。在這裡，我記錄了我在不同領域的嘗試與成果。這份網頁採用藍白配色，旨在傳達清晰、專業且充滿希望的學習態度。</p>
         </section>
 
-        <section id="skills" data-num="2">
-            <h2>核心效能 // SKILLS</h2>
-            <div class="skill-box">
-                <div class="skill-label"><span>PYTHON_ENGINE</span><span>85%</span></div>
-                <div class="meter"><div class="meter-fill" style="width: 85%;"></div></div>
-            </div>
-            <div class="skill-box">
-                <div class="skill-label"><span>UI_DYNAMICS</span><span>70%</span></div>
-                <div class="meter"><div class="meter-fill" style="width: 70%;"></div></div>
-            </div>
-            <div class="skill-box">
-                <div class="skill-label"><span>SYSTEM_ARCH</span><span>60%</span></div>
-                <div class="meter"><div class="meter-fill" style="width: 60%;"></div></div>
+        <section id="skills">
+            <h2>專業技能</h2>
+            <div class="skill-tags">
+                <span class="tag">網頁設計</span>
+                <span class="tag">數據分析</span>
+                <span class="tag">Python 基礎</span>
+                <span class="tag">專案管理</span>
+                <span class="tag">英文檢定</span>
             </div>
         </section>
 
-        <section id="projects" data-num="3">
-            <h2>產出清單 // PROJECTS</h2>
+        <section id="projects">
+            <h2>代表作品</h2>
             <div class="project-grid">
-                <div class="project-card">
-                    <div class="status-light"></div>
-                    <h3>實驗性計畫 A</h3>
-                    <p>描述該專題的技術細節與解決的問題。使用技術：Node.js, Docker。</p>
+                <div class="card">
+                    <div class="card-img">PROJECT_01</div>
+                    <div class="card-content">
+                        <h3>智慧生活專案</h3>
+                        <p>探討物聯網如何改善居家生活品質的實證研究。</p>
+                    </div>
                 </div>
-                <div class="project-card">
-                    <div class="status-light" style="background: #00ff00; box-shadow: 0 0 5px #00ff00;"></div>
-                    <h3>數據建模 B</h3>
-                    <p>針對特定場景進行的數據模擬與優化實驗。</p>
+                <div class="card">
+                    <div class="card-img" style="background: #bbdefb;">PROJECT_02</div>
+                    <div class="card-content">
+                        <h3>社區服務日誌</h3>
+                        <p>參與志工活動的深度反思與社會參與觀察筆記。</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">PROJECT_03</div>
+                    <div class="card-content">
+                        <h3>創意設計集</h3>
+                        <p>結合美學與功能性的數位插畫作品展示區。</p>
+                    </div>
                 </div>
             </div>
         </section>
     </div>
 
+    <footer>
+        &copy; 2026 學習歷程存檔中心 - Designed with Clarity
+    </footer>
+
     <script>
-        // 平滑捲動
+        // 平滑捲動功能
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                target.scrollIntoView({ behavior: 'smooth' });
-                
-                // 切換 active 狀態
-                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
-        // 簡單的進入視窗偵測
-        window.addEventListener('scroll', () => {
-            let sections = document.querySelectorAll('section');
-            let navLinks = document.querySelectorAll('nav a');
-            
-            sections.forEach(sec => {
-                let top = window.scrollY;
-                let offset = sec.offsetTop - 150;
-                let height = sec.offsetHeight;
-                let id = sec.getAttribute('id');
-
-                if (top >= offset && top < offset + height) {
-                    navLinks.forEach(links => {
-                        links.classList.remove('active');
-                        document.querySelector('nav a[href*=' + id + ']').classList.add('active');
-                    });
-                }
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
