@@ -97,15 +97,15 @@
             overflow-y: hidden;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
-            padding: 20px 0 30px 0; /* 下方留空間給滑軌 */
+            padding: 20px 0 30px 0;
             gap: 24px;
             scroll-behavior: smooth;
         }
 
         /* 自訂滑軌樣式 (Scrollbar) */
         .horizontal-scroll::-webkit-scrollbar {
-            height: 8px; /* 滑軌高度 */
-            display: block; /* 確保顯示 */
+            height: 8px;
+            display: block;
         }
         
         .horizontal-scroll::-webkit-scrollbar-track {
@@ -124,7 +124,6 @@
             background: var(--accent-blue);
         }
 
-        /* 關鍵：為捲動容器兩側增加空間 */
         .scroll-wrapper {
             width: 100%;
             max-width: 1200px;
@@ -135,6 +134,9 @@
         .scroll-card {
             flex: 0 0 100%; 
             scroll-snap-align: center;
+            display: block;
+            text-decoration: none;
+            color: inherit;
         }
 
         @media (min-width: 768px) {
@@ -193,14 +195,13 @@
                 <div class="w-2 h-10 bg-blue-600 mr-4"></div>
                 <h3 class="text-3xl font-bold text-gray-800">學習成果</h3>
                 <span class="ml-auto text-xs text-blue-400 hidden md:inline-block">
-                    <i class="fas fa-arrows-left-right mr-1"></i>可用滾輪或拖動下方滑軌
+                    <i class="fas fa-arrows-left-right mr-1"></i>點擊卡片查看詳細內容
                 </span>
             </div>
             
-            <!-- 橫向捲動容器 -->
             <div class="horizontal-scroll js-scroll-container">
-                <!-- 課程卡片 -->
-                <div class="scroll-card bg-white rounded-xl overflow-hidden shadow-sm card-hover flex flex-col">
+                <!-- 課程卡片：連結到你的 GitHub 檔案路徑 -->
+                <a href="英文學習歷程" class="scroll-card bg-white rounded-xl overflow-hidden shadow-sm card-hover flex flex-col">
                     <div class="h-48 img-zoom">
                         <img src="image/IMG_20230305_153035_0447.jpg" alt="英文學習" class="w-full h-full object-cover">
                         <div class="photo-label">英文學習歷程</div>
@@ -209,8 +210,10 @@
                         <h4 class="text-xl font-bold text-blue-800 mb-2">英文學習歷程</h4>
                         <p class="text-gray-600 text-sm leading-relaxed">紀錄各學期的英文能力提升、閱讀心得與語言應用成果。</p>
                     </div>
-                </div>
-                <div class="scroll-card bg-white rounded-xl overflow-hidden shadow-sm card-hover flex flex-col">
+                </a>
+
+                <!-- 其他卡片連結可以根據 GitHub 上的檔名陸續補齊 -->
+                <a href="#" class="scroll-card bg-white rounded-xl overflow-hidden shadow-sm card-hover flex flex-col">
                     <div class="h-48 img-zoom">
                         <img src="image/IMG_20230305_153035_0447.jpg" alt="AI機器人" class="w-full h-full object-cover">
                         <div class="photo-label">高一下 AI機器人</div>
@@ -219,37 +222,40 @@
                         <h4 class="text-xl font-bold text-blue-800 mb-2">高一下 AI機器人</h4>
                         <p class="text-gray-600 text-sm leading-relaxed">初探人工智慧領域，學習機器人控制與基礎演算法邏輯。</p>
                     </div>
-                </div>
-                <div class="scroll-card bg-white rounded-xl overflow-hidden shadow-sm card-hover flex flex-col">
+                </a>
+
+                <a href="#" class="scroll-card bg-white rounded-xl overflow-hidden shadow-sm card-hover flex flex-col">
                     <div class="h-48 img-zoom">
                         <img src="image/IMG_20230305_153035_0447.jpg" alt="自動門鎖" class="w-full h-full object-cover">
                         <div class="photo-label">高二上 自動門鎖</div>
                     </div>
                     <div class="p-6">
                         <h4 class="text-xl font-bold text-blue-800 mb-2">高二上 自動門鎖</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed">結合物聯網概念，實作自動控制系統，解決日常生活中的不便。</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">結合物聯網概念，實作自動控制系統。</p>
                     </div>
-                </div>
-                <div class="scroll-card bg-white rounded-xl overflow-hidden shadow-sm card-hover flex flex-col">
+                </a>
+
+                <a href="#" class="scroll-card bg-white rounded-xl overflow-hidden shadow-sm card-hover flex flex-col">
                     <div class="h-48 img-zoom">
                         <img src="image/IMG_20230305_153035_0447.jpg" alt="MATLAB" class="w-full h-full object-cover">
                         <div class="photo-label">MATLAB Deep Network Designer</div>
                     </div>
                     <div class="p-6">
                         <h4 class="text-xl font-bold text-blue-800 mb-2">MATLAB：Deep Network Designer</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed">高二上學期運用 MATLAB 工具設計深度學習網路架構。</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">運用 MATLAB 工具設計深度學習網路架構。</p>
                     </div>
-                </div>
-                <div class="scroll-card bg-white rounded-xl overflow-hidden shadow-sm card-hover flex flex-col">
+                </a>
+
+                <a href="#" class="scroll-card bg-white rounded-xl overflow-hidden shadow-sm card-hover flex flex-col">
                     <div class="h-48 img-zoom">
                         <img src="image/IMG_20230305_153035_0447.jpg" alt="Python" class="w-full h-full object-cover">
                         <div class="photo-label">高二下 Python</div>
                     </div>
                     <div class="p-6">
                         <h4 class="text-xl font-bold text-blue-800 mb-2">高二下 Python</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed">進階程式設計學習，探索 Python 在數據處理與自動化中的應用。</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">探索 Python 在數據處理與自動化中的應用。</p>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -262,14 +268,13 @@
                 <h3 class="text-3xl font-bold text-gray-800">多元表現</h3>
             </div>
 
-            <!-- 自主學習作品 -->
             <div class="mb-16">
                 <h4 class="text-2xl font-bold text-blue-700 mb-8 flex items-center">
                     <i class="fas fa-lightbulb mr-3"></i>自主學習作品
                 </h4>
                 <div class="space-y-8">
-                    <!-- 自主學習卡片 -->
-                    <div class="bg-white rounded-2xl shadow-sm p-8 border border-blue-50 card-hover">
+                    <!-- 連結到 GitHub 上的「自主學習成發」檔案 -->
+                    <a href="自主學習成發" class="bg-white rounded-2xl shadow-sm p-8 border border-blue-50 card-hover block">
                         <div class="flex flex-col md:flex-row gap-8">
                             <div class="md:w-1/2 img-zoom min-h-[250px]">
                                 <img src="image/螢幕擷取畫面 2026-03-20 200909.png" alt="專案照片" class="w-full h-full object-cover rounded-xl">
@@ -278,7 +283,7 @@
                             <div class="md:w-1/2 flex flex-col justify-center">
                                 <h4 class="text-2xl font-bold mb-4 text-blue-900">利用 Tinkercad 建造自己的薇閣</h4>
                                 <p class="text-gray-600 mb-6">
-                                    我利用 Tinkercad 建模功能製作學校的建築，我實地走訪校園，拍攝建築物的每個細節，並精確的建造其 3D 模型。
+                                    我利用 Tinkercad 建模功能製作學校的建築，精確的建造其 3D 模型。
                                 </p>
                                 <div class="flex flex-wrap gap-2">
                                     <span class="bg-blue-50 px-3 py-1 rounded text-sm text-blue-600 font-medium">Tinkercad</span>
@@ -286,8 +291,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="bg-white rounded-2xl shadow-sm p-8 border border-blue-50 card-hover">
+                    </a>
+
+                    <a href="#" class="bg-white rounded-2xl shadow-sm p-8 border border-blue-50 card-hover block">
                         <div class="flex flex-col md:flex-row gap-8">
                             <div class="md:w-1/2 img-zoom min-h-[250px]">
                                 <img src="image/螢幕擷取畫面 2026-03-25 124712.png" alt="專案照片" class="w-full h-full object-cover rounded-xl">
@@ -295,80 +301,14 @@
                             </div>
                             <div class="md:w-1/2 flex flex-col justify-center">
                                 <h4 class="text-2xl font-bold mb-4 text-blue-900">自動獎牌列印機</h4>
-                                <p class="text-gray-600 mb-6">
-                                    我學習進階軟體 Onshape，將設計構想轉化為可實際運作的機械結構。
-                                </p>
+                                <p class="text-gray-600 mb-6">將設計構想轉化為可實際運作的機械結構。</p>
                                 <div class="flex flex-wrap gap-2">
                                     <span class="bg-blue-50 px-3 py-1 rounded text-sm text-blue-600 font-medium">Onshape</span>
                                     <span class="bg-blue-50 px-3 py-1 rounded text-sm text-blue-600 font-medium">3D建模</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 校園參與橫向捲動 -->
-        <div class="bg-gray-50 py-16">
-            <div class="scroll-wrapper">
-                <div class="flex items-center mb-6">
-                    <h4 class="text-2xl font-bold text-blue-700 flex items-center">
-                        <i class="fas fa-star mr-3"></i>校園參與與國際交流
-                    </h4>
-                </div>
-                <div class="horizontal-scroll js-scroll-container">
-                    <!-- 活動卡片 -->
-                    <div class="scroll-card bg-white rounded-xl overflow-hidden shadow-sm card-hover border border-gray-100 flex flex-col">
-                        <div class="h-40 img-zoom">
-                            <img src="image/IMG_20230305_153035_0447.jpg" alt="社聯" class="w-full h-full object-cover">
-                            <div class="photo-label">社聯會</div>
-                        </div>
-                        <div class="p-6">
-                            <h5 class="text-lg font-bold text-blue-800 mb-2">社聯會成員</h5>
-                            <p class="text-gray-600 text-sm">參與學校社團聯合會，負責協助各項校內大型活動的籌備。</p>
-                        </div>
-                    </div>
-                    <div class="scroll-card bg-white rounded-xl overflow-hidden shadow-sm card-hover border border-gray-100 flex flex-col">
-                        <div class="h-40 img-zoom">
-                            <img src="image/IMG_20230305_153035_0447.jpg" alt="話劇" class="w-full h-full object-cover">
-                            <div class="photo-label">話劇社</div>
-                        </div>
-                        <div class="p-6">
-                            <h5 class="text-lg font-bold text-blue-800 mb-2">話劇社演出</h5>
-                            <p class="text-gray-600 text-sm">投入舞台表演藝術，提升自我表達與合作能力。</p>
-                        </div>
-                    </div>
-                    <div class="scroll-card bg-white rounded-xl overflow-hidden shadow-sm card-hover border border-gray-100 flex flex-col">
-                        <div class="h-40 img-zoom">
-                            <img src="image/IMG_20230305_153035_0447.jpg" alt="舞獅" class="w-full h-full object-cover">
-                            <div class="photo-label">舞獅隊</div>
-                        </div>
-                        <div class="p-6">
-                            <h5 class="text-lg font-bold text-blue-800 mb-2">舞獅隊培訓</h5>
-                            <p class="text-gray-600 text-sm">傳統藝術的體現，在嚴格的訓練中培養毅力與默契。</p>
-                        </div>
-                    </div>
-                    <div class="scroll-card bg-white rounded-xl overflow-hidden shadow-sm card-hover border border-gray-100 flex flex-col">
-                        <div class="h-40 img-zoom">
-                            <img src="image/IMG_20230305_153035_0447.jpg" alt="成發" class="w-full h-full object-cover">
-                            <div class="photo-label">表演組</div>
-                        </div>
-                        <div class="p-6">
-                            <h5 class="text-lg font-bold text-blue-800 mb-2">自主學習成發表演</h5>
-                            <p class="text-gray-600 text-sm">將學習成果以動態方式呈現給全校師生。</p>
-                        </div>
-                    </div>
-                    <div class="scroll-card bg-white rounded-xl overflow-hidden shadow-sm card-hover border border-gray-100 flex flex-col">
-                        <div class="h-40 img-zoom">
-                            <img src="image/IMG_20230305_153035_0447.jpg" alt="加拿大" class="w-full h-full object-cover">
-                            <div class="photo-label">加拿大交流</div>
-                        </div>
-                        <div class="p-6">
-                            <h5 class="text-lg font-bold text-blue-800 mb-2">加拿大海外交流團</h5>
-                            <p class="text-gray-600 text-sm">參與跨國交流計畫，拓展國際視野與觀點。</p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -376,11 +316,10 @@
 
     <!-- 頁尾 -->
     <footer class="bg-gray-900 text-white py-12 text-center">
-        <p class="opacity-50 text-sm">© 2024 張博筌 個人學習歷程數位檔案. Created with Passion.</p>
+        <p class="opacity-50 text-sm">© 2024 張博筌 個人學習歷程數位檔案.</p>
     </footer>
 
     <script>
-        // 手機選單
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         menuBtn.addEventListener('click', () => {
@@ -388,27 +327,21 @@
             mobileMenu.classList.toggle('flex');
         });
 
-        // 滾輪橫向捲動核心邏輯
         const scrollContainers = document.querySelectorAll('.js-scroll-container');
         scrollContainers.forEach(container => {
             container.addEventListener('wheel', (evt) => {
                 if (evt.deltaY !== 0) {
                     const isAtLeft = container.scrollLeft <= 0;
                     const isAtRight = Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 2;
-
-                    // 當向上滾且已到最左，或向下滾且已到最右，不攔截事件，讓頁面上下移動
                     if ((evt.deltaY < 0 && isAtLeft) || (evt.deltaY > 0 && isAtRight)) {
                         return;
                     }
-
-                    // 否則，將垂直滾動轉向為水平滾動
                     evt.preventDefault();
                     container.scrollLeft += evt.deltaY;
                 }
             }, { passive: false });
         });
 
-        // 動畫觀察器
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
