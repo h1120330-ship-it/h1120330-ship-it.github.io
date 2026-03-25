@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>張博筌 - 英文學習歷程</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
+
+        :root {
+            --primary-blue: #0056b3;
+            --light-blue: #e7f1ff;
+            --accent-blue: #007bff;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f8fbff;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        .blue-gradient {
+            background: linear-gradient(135deg, #0056b3 0%, #00aaff 100%);
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 86, 179, 0.15);
+        }
+
+        .img-zoom {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+        }
+
+        .img-zoom img {
+            transition: transform 0.5s ease;
+        }
+
+        .img-zoom:hover img {
+            transform: scale(1.1);
+        }
+
+        .back-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            transform: translateX(-5px);
+        }
+
+        /* 進度條動畫 */
+        .progress-bar {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--accent-blue);
+            width: 0;
+            transition: width 1.5s ease-out;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 導航欄 -->
+    <nav class="blue-gradient text-white p-4 sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto flex justify-between items-center px-4">
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="back-btn flex items-center text-white opacity-90 hover:opacity-100">
+                    <i class="fas fa-chevron-left mr-2"></i>返回首頁
+                </a>
+                <span class="text-white opacity-30">|</span>
+                <h1 class="text-xl font-bold tracking-wider">英文學習歷程</h1>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#stats" class="hover:underline underline-offset-4">學習數據</a>
+                <a href="#highlights" class="hover:underline underline-offset-4">核心成果</a>
+                <a href="#reflection" class="hover:underline underline-offset-4">學習心得</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 標題區塊 -->
+    <header class="py-16 bg-white border-b border-blue-50">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <div class="inline-block p-3 bg-blue-50 rounded-full mb-6">
+                <i class="fas fa-language text-4xl text-blue-600"></i>
+            </div>
+            <h2 class="text-4xl font-bold text-blue-800 mb-4">English Learning Journey</h2>
+            <p class="text-gray-600 leading-relaxed text-lg">
+                「語言是通往世界的窗。」在高中三年的英文學習中，我從基礎語法扎根，延伸至原文閱讀與專題演講，不斷突破自我極限。
+            </p>
+        </div>
+    </header>
+
+    <!-- 學習數據統計 -->
+    <section id="stats" class="bg-blue-50/50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center mb-10">
+                <div class="w-2 h-8 bg-blue-600 mr-4"></div>
+                <h3 class="text-2xl font-bold text-gray-800">成長數據概覽</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 數據卡片 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-blue-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-gray-500 font-medium">單字量積累</span>
+                        <i class="fas fa-book text-blue-400"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-blue-600 mb-2">7,000+</div>
+                    <div class="progress-bar mt-4">
+                        <div class="progress-fill" style="width: 85%;"></div>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2">目標：學測 Level 6 核心單字</p>
+                </div>
+
+                <!-- 數據卡片 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-blue-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-gray-500 font-medium">閱讀量</span>
+                        <i class="fas fa-newspaper text-blue-400"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-blue-600 mb-2">52 <span class="text-lg text-gray-400 font-normal">篇/年</span></div>
+                    <div class="progress-bar mt-4">
+                        <div class="progress-fill" style="width: 90%;"></div>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2">包含 Time 雜誌、Scientific American 導讀</p>
+                </div>
+
+                <!-- 數據卡片 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-blue-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-gray-500 font-medium">聽力培訓</span>
+                        <i class="fas fa-headphones text-blue-400"></i>
+                    </div>
+                    <div class="text-3xl font-bold text-blue-600 mb-2">120 <span class="text-lg text-gray-400 font-normal">小時</span></div>
+                    <div class="progress-bar mt-4">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2">TED Talks 與 Podcast 聽力訓練</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 學習成果展示 -->
+    <section id="highlights">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center mb-10">
+                <div class="w-2 h-8 bg-blue-600 mr-4"></div>
+                <h3 class="text-2xl font-bold text-gray-800">核心成果展示</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- 成果卡片 1 -->
+                <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100 card-hover">
+                    <div class="h-56 bg-gray-200 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&q=80&w=800" alt="閱讀筆記" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-blue-900/40 flex items-center justify-center">
+                            <span class="text-white font-bold text-xl border-2 border-white px-4 py-2">英文文本深度閱讀</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 text-xs font-bold rounded">111學年度</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-600 text-xs font-bold rounded">閱讀筆記</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-800 mb-4">《動物農莊》讀後分析報告</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            透過精讀 George Orwell 的原著，我學習了寓言文學中的政治象徵，並撰寫了 800 字的英文評論，深入探討權力與社會結構的關係。
+                        </p>
+                        <a href="#" class="inline-flex items-center text-blue-600 font-bold hover:text-blue-800 transition">
+                            查看完整筆記 <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 成果卡片 2 -->
+                <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100 card-hover">
+                    <div class="h-56 bg-gray-200 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1478737270239-2fccd27ee8fb?auto=format&fit=crop&q=80&w=800" alt="英文配音" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-blue-900/40 flex items-center justify-center">
+                            <span class="text-white font-bold text-xl border-2 border-white px-4 py-2">口說表達與配音</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 text-xs font-bold rounded">112學年度</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-600 text-xs font-bold rounded">影音作品</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-800 mb-4">BBC 紀錄片片段配音計畫</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            挑戰科學紀錄片配音，重點在於語調的抑揚頓挫與專有名詞的精準發音。這項活動顯著提升了我的語感與大眾演說信心。
+                        </p>
+                        <a href="#" class="inline-flex items-center text-blue-600 font-bold hover:text-blue-800 transition">
+                            聆聽音檔內容 <i class="fas fa-microphone-lines ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 學習策略與心得 -->
+    <section id="reflection" class="bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-blue-900 rounded-3xl p-10 text-white shadow-xl relative overflow-hidden">
+                <div class="relative z-10">
+                    <h3 class="text-3xl font-bold mb-8">我的學習策略</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-blue-500/30 p-2 rounded-lg mt-1">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-lg font-bold">每日「黃金半小時」閱讀</h5>
+                                <p class="text-blue-100 text-sm">每天早晨閱讀一篇 The New York Times 科技版報導，訓練快速擷取資訊的能力。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-blue-500/30 p-2 rounded-lg mt-1">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-lg font-bold">數位單字卡 (Anki)</h5>
+                                <p class="text-blue-100 text-sm">利用間隔複習法 (Spaced Repetition) 將在閱讀中遇到的生詞轉化為長期記憶。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-blue-500/30 p-2 rounded-lg mt-1">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-lg font-bold">批判性思維與寫作</h5>
+                                <p class="text-blue-100 text-sm">每週寫一段英文短評，不只是練習語法，更訓練如何用英文邏輯架構觀點。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12 pt-8 border-t border-blue-800">
+                        <p class="italic text-blue-200">
+                            「英文對我而言不再只是考試科目，而是我獲取第一手資訊、與世界技術接軌的必要工具。在未來的資訊領域，我將帶著這項語言優勢，繼續探索無限可能。」
+                        </p>
+                    </div>
+                </div>
+                <!-- 裝飾背景圖案 -->
+                <i class="fas fa-quote-right absolute bottom-[-20px] right-[-10px] text-9xl opacity-10"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="bg-gray-900 text-white py-12 text-center">
+        <p class="opacity-50 text-sm">© 2024 張博筌 英文學習歷程專題. Built with HTML/TailwindCSS.</p>
+    </footer>
+
+    <script>
+        // 頁面加載後觸發進度條動畫
+        window.addEventListener('DOMContentLoaded', () => {
+            const fills = document.querySelectorAll('.progress-fill');
+            setTimeout(() => {
+                fills.forEach(fill => {
+                    const width = fill.style.width;
+                    fill.style.width = '0';
+                    setTimeout(() => {
+                        fill.style.width = width;
+                    }, 100);
+                });
+            }, 500);
+        });
+
+        // 簡單的區塊淡入效果
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(sec => {
+            sec.style.opacity = '0';
+            sec.style.transform = 'translateY(20px)';
+            sec.style.transition = 'all 0.6s ease-out';
+            observer.observe(sec);
+        });
+    </script>
+</body>
+</html>
