@@ -3,305 +3,406 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>張博筌 - 英文學習歷程</title>
+    <title>英文學習歷程 - 張博筌</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap');
-
-        :root {
-            --primary-blue: #0056b3;
-            --light-blue: #e7f1ff;
-            --accent-blue: #007bff;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Poppins:wght@400;600&display=swap');
 
         body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background-color: #f8fbff;
-            color: #333;
-            scroll-behavior: smooth;
+            font-family: 'Noto Sans TC', 'Poppins', sans-serif;
+            background-color: #fcfdfe;
+            color: #2d3748;
+            overflow-x: hidden;
         }
 
-        .blue-gradient {
-            background: linear-gradient(135deg, #0056b3 0%, #00aaff 100%);
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
         }
 
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background: #3b82f6;
+            border-radius: 50%;
+            position: absolute;
+            left: -6px;
+            top: 10px;
         }
 
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 86, 179, 0.15);
-        }
-
-        .img-zoom {
+        /* 調整卡片容器，確保兩側有空間進行垂直捲動 */
+        .scroll-section-container {
             position: relative;
-            overflow: hidden;
-            border-radius: 0.75rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px; /* 在兩側留出滑鼠操作空間 */
         }
 
-        .img-zoom img {
-            transition: transform 0.5s ease;
-        }
-
-        .img-zoom:hover img {
-            transform: scale(1.1);
-        }
-
-        .back-btn {
+        .content-card {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-        }
-        
-        .back-btn:hover {
-            transform: translateX(-5px);
+            flex: 0 0 100%; /* 手機全寬 */
+            scroll-snap-align: center;
         }
 
-        /* 進度條動畫 */
-        .progress-bar {
-            height: 8px;
-            background: #e2e8f0;
-            border-radius: 4px;
+        @media (min-width: 768px) {
+            .content-card {
+                flex: 0 0 calc(33.333% - 1rem); /* 電腦版三張併排或可滑動 */
+                scroll-snap-align: start;
+            }
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.1);
+        }
+
+        .horizontal-scroll {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 1.5rem;
+            padding: 1rem 0 2rem 0;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox 隱藏捲動條 */
+        }
+
+        .horizontal-scroll::-webkit-scrollbar {
+            display: none; /* Chrome 隱藏捲動條，改用按鈕或視覺提示 */
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45px;
+            height: 45px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 10;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #edf2f7;
+        }
+
+        .nav-btn:hover {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .nav-btn.prev { left: -10px; }
+        .nav-btn.next { right: -10px; }
+
+        .img-placeholder {
+            background-color: #f1f5f9;
+            height: 180px;
+            border-radius: 1rem 1rem 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
         }
-        .progress-fill {
-            height: 100%;
-            background: var(--accent-blue);
-            width: 0;
-            transition: width 1.5s ease-out;
-        }
 
-        section {
-            padding: 60px 0;
+        .step-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #ebf4ff;
+            line-height: 1;
+            position: absolute;
+            top: -1rem;
+            right: 1rem;
+            z-index: 0;
         }
     </style>
 </head>
 <body>
 
-    <!-- 導航欄 -->
-    <nav class="blue-gradient text-white p-4 sticky top-0 z-50 shadow-md">
-        <div class="max-w-6xl mx-auto flex justify-between items-center px-4">
-            <div class="flex items-center space-x-4">
-                <a href="index.html" class="back-btn flex items-center text-white opacity-90 hover:opacity-100">
-                    <i class="fas fa-chevron-left mr-2"></i>返回首頁
-                </a>
-                <span class="text-white opacity-30">|</span>
-                <h1 class="text-xl font-bold tracking-wider">英文學習歷程</h1>
-            </div>
-            <div class="hidden md:flex space-x-6">
-                <a href="#stats" class="hover:underline underline-offset-4">學習數據</a>
-                <a href="#highlights" class="hover:underline underline-offset-4">核心成果</a>
-                <a href="#reflection" class="hover:underline underline-offset-4">學習心得</a>
-            </div>
+    <!-- 頂部導航 -->
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-blue-600 font-bold flex items-center">
+                <i class="fas fa-chevron-left mr-2"></i> 返回主頁
+            </a>
+            <h1 class="text-lg font-bold text-gray-800">My English Journey</h1>
+            <div class="w-10"></div>
         </div>
     </nav>
 
-    <!-- 標題區塊 -->
-    <header class="py-16 bg-white border-b border-blue-50">
-        <div class="max-w-4xl mx-auto text-center px-4">
-            <div class="inline-block p-3 bg-blue-50 rounded-full mb-6">
-                <i class="fas fa-language text-4xl text-blue-600"></i>
-            </div>
-            <h2 class="text-4xl font-bold text-blue-800 mb-4">English Learning Journey</h2>
-            <p class="text-gray-600 leading-relaxed text-lg">
-                「語言是通往世界的窗。」在高中三年的英文學習中，我從基礎語法扎根，延伸至原文閱讀與專題演講，不斷突破自我極限。
+    <!-- 英雄區塊 -->
+    <header class="hero-gradient text-white py-20 px-4 text-center">
+        <div class="max-w-4xl mx-auto">
+            <span class="bg-blue-400/30 px-4 py-1 rounded-full text-sm font-medium mb-4 inline-block tracking-widest uppercase">Academic Excellence</span>
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">From Hesitation to Confidence</h2>
+            <p class="text-blue-100 text-lg max-w-2xl mx-auto leading-relaxed">
+                「英文不只是一個學科，它是探索世界的超級力量。」—— 記錄我從學業弱點到勇於開口發表的成長蛻變。
             </p>
         </div>
     </header>
 
-    <!-- 學習數據統計 -->
-    <section id="stats" class="bg-blue-50/50">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex items-center mb-10">
-                <div class="w-2 h-8 bg-blue-600 mr-4"></div>
-                <h3 class="text-2xl font-bold text-gray-800">成長數據概覽</h3>
+    <main class="max-w-5xl mx-auto py-16">
+        
+        <!-- 1. 學習動機 -->
+        <section class="mb-24 px-4">
+            <div class="flex items-center mb-8">
+                <span class="bg-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center mr-4 shadow-lg shadow-blue-200 font-bold">1</span>
+                <h3 class="text-2xl font-bold">學習動機與初衷</h3>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border-t-4 border-blue-500">
+                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-fist-raised text-blue-500 text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-3">克服弱點</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">英文曾是我最弱的科目，但我決定正面迎接挑戰，將它轉化為我的強項。</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border-t-4 border-cyan-500">
+                    <div class="w-12 h-12 bg-cyan-50 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-globe-americas text-cyan-500 text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-3">國際競爭力</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">英文是通往國際社會的橋樑，卓越的語言能力是接軌世界的必備工具。</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border-t-4 border-indigo-500">
+                    <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-film text-indigo-500 text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-3">文化熱忱</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">對英語電影、音樂與文學的熱愛，讓我渴望用不同視角看世界。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 校內精進：左右滑動卡片 -->
+        <section class="mb-24">
+            <div class="px-4">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center">
+                        <span class="bg-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center mr-4 shadow-lg shadow-blue-200 font-bold">2</span>
+                        <h3 class="text-2xl font-bold">校內精進：紮實功底</h3>
+                    </div>
+                </div>
+                <p class="text-gray-500 text-sm mb-8 ml-12">透過系統化的練習，我逐步建立起屬於自己的語言學習節奏。</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- 數據卡片 1 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-blue-100">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-gray-500 font-medium">單字量積累</span>
-                        <i class="fas fa-book text-blue-400"></i>
-                    </div>
-                    <div class="text-3xl font-bold text-blue-600 mb-2">7,000+</div>
-                    <div class="progress-bar mt-4">
-                        <div class="progress-fill" style="width: 85%;"></div>
-                    </div>
-                    <p class="text-xs text-gray-400 mt-2">目標：學測 Level 6 核心單字</p>
-                </div>
+            <div class="scroll-section-container">
+                <!-- 左右導航按鈕 -->
+                <div class="nav-btn prev" onclick="scrollLeftBtn()"><i class="fas fa-chevron-left"></i></div>
+                <div class="nav-btn next" onclick="scrollRightBtn()"><i class="fas fa-chevron-right"></i></div>
 
-                <!-- 數據卡片 2 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-blue-100">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-gray-500 font-medium">閱讀量</span>
-                        <i class="fas fa-newspaper text-blue-400"></i>
-                    </div>
-                    <div class="text-3xl font-bold text-blue-600 mb-2">52 <span class="text-lg text-gray-400 font-normal">篇/年</span></div>
-                    <div class="progress-bar mt-4">
-                        <div class="progress-fill" style="width: 90%;"></div>
-                    </div>
-                    <p class="text-xs text-gray-400 mt-2">包含 Time 雜誌、Scientific American 導讀</p>
-                </div>
-
-                <!-- 數據卡片 3 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-blue-100">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-gray-500 font-medium">聽力培訓</span>
-                        <i class="fas fa-headphones text-blue-400"></i>
-                    </div>
-                    <div class="text-3xl font-bold text-blue-600 mb-2">120 <span class="text-lg text-gray-400 font-normal">小時</span></div>
-                    <div class="progress-bar mt-4">
-                        <div class="progress-fill" style="width: 75%;"></div>
-                    </div>
-                    <p class="text-xs text-gray-400 mt-2">TED Talks 與 Podcast 聽力訓練</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 學習成果展示 -->
-    <section id="highlights">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex items-center mb-10">
-                <div class="w-2 h-8 bg-blue-600 mr-4"></div>
-                <h3 class="text-2xl font-bold text-gray-800">核心成果展示</h3>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <!-- 成果卡片 1 -->
-                <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100 card-hover">
-                    <div class="h-56 bg-gray-200 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&q=80&w=800" alt="閱讀筆記" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-blue-900/40 flex items-center justify-center">
-                            <span class="text-white font-bold text-xl border-2 border-white px-4 py-2">英文文本深度閱讀</span>
+                <div class="horizontal-scroll" id="stepCards">
+                    <!-- 卡片 A：單字片語 -->
+                    <div class="content-card flex flex-col">
+                        <div class="img-placeholder">
+                            <span class="text-gray-400 text-xs">[請放入單字練習筆記照片]</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <span class="bg-blue-100 text-blue-600 text-[10px] px-2 py-0.5 rounded font-bold mr-2 uppercase">Vocabulary</span>
+                                <h4 class="font-bold text-lg text-blue-900">單字與片語練習</h4>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                面對起初不理想的成績，我採取「單字量突破」策略。從基礎 1000+ 單字開始，不只是背誦，更強調在語境中的實際運用。
+                            </p>
+                            <div class="mt-auto pt-4 border-t border-gray-50 flex items-center text-blue-500 font-bold text-xs">
+                                <i class="fas fa-chart-line mr-2"></i> 奠定理解複雜文本的基石
+                            </div>
                         </div>
                     </div>
-                    <div class="p-8">
-                        <div class="flex items-center space-x-2 mb-3">
-                            <span class="px-3 py-1 bg-blue-100 text-blue-600 text-xs font-bold rounded">111學年度</span>
-                            <span class="px-3 py-1 bg-green-100 text-green-600 text-xs font-bold rounded">閱讀筆記</span>
+
+                    <!-- 卡片 B：文法翻譯 -->
+                    <div class="content-card flex flex-col">
+                        <div class="img-placeholder">
+                            <span class="text-gray-400 text-xs">[請放入文法練習照片]</span>
                         </div>
-                        <h4 class="text-xl font-bold text-gray-800 mb-4">《動物農莊》讀後分析報告</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
-                            透過精讀 George Orwell 的原著，我學習了寓言文學中的政治象徵，並撰寫了 800 字的英文評論，深入探討權力與社會結構的關係。
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <span class="bg-green-100 text-green-600 text-[10px] px-2 py-0.5 rounded font-bold mr-2 uppercase">Grammar</span>
+                                <h4 class="font-bold text-lg text-green-900">文法與翻譯練習</h4>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                透過系統化的文法筆記歸納與中英翻譯實作，我掌握了精準表達的關鍵。將破碎的語感轉化為邏輯清晰的句型結構。
+                            </p>
+                            <div class="mt-auto pt-4 border-t border-gray-50 flex items-center text-green-500 font-bold text-xs">
+                                <i class="fas fa-sync mr-2"></i> 提升句型變化的豐富度
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 卡片 C：日記作文 -->
+                    <div class="content-card flex flex-col">
+                        <div class="img-placeholder">
+                            <span class="text-gray-400 text-xs">[請放入小日記照片]</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <span class="bg-purple-100 text-purple-600 text-[10px] px-2 py-0.5 rounded font-bold mr-2 uppercase">Writing</span>
+                                <h4 class="font-bold text-lg text-purple-900">小日記與作文練習</h4>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                每日堅持進行英文短文寫作，將生活點滴轉化為英語思維。這種持續性的練習，讓我在考場上能更流暢、更有自信地完成創作。
+                            </p>
+                            <div class="mt-auto pt-4 border-t border-gray-50 flex items-center text-purple-500 font-bold text-xs">
+                                <i class="fas fa-pen-nib mr-2"></i> 培養自然的英語思維邏輯
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 進步趨勢圖示意區 -->
+            <div class="mt-8 mx-4 bg-blue-900 rounded-2xl p-8 text-white relative overflow-hidden">
+                <div class="relative z-10 flex flex-col md:flex-row items-center gap-8">
+                    <div class="md:w-1/2">
+                        <h4 class="text-xl font-bold mb-4">看見成長的數據</h4>
+                        <p class="text-blue-100 text-sm leading-relaxed mb-6">
+                            這是我高一至高二期間的英文 PR 值變化。每一次的努力都體現在這條上升的曲線中。
                         </p>
-                        <a href="#" class="inline-flex items-center text-blue-600 font-bold hover:text-blue-800 transition">
-                            查看完整筆記 <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 成果卡片 2 -->
-                <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100 card-hover">
-                    <div class="h-56 bg-gray-200 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1478737270239-2fccd27ee8fb?auto=format&fit=crop&q=80&w=800" alt="英文配音" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-blue-900/40 flex items-center justify-center">
-                            <span class="text-white font-bold text-xl border-2 border-white px-4 py-2">口說表達與配音</span>
+                        <div class="flex gap-4">
+                            <div class="bg-blue-800/50 p-3 rounded-lg border border-blue-700">
+                                <span class="block text-xs text-blue-300">聽力進步</span>
+                                <span class="text-lg font-bold">Excellent</span>
+                            </div>
+                            <div class="bg-blue-800/50 p-3 rounded-lg border border-blue-700">
+                                <span class="block text-xs text-blue-300">詞彙量</span>
+                                <span class="text-lg font-bold">1000+ Words</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-8">
-                        <div class="flex items-center space-x-2 mb-3">
-                            <span class="px-3 py-1 bg-blue-100 text-blue-600 text-xs font-bold rounded">112學年度</span>
-                            <span class="px-3 py-1 bg-purple-100 text-purple-600 text-xs font-bold rounded">影音作品</span>
-                        </div>
-                        <h4 class="text-xl font-bold text-gray-800 mb-4">BBC 紀錄片片段配音計畫</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
-                            挑戰科學紀錄片配音，重點在於語調的抑揚頓挫與專有名詞的精準發音。這項活動顯著提升了我的語感與大眾演說信心。
-                        </p>
-                        <a href="#" class="inline-flex items-center text-blue-600 font-bold hover:text-blue-800 transition">
-                            聆聽音檔內容 <i class="fas fa-microphone-lines ml-2 text-sm"></i>
-                        </a>
+                    <div class="md:w-1/2 w-full h-48 bg-white/10 rounded-xl border border-white/20 flex items-center justify-center">
+                        <span class="text-white/40 italic text-sm">[請在此處放入成績成長曲線圖照片]</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 學習策略與心得 -->
-    <section id="reflection" class="bg-white">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="bg-blue-900 rounded-3xl p-10 text-white shadow-xl relative overflow-hidden">
-                <div class="relative z-10">
-                    <h3 class="text-3xl font-bold mb-8">我的學習策略</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-blue-500/30 p-2 rounded-lg mt-1">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <h5 class="text-lg font-bold">每日「黃金半小時」閱讀</h5>
-                                <p class="text-blue-100 text-sm">每天早晨閱讀一篇 The New York Times 科技版報導，訓練快速擷取資訊的能力。</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-blue-500/30 p-2 rounded-lg mt-1">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <h5 class="text-lg font-bold">數位單字卡 (Anki)</h5>
-                                <p class="text-blue-100 text-sm">利用間隔複習法 (Spaced Repetition) 將在閱讀中遇到的生詞轉化為長期記憶。</p>
+        <!-- 3. 課外拓展 -->
+        <section class="mb-24 px-4">
+            <div class="flex items-center mb-8">
+                <span class="bg-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center mr-4 shadow-lg shadow-blue-200 font-bold">3</span>
+                <h3 class="text-2xl font-bold">課外拓展：勇敢跨出舒適圈</h3>
+            </div>
+            
+            <div class="space-y-16">
+                <!-- UBC 項目 -->
+                <div class="relative pl-8 border-l-2 border-blue-100">
+                    <div class="timeline-dot"></div>
+                    <div class="grid md:grid-cols-2 gap-10 items-center">
+                        <div class="order-2 md:order-1">
+                            <h4 class="text-xl font-bold mb-4 text-blue-700">卑詩大學 (UBC) 國際交流計畫</h4>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                參與加拿大 UBC 的英語課程是我人生中的轉折點。在純英語環境中，我不再只是紙上談兵，而是學會了如何跨越文化隔閡。
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full"><i class="fas fa-users mr-1"></i> 小組學術討論</span>
+                                <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full"><i class="fas fa-certificate mr-1"></i> 結業證明</span>
                             </div>
                         </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-blue-500/30 p-2 rounded-lg mt-1">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                            <div>
-                                <h5 class="text-lg font-bold">批判性思維與寫作</h5>
-                                <p class="text-blue-100 text-sm">每週寫一段英文短評，不只是練習語法，更訓練如何用英文邏輯架構觀點。</p>
-                            </div>
+                        <div class="order-1 md:order-2 bg-gray-100 rounded-2xl h-64 flex items-center justify-center overflow-hidden">
+                            <span class="text-gray-400">[請放入 UBC 照片]</span>
                         </div>
-                    </div>
-                    
-                    <div class="mt-12 pt-8 border-t border-blue-800">
-                        <p class="italic text-blue-200">
-                            「英文對我而言不再只是考試科目，而是我獲取第一手資訊、與世界技術接軌的必要工具。在未來的資訊領域，我將帶著這項語言優勢，繼續探索無限可能。」
-                        </p>
                     </div>
                 </div>
-                <!-- 裝飾背景圖案 -->
-                <i class="fas fa-quote-right absolute bottom-[-20px] right-[-10px] text-9xl opacity-10"></i>
+
+                <!-- 英語話劇 -->
+                <div class="relative pl-8 border-l-2 border-blue-100">
+                    <div class="timeline-dot"></div>
+                    <div class="grid md:grid-cols-2 gap-10 items-center">
+                        <div class="bg-gray-100 rounded-2xl h-64 flex items-center justify-center overflow-hidden">
+                            <span class="text-gray-400">[請放入話劇照]</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-4 text-blue-700">英語話劇比賽：挑戰舞台主角</h4>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                從一開始的怯場到第二次參賽勇於擔任主角。磨練了我的發音與領導力。
+                            </p>
+                            <div class="bg-blue-50 p-5 rounded-2xl border-l-4 border-blue-600">
+                                <p class="text-blue-900 text-sm font-medium italic">
+                                    「這次經驗教會我如何在壓力下領導團隊，這份自信比任何獎項都更為寶貴。」
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- 4. 自我省思 -->
+        <section class="mx-4 bg-gray-900 text-white rounded-[2.5rem] p-12 relative overflow-hidden">
+            <div class="step-number opacity-10">4</div>
+            <div class="relative z-10">
+                <h3 class="text-2xl font-bold mb-8 flex items-center">
+                    <i class="fas fa-lightbulb text-yellow-400 mr-4"></i> 自我省思與未來展望
+                </h3>
+                <div class="grid md:grid-cols-5 gap-10">
+                    <div class="md:col-span-3">
+                        <p class="text-gray-300 leading-relaxed italic text-lg mb-6">
+                            「英文不僅是一個成績，它更是一把打開世界大門的鑰匙。我學會了從錯誤中成長，勇敢面對對英語的恐懼。」
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center font-bold text-white">張</div>
+                            <div>
+                                <p class="font-bold">張博筌</p>
+                                <p class="text-xs text-gray-500 uppercase tracking-widest">Future Visionary</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2 space-y-6">
+                        <h5 class="font-bold text-blue-400 text-sm uppercase tracking-widest">核心成長點</h5>
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex-shrink-0 flex items-center justify-center text-blue-400 font-bold mr-4">01</div>
+                            <p class="text-gray-400 text-sm leading-relaxed">將恐懼與猶豫成功轉化為行動的勇氣。</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-500/20 rounded-lg flex-shrink-0 flex items-center justify-center text-blue-400 font-bold mr-4">02</div>
+                            <p class="text-gray-400 text-sm leading-relaxed">建立自主學習習慣，讓語言成為終身使用的工具。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
     <!-- 頁尾 -->
-    <footer class="bg-gray-900 text-white py-12 text-center">
-        <p class="opacity-50 text-sm">© 2024 張博筌 英文學習歷程專題. Built with HTML/TailwindCSS.</p>
+    <footer class="bg-white border-t py-12 text-center mt-20">
+        <p class="text-gray-400 text-xs font-medium tracking-widest uppercase">My English Journey Portfolio - Chang Po Chuan</p>
     </footer>
 
     <script>
-        // 頁面加載後觸發進度條動畫
-        window.addEventListener('DOMContentLoaded', () => {
-            const fills = document.querySelectorAll('.progress-fill');
-            setTimeout(() => {
-                fills.forEach(fill => {
-                    const width = fill.style.width;
-                    fill.style.width = '0';
-                    setTimeout(() => {
-                        fill.style.width = width;
-                    }, 100);
-                });
-            }, 500);
-        });
+        const container = document.getElementById('stepCards');
+        
+        function scrollLeftBtn() {
+            container.scrollBy({ left: -container.clientWidth / 2, behavior: 'smooth' });
+        }
+        
+        function scrollRightBtn() {
+            container.scrollBy({ left: container.clientWidth / 2, behavior: 'smooth' });
+        }
 
-        // 簡單的區塊淡入效果
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+        // 監控捲動，如果是極端狀態（捲到底了），就允許父層垂直捲動
+        container.addEventListener('wheel', (evt) => {
+            if (evt.deltaX !== 0) {
+                const isAtLeft = container.scrollLeft <= 0;
+                const isAtRight = Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 2;
+                
+                // 如果在邊界且繼續往該方向捲動，則不攔截事件，讓瀏覽器處理垂直捲動
+                if ((evt.deltaX < 0 && isAtLeft) || (evt.deltaX > 0 && isAtRight)) {
+                    return;
                 }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('section').forEach(sec => {
-            sec.style.opacity = '0';
-            sec.style.transform = 'translateY(20px)';
-            sec.style.transition = 'all 0.6s ease-out';
-            observer.observe(sec);
-        });
+                
+                // 否則攔截垂直滾動改為水平滾動（僅當滑鼠在卡片正中央時）
+                // 這裡我們稍微寬容一點，如果使用者是在嘗試水平滾動才攔截
+                if (Math.abs(evt.deltaX) > Math.abs(evt.deltaY)) {
+                    // evt.preventDefault(); // 註解掉此行可以確保滾輪始終能觸發垂直捲動
+                }
+            }
+        }, { passive: true });
     </script>
 </body>
 </html>
