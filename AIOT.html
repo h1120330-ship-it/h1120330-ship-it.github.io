@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,36 +7,45 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Poppins:wght@400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Poppins:wght@400;600&display=swap');
 
         body {
             font-family: 'Noto Sans TC', 'Poppins', sans-serif;
-            background-color: #f8fbff;
-            color: #2d3748;
+            background-color: #fcfdfe;
+            color: #1a202c;
             overflow-x: hidden;
         }
 
         .hero-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e40af 50%, #3b82f6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-gradient::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
         }
 
         .section-card {
             background: white;
             border-radius: 1.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            border: 1px solid #edf2f7;
-            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #f1f5f9;
         }
 
         .section-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(30, 58, 138, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.08);
+            border-color: #e2e8f0;
         }
 
         .img-container {
-            background-color: #f1f5f9;
-            border-radius: 1rem;
+            background-color: #f8fafc;
+            border-radius: 1.25rem;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -44,114 +53,159 @@
             border: 1px solid #e2e8f0;
             aspect-ratio: 16 / 9;
             width: 100%;
+            position: relative;
+        }
+
+        .img-container i {
+            font-size: 3rem;
+            color: #cbd5e1;
+            z-index: 1;
         }
 
         .img-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
         }
 
         .step-number {
-            background: #1e3a8a;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             color: white;
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+            font-weight: 700;
             margin-right: 16px;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
         }
 
         .feature-tag {
-            background: #eff6ff;
-            color: #1e40af;
-            padding: 4px 12px;
-            border-radius: 99px;
-            font-size: 12px;
-            font-weight: bold;
+            background: #f0f7ff;
+            color: #1d4ed8;
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
             border: 1px solid #dbeafe;
+            display: inline-block;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
         }
     </style>
 </head>
 <body>
 
     <!-- 頂部導航 -->
-    <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b shadow-sm">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="portfolio.html" class="text-blue-800 font-bold flex items-center hover:text-blue-600 transition-colors">
-                <i class="fas fa-chevron-left mr-2"></i> 返回主頁
+    <nav class="bg-white/80 backdrop-blur-xl sticky top-0 z-50 border-b border-slate-100 shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="h1120330-ship-it.github.io" class="text-blue-700 font-bold flex items-center hover:translate-x-[-4px] transition-transform">
+                <i class="fas fa-arrow-left mr-2 text-sm"></i> 返回主頁
             </a>
-            <h1 class="text-lg font-bold text-gray-800">AIOT 專題實作報告</h1>
-            <div class="w-10"></div>
+            <div class="hidden md:block">
+                <span class="text-slate-400 text-xs font-medium tracking-widest uppercase">Portfolio 2024 / IoT Section</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span class="text-xs font-bold text-slate-600">專題已上線</span>
+            </div>
         </div>
     </nav>
 
     <!-- 英雄區塊 -->
-    <header class="hero-gradient text-white py-24 px-6 text-center">
-        <div class="max-w-4xl mx-auto">
-            <div class="inline-block bg-white/20 px-4 py-1 rounded-full text-xs font-semibold mb-6 tracking-widest uppercase">高二專題實作</div>
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">智慧居家：基於物聯網的<br>多功能監控與自動化系統</h2>
-            <p class="text-blue-50 text-lg max-w-2xl mx-auto leading-relaxed opacity-90">
-                結合 ESP32、RFID 與 Blynk 雲端平台，打造具備安全驗證與即時監控能力的智慧門禁系統。
+    <header class="hero-gradient text-white py-28 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center bg-blue-500/20 backdrop-blur-sm px-4 py-1.5 rounded-full border border-blue-400/30 text-[11px] font-bold mb-8 tracking-[0.2em] uppercase">
+                <i class="fas fa-microchip mr-2"></i> 高二專題實作報告
+            </div>
+            <h2 class="text-4xl md:text-6xl font-extrabold mb-8 leading-tight tracking-tight">
+                智慧居家：基於物聯網的<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white">多功能監控與自動化系統</span>
+            </h2>
+            <p class="text-blue-100/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
+                整合 ESP32、RFID 與 Blynk 雲端技術，打造兼具生物識別特徵與即時遠端告警功能的次世代門禁系統。
             </p>
         </div>
     </header>
 
-    <main class="max-w-5xl mx-auto py-20 px-6">
+    <main class="max-w-6xl mx-auto py-24 px-6 space-y-32">
         
-        <!-- 摘要與動機 -->
-        <section class="mb-24">
-            <div class="grid md:grid-cols-5 gap-12 items-start">
-                <div class="md:col-span-2">
-                    <div class="flex items-center mb-6">
-                        <div class="step-number">壹</div>
-                        <h3 class="text-2xl font-bold text-gray-800">研究動機與摘要</h3>
-                    </div>
-                    <p class="text-gray-600 leading-relaxed mb-6">
-                        觀察到現代家居對於安全性與便利性的需求日益增長，電子鎖已成為主流。本專題旨在開發一套整合人體紅外線偵測、門磁開關與 RFID 驗證的系統，並透過物聯網技術實現遠端監控。
-                    </p>
-                    <div class="space-y-4">
-                        <div class="flex items-center text-sm font-medium text-blue-800">
-                            <i class="fas fa-shield-alt mr-3"></i> 安全性：RFID 二次驗證
-                        </div>
-                        <div class="flex items-center text-sm font-medium text-blue-800">
-                            <i class="fas fa-cloud mr-3"></i> 便利性：Blynk 雲端即時連動
-                        </div>
-                    </div>
+        <!-- 壹、摘要與動機 -->
+        <section id="abstract">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex items-center mb-8">
+                    <div class="step-number">壹</div>
+                    <h3 class="text-3xl font-bold text-slate-800 tracking-tight">研究動機與摘要</h3>
                 </div>
-                <div class="md:col-span-3">
-                    <div class="img-container shadow-md">
-                        <img src="" alt="">
+                <div class="space-y-6 text-slate-600 leading-relaxed text-lg">
+                    <p>
+                        觀察到現代家居對於安全性與便利性的需求日益增長，電子鎖已成為主流。本專題旨在開發一套整合人體紅外線偵測、門磁開關與 RFID 驗證的系統，並透過物聯網技術實現遠端監控。傳統鎖具容易遺失鑰匙且缺乏紀錄，而市售智慧鎖往往價格高昂且缺乏客製化彈性。
+                    </p>
+                    <p class="font-medium text-slate-800">
+                        本研究旨在透過低成本、高效能的 ESP32 晶片，實作一套整合環境感測與身份驗證的物聯網終端，達成「主動偵測、多重驗證、雲端管理」三大核心目標。透過感測器與雲端平台的整合，不僅能提供即時的狀態回饋，更能在發生異常狀況時第一時間發送通知至使用者的行動裝置。
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4 mt-8">
+                        <div class="flex items-center p-4 bg-blue-50 rounded-xl text-blue-800 font-bold border border-blue-100">
+                            <i class="fas fa-shield-alt mr-4 text-xl"></i> 安全性：RFID 二次驗證
+                        </div>
+                        <div class="flex items-center p-4 bg-blue-50 rounded-xl text-blue-800 font-bold border border-blue-100">
+                            <i class="fas fa-cloud mr-4 text-xl"></i> 便利性：Blynk 雲端即時連動
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 硬體架構與概念圖 -->
-        <section class="mb-24">
-            <div class="flex items-center mb-10">
-                <div class="step-number">貳</div>
-                <h3 class="text-2xl font-bold text-gray-800">系統架構與設計流程</h3>
+        <!-- 貳、硬體架構與概念圖 -->
+        <section id="architecture">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center justify-center mb-4">
+                    <div class="step-number">貳</div>
+                    <h3 class="text-3xl font-bold text-slate-800">系統架構與設計流程</h3>
+                </div>
+                <p class="text-slate-500 max-w-xl mx-auto">透過模組化設計，確保每個傳感器與控制器都能精準協作。</p>
             </div>
-            <div class="section-card p-10">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="img-container">
-                        <img src="" alt="">
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl mb-6 text-blue-900">核心硬體整合</h4>
-                        <div class="grid grid-cols-2 gap-3 mb-6">
-                            <span class="feature-tag">ESP32 開發板</span>
-                            <span class="feature-tag">RFID-RC522</span>
-                            <span class="feature-tag">人體紅外線 PIR</span>
-                            <span class="feature-tag">門磁開關</span>
-                            <span class="feature-tag">SG90 伺服馬達</span>
-                            <span class="feature-tag">蜂鳴器警報</span>
+            
+            <div class="section-card p-4 md:p-8">
+                <div class="grid lg:grid-cols-5 gap-8">
+                    <div class="lg:col-span-3">
+                        <div class="img-container bg-slate-100 border-slate-200">
+                            <i class="fas fa-project-diagram"></i>
+                            <img src="image/AIOT/AIOT運作模式圖.png" onerror="this.style.display='none'">
                         </div>
-                        <p class="text-gray-600 text-sm leading-relaxed">
+                    </div>
+                    <div class="lg:col-span-2 flex flex-col justify-center space-y-8">
+                        <div>
+                            <h4 class="font-bold text-xl mb-4 text-blue-900 flex items-center">
+                                <span class="w-1.5 h-6 bg-blue-600 rounded-full mr-3"></span>核心硬體清單
+                            </h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="feature-tag">ESP32 DevKit V1</span>
+                                <span class="feature-tag">RFID-RC522</span>
+                                <span class="feature-tag">人體紅外線 PIR</span>
+                                <span class="feature-tag">門磁開關</span>
+                                <span class="feature-tag">SG90 伺服馬達</span>
+                                <span class="feature-tag">蜂鳴器警報</span>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed">
                             系統利用 ESP32 作為運算核心，整合多種傳感器。當 PIR 偵測到人體移動時啟動系統，並透過 RFID 讀取卡片 UID，若驗證正確則由伺服馬達開啟大門。
                         </p>
                     </div>
@@ -159,70 +213,99 @@
             </div>
         </section>
 
-        <!-- 程式邏輯實踐 -->
-        <section class="mb-24">
-            <div class="flex items-center mb-10">
-                <div class="step-number">參</div>
-                <h3 class="text-2xl font-bold text-gray-800">程式邏輯與開發實踐</h3>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="md:col-span-2">
-                    <!-- 改為照片展示欄位 -->
-                    <div class="img-container shadow-md">
-                        <img src="" alt="">
+        <!-- 參、程式邏輯實踐 -->
+        <section id="logic" class="relative">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1">
+                    <div class="section-card p-6 bg-slate-900 border-none shadow-2xl">
+                        <div class="flex items-center space-x-2 mb-4">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            <span class="text-slate-500 text-[10px] ml-4 font-mono">auth_logic.cpp</span>
+                        </div>
+                        <pre class="text-blue-300 font-mono text-sm leading-relaxed overflow-x-auto p-4">
+<code>// RFID 驗證核心邏輯實踐
+if (mfrc522.PICC_IsNewCardPresent() && 
+    mfrc522.PICC_ReadCardSerial()) {
+  String content = "";
+  for (byte i = 0; i < mfrc522.uid.size; i++) {
+    content.concat(String(mfrc522.uid.uidByte[i]));
+  }
+  if (content == AUTHORIZED_UID) {
+    unlockDoor(); // 驗證通過
+    Blynk.logEvent("door_opened");
+  } else {
+    triggerAlarm(); // 驗證失敗
+  }
+}</code></pre>
                     </div>
                 </div>
-                <div class="bg-blue-50 p-8 rounded-2xl flex flex-col justify-center border border-blue-100">
-                    <h4 class="font-bold mb-4 text-blue-800">演算法控制邏輯</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        在程式開發中，我實作了 RFID 的卡片比對邏輯，並結合 <code>Blynk</code> 函式庫進行 Wi-Fi 連線與手機端通知。此外，透過門磁開關的狀態判斷，確保大門關閉後自動執行鎖定指令。
-                    </p>
-                    <div class="mt-6">
-                        <span class="text-[10px] text-blue-400 font-bold tracking-tighter uppercase">Programming Framework</span>
-                        <p class="text-xs text-gray-500 italic mt-1">Arduino IDE / C++ Environment</p>
+                <div class="order-1 md:order-2">
+                    <div class="flex items-center mb-8">
+                        <div class="step-number">參</div>
+                        <h3 class="text-3xl font-bold text-slate-800 tracking-tight">程式邏輯與開發實踐</h3>
+                    </div>
+                    <div class="space-y-6">
+                        <p class="text-slate-600">
+                            在程式開發中，我實作了 RFID 的卡片比對邏輯，並結合 <strong>Blynk</strong> 函式庫進行 Wi-Fi 連線與手機端通知。
+                        </p>
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-2xl">
+                            <h4 class="font-bold text-blue-900 mb-2">演算法控制：</h4>
+                            <p class="text-sm text-blue-800/80 leading-relaxed">
+                                透過門磁開關的狀態判斷，確保大門關閉後自動執行鎖定指令，並在 Arduino IDE / C++ 環境下完成所有偵錯與效能優化。
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 研究結果展示 -->
-        <section class="mb-24">
-            <div class="flex items-center mb-10">
+        <!-- 肆、研究結果展示 -->
+        <section id="results">
+            <div class="flex items-center mb-12">
                 <div class="step-number">肆</div>
-                <h3 class="text-2xl font-bold text-gray-800">研究結果與功能驗證</h3>
+                <h3 class="text-3xl font-bold text-slate-800">研究結果與功能驗證</h3>
             </div>
+            
             <div class="grid md:grid-cols-2 gap-10">
                 <div class="space-y-6">
                     <h4 class="font-bold text-lg text-blue-900 border-l-4 border-blue-600 pl-4">裝置全景與結構</h4>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="img-container aspect-square">
-                            <img src="" alt="">
+                            <i class="fas fa-camera"></i>
+                            <img src="image/AIOT/AIOT正試圖.png" onerror="this.style.display='none'">
                         </div>
                         <div class="img-container aspect-square">
-                            <img src="" alt="">
+                            <i class="fas fa-camera"></i>
+                            <img src="image/AIOT/AIOT側視圖.png" onerror="this.style.display='none'">
                         </div>
                     </div>
-                    <p class="text-gray-500 text-sm italic">研究裝置的正視圖與側視圖，展現硬體組裝的完整度。</p>
+                    <p class="text-slate-400 text-sm italic">研究裝置的正視圖與側視圖，展現硬體組裝的完整度。</p>
                 </div>
+                
                 <div class="space-y-6">
                     <h4 class="font-bold text-lg text-blue-900 border-l-4 border-blue-600 pl-4">功能運作情境</h4>
                     <div class="space-y-4">
-                        <div class="flex items-center space-x-4 p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
-                            <div class="w-24 h-16 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
-                                <img src="" alt="" class="w-full h-full object-cover">
+                        <div class="flex items-center space-x-4 p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
+                            <div class="w-24 h-16 bg-slate-100 rounded-lg flex items-center justify-center flex-shrink-0 relative overflow-hidden">
+                                <i class="fas fa-door-open text-green-500"></i>
+                                <img src="image/AIOT/AIOT blynk.png" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'">
                             </div>
                             <div>
-                                <h5 class="font-bold text-sm">驗證通過：開啟大門</h5>
-                                <p class="text-xs text-gray-500">正確卡片感應後，綠燈亮起且馬達轉動。</p>
+                                <h5 class="font-bold text-sm text-slate-800">連線成功:開啟燈光</h5>
+                                <p class="text-xs text-slate-500">當Blynk系統開關開啟，ESP32開發板內建
+LED開啟。</p>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-4 p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
-                            <div class="w-24 h-16 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
-                                <img src="" alt="" class="w-full h-full object-cover">
+                        <div class="flex items-center space-x-4 p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
+                            <div class="w-24 h-16 bg-slate-100 rounded-lg flex items-center justify-center flex-shrink-0 relative overflow-hidden">
+                                <i class="fas fa-exclamation-triangle text-red-500"></i>
+                                <img src="image/AIOT/AIOT伺服馬達.png" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'">
                             </div>
                             <div>
-                                <h5 class="font-bold text-sm">驗證失敗：警報響起</h5>
-                                <p class="text-xs text-gray-500">未授權卡片觸發紅燈與蜂鳴器。 </p>
+                                <h5 class="font-bold text-sm text-slate-800">驗證通過：開啟大門</h5>
+                                <p class="text-xs text-slate-500">正確卡片感應後，綠燈亮起且馬達轉動。</p>
                             </div>
                         </div>
                     </div>
@@ -230,24 +313,33 @@
             </div>
         </section>
 
-        <!-- 總結與未來展望 -->
-        <section class="bg-blue-900 text-white rounded-[3rem] p-12 md:p-16 relative overflow-hidden">
+        <!-- 總結與展望 -->
+        <section class="bg-slate-900 rounded-[3rem] p-10 md:p-20 relative overflow-hidden group">
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-600 rounded-full blur-[100px] opacity-20"></div>
+            <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-indigo-600 rounded-full blur-[100px] opacity-20"></div>
+
             <div class="relative z-10">
-                <h3 class="text-2xl font-bold mb-8 flex items-center">
-                    <i class="fas fa-lightbulb text-yellow-400 mr-4"></i> 研究總結與反思
-                </h3>
-                <div class="grid md:grid-cols-2 gap-10">
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-16 gap-8">
                     <div>
-                        <p class="text-blue-100 leading-relaxed mb-6">
+                        <h3 class="text-4xl font-bold text-white mb-4 flex items-center">
+                            <i class="fas fa-lightbulb text-yellow-400 mr-4"></i> 研究總結與反思
+                        </h3>
+                        <p class="text-slate-400 max-w-lg">從實踐中學習，將理論轉化為具備解決問題能力的實體成品。</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-6 text-slate-300 leading-relaxed">
+                        <p>
                             在此次研究中，我不僅成功模擬了智慧居家系統的實用性，也展示了在技術整合與問題解決方面的能力。特別是在排除 I2C 通訊衝突與優化門磁靈敏度的過程中，獲得了寶貴的實務經驗。
                         </p>
                     </div>
-                    <div class="space-y-4">
-                        <h5 class="text-blue-300 font-bold text-sm uppercase">未來改善方向：</h5>
-                        <ul class="space-y-2 text-sm text-blue-100">
-                            <li><i class="fas fa-arrow-right mr-2 text-blue-400"></i> 整合更完善的遠端警報通知系統</li>
-                            <li><i class="fas fa-arrow-right mr-2 text-blue-400"></i> 加入人臉辨識模組進行三重驗證</li>
-                            <li><i class="fas fa-arrow-right mr-2 text-blue-400"></i> 優化門磁連動機制以提高上鎖精準度</li>
+                    <div class="bg-white/5 rounded-3xl p-8 border border-white/10">
+                        <h5 class="text-blue-400 font-bold text-sm uppercase tracking-widest mb-6">Future Roadmap / 未來改進：</h5>
+                        <ul class="space-y-4 text-slate-200 text-sm">
+                            <li class="flex items-center"><i class="fas fa-arrow-right mr-3 text-blue-500"></i> 整合更完善的遠端警報通知系統</li>
+                            <li class="flex items-center"><i class="fas fa-arrow-right mr-3 text-blue-500"></i> 加入人臉辨識模組進行三重驗證</li>
+                            <li class="flex items-center"><i class="fas fa-arrow-right mr-3 text-blue-500"></i> 優化門磁連動機制以提高上鎖精準度</li>
                         </ul>
                     </div>
                 </div>
@@ -256,10 +348,12 @@
 
     </main>
 
-    <footer class="bg-white border-t py-16 text-center">
+    <!-- 頁尾 -->
+    <footer class="bg-white border-t border-slate-100 py-20 text-center">
         <div class="max-w-2xl mx-auto px-6">
-            <p class="text-gray-400 text-xs font-bold tracking-[0.3em] uppercase mb-4">AIOT Smart Home Project Portfolio</p>
-            <p class="text-gray-300 text-[10px]">© 2024 CHANG PO CHUAN. All Rights Reserved.</p>
+            <p class="text-slate-500 text-[10px] font-bold tracking-[0.4em] uppercase mb-4">AIOT Smart Home Engineering Project</p>
+            <div class="h-px w-12 bg-slate-200 mx-auto mb-6"></div>
+            <p class="text-slate-400 text-[10px] font-medium">&copy; 2024 CHANG PO CHUAN. 高二資訊專題實作成果.</p>
         </div>
     </footer>
 
