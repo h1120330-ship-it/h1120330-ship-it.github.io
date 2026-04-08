@@ -30,12 +30,11 @@
             top: 10px;
         }
 
-        /* 調整卡片容器，確保兩側有空間進行垂直捲動 */
         .scroll-section-container {
             position: relative;
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 40px; /* 在兩側留出滑鼠操作空間 */
+            padding: 0 40px;
         }
 
         .content-card {
@@ -43,13 +42,13 @@
             border-radius: 1.5rem;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            flex: 0 0 100%; /* 手機全寬 */
+            flex: 0 0 100%;
             scroll-snap-align: center;
         }
 
         @media (min-width: 768px) {
             .content-card {
-                flex: 0 0 calc(33.333% - 1rem); /* 電腦版三張併排或可滑動 */
+                flex: 0 0 calc(33.333% - 1rem);
                 scroll-snap-align: start;
             }
         }
@@ -65,12 +64,11 @@
             scroll-snap-type: x mandatory;
             gap: 1.5rem;
             padding: 1rem 0 2rem 0;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; /* Firefox 隱藏捲動條 */
+            scrollbar-width: none;
         }
 
         .horizontal-scroll::-webkit-scrollbar {
-            display: none; /* Chrome 隱藏捲動條，改用按鈕或視覺提示 */
+            display: none;
         }
 
         .nav-btn {
@@ -99,14 +97,17 @@
         .nav-btn.prev { left: -10px; }
         .nav-btn.next { right: -10px; }
 
-        .img-placeholder {
+        .img-container {
             background-color: #f1f5f9;
-            height: 180px;
+            height: 200px;
             border-radius: 1rem 1rem 0 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .step-number {
@@ -126,7 +127,7 @@
     <!-- 頂部導航 -->
     <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b">
         <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-blue-600 font-bold flex items-center">
+            <a href="#" class="text-blue-600 font-bold flex items-center">
                 <i class="fas fa-chevron-left mr-2"></i> 返回主頁
             </a>
             <h1 class="text-lg font-bold text-gray-800">My English Journey</h1>
@@ -178,7 +179,7 @@
             </div>
         </section>
 
-        <!-- 2. 校內課程：左右滑動卡片 -->
+        <!-- 2. 校內課程 -->
         <section class="mb-24">
             <div class="px-4">
                 <div class="flex items-center justify-between mb-2">
@@ -191,15 +192,14 @@
             </div>
             
             <div class="scroll-section-container">
-                <!-- 左右導航按鈕 -->
                 <div class="nav-btn prev" onclick="scrollLeftBtn()"><i class="fas fa-chevron-left"></i></div>
                 <div class="nav-btn next" onclick="scrollRightBtn()"><i class="fas fa-chevron-right"></i></div>
 
                 <div class="horizontal-scroll" id="stepCards">
                     <!-- 卡片 A：單字片語 -->
                     <div class="content-card flex flex-col">
-                        <div class="img-placeholder">
-                            <span class="image/英文學習歷程/單字練習.jpg">[image/英文學習歷程/單字練習.jpg]</span>
+                        <div class="img-container">
+                            <img src="image/英文學習歷程/單字練習.jpg" alt="單字與片語練習">
                         </div>
                         <div class="p-6">
                             <div class="flex items-center mb-3">
@@ -217,8 +217,8 @@
 
                     <!-- 卡片 B：文法翻譯 -->
                     <div class="content-card flex flex-col">
-                        <div class="img-placeholder">
-                            <span class="text-gray-400 text-xs">image/英文學習歷程/文法練習.jpg</span>
+                        <div class="img-container">
+                            <img src="image/英文學習歷程/文法練習.jpg" alt="文法與翻譯練習">
                         </div>
                         <div class="p-6">
                             <div class="flex items-center mb-3">
@@ -236,8 +236,8 @@
 
                     <!-- 卡片 C：日記作文 -->
                     <div class="content-card flex flex-col">
-                        <div class="img-placeholder">
-                            <span class="text-gray-400 text-xs">[請放入小日記照片]</span>
+                        <div class="img-container">
+                            <img src="image/英文學習歷程/作文練習.jpg" alt="小日記與作文練習">
                         </div>
                         <div class="p-6">
                             <div class="flex items-center mb-3">
@@ -274,8 +274,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="md:w-1/2 w-full h-48 bg-white/10 rounded-xl border border-white/20 flex items-center justify-center">
-                        <span class="text-white/40 italic text-sm">[請在此處放入成績成長曲線圖照片]</span>
+                    <div class="md:w-1/2 w-full bg-white/10 rounded-xl border border-white/20 overflow-hidden">
+                        <img src="這裡放成績成長曲線圖的照片" alt="成績成長曲線" class="w-full h-48 object-cover">
                     </div>
                 </div>
             </div>
@@ -303,8 +303,8 @@
                                 <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full"><i class="fas fa-certificate mr-1"></i> 結業證明</span>
                             </div>
                         </div>
-                        <div class="order-1 md:order-2 bg-gray-100 rounded-2xl h-64 flex items-center justify-center overflow-hidden">
-                            <span class="text-gray-400">[請放入 UBC 照片]</span>
+                        <div class="order-1 md:order-2 bg-gray-100 rounded-2xl h-64 overflow-hidden">
+                            <img src="這裡放UBC的照片" alt="UBC國際交流" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -313,8 +313,8 @@
                 <div class="relative pl-8 border-l-2 border-blue-100">
                     <div class="timeline-dot"></div>
                     <div class="grid md:grid-cols-2 gap-10 items-center">
-                        <div class="bg-gray-100 rounded-2xl h-64 flex items-center justify-center overflow-hidden">
-                            <span class="text-gray-400">[請放入話劇照]</span>
+                        <div class="bg-gray-100 rounded-2xl h-64 overflow-hidden">
+                            <img src="這裡放話劇照" alt="英語話劇比賽" class="w-full h-full object-cover">
                         </div>
                         <div>
                             <h4 class="text-xl font-bold mb-4 text-blue-700">英語話劇比賽：挑戰舞台主角</h4>
@@ -384,25 +384,6 @@
         function scrollRightBtn() {
             container.scrollBy({ left: container.clientWidth / 2, behavior: 'smooth' });
         }
-
-        // 監控捲動，如果是極端狀態（捲到底了），就允許父層垂直捲動
-        container.addEventListener('wheel', (evt) => {
-            if (evt.deltaX !== 0) {
-                const isAtLeft = container.scrollLeft <= 0;
-                const isAtRight = Math.abs(container.scrollLeft + container.clientWidth - container.scrollWidth) < 2;
-                
-                // 如果在邊界且繼續往該方向捲動，則不攔截事件，讓瀏覽器處理垂直捲動
-                if ((evt.deltaX < 0 && isAtLeft) || (evt.deltaX > 0 && isAtRight)) {
-                    return;
-                }
-                
-                // 否則攔截垂直滾動改為水平滾動（僅當滑鼠在卡片正中央時）
-                // 這裡我們稍微寬容一點，如果使用者是在嘗試水平滾動才攔截
-                if (Math.abs(evt.deltaX) > Math.abs(evt.deltaY)) {
-                    // evt.preventDefault(); // 註解掉此行可以確保滾輪始終能觸發垂直捲動
-                }
-            }
-        }, { passive: true });
     </script>
 </body>
 </html>
