@@ -214,48 +214,26 @@
         </section>
 
         <!-- 參、程式邏輯實踐 -->
-        <section id="logic" class="relative">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="order-2 md:order-1">
-                    <div class="section-card p-6 bg-slate-900 border-none shadow-2xl">
-                        <div class="flex items-center space-x-2 mb-4">
-                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            <span class="text-slate-500 text-[10px] ml-4 font-mono">auth_logic.cpp</span>
-                        </div>
-                        <pre class="text-blue-300 font-mono text-sm leading-relaxed overflow-x-auto p-4">
-<code>// RFID 驗證核心邏輯實踐
-if (mfrc522.PICC_IsNewCardPresent() && 
-    mfrc522.PICC_ReadCardSerial()) {
-  String content = "";
-  for (byte i = 0; i < mfrc522.uid.size; i++) {
-    content.concat(String(mfrc522.uid.uidByte[i]));
-  }
-  if (content == AUTHORIZED_UID) {
-    unlockDoor(); // 驗證通過
-    Blynk.logEvent("door_opened");
-  } else {
-    triggerAlarm(); // 驗證失敗
-  }
-}</code></pre>
+        <section id="logic">
+            <div class="flex items-center mb-12">
+                <div class="step-number">參</div>
+                <h3 class="text-3xl font-bold text-slate-800 tracking-tight">開發實踐與程式邏輯</h3>
+            </div>
+            
+            <div class="section-card p-4 md:p-10">
+                <div class="max-w-4xl mx-auto space-y-8 text-center">
+                    <h4 class="font-bold text-xl text-blue-900">程式邏輯開發截圖</h4>
+                    
+                    <!-- 唯一的照片放置處 -->
+                    <div class="img-container shadow-inner">
+                        <i class="fas fa-code"></i>
+                        <img src="image/AIOT/AIOT程式碼.png" onerror="this.style.display='none'">
                     </div>
-                </div>
-                <div class="order-1 md:order-2">
-                    <div class="flex items-center mb-8">
-                        <div class="step-number">參</div>
-                        <h3 class="text-3xl font-bold text-slate-800 tracking-tight">程式邏輯與開發實踐</h3>
-                    </div>
-                    <div class="space-y-6">
-                        <p class="text-slate-600">
-                            在程式開發中，我實作了 RFID 的卡片比對邏輯，並結合 <strong>Blynk</strong> 函式庫進行 Wi-Fi 連線與手機端通知。
+                    
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-left">
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            <strong>技術說明：</strong> 本專題之核心邏輯包含 RFID 識別比對、伺服馬達精準控制以及與雲端平台 (Blynk) 的雙向通訊。在此階段，我們針對不同卡片的 UID 權限進行分配，並設定了異常入侵時的自動警報機制。
                         </p>
-                        <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-2xl">
-                            <h4 class="font-bold text-blue-900 mb-2">演算法控制：</h4>
-                            <p class="text-sm text-blue-800/80 leading-relaxed">
-                                透過門磁開關的狀態判斷，確保大門關閉後自動執行鎖定指令，並在 Arduino IDE / C++ 環境下完成所有偵錯與效能優化。
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
