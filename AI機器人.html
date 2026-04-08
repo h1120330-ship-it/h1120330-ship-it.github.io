@@ -1,1 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI機器人學習歷程 - 張博筌</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Poppins:wght@400;600&display=swap');
 
+        body {
+            font-family: 'Noto Sans TC', 'Poppins', sans-serif;
+            background-color: #f8fbff;
+            color: #2d3748;
+            overflow-x: hidden;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #0056b3 0%, #00aaff 100%);
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #edf2f7;
+            overflow: hidden;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 86, 179, 0.1);
+        }
+
+        .img-container {
+            background-color: #f1f5f9;
+            border-radius: 1rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e2e8f0;
+            aspect-ratio: 16 / 9;
+            width: 100%;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .code-container {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 24px;
+            border-radius: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background: #007bff;
+            border-radius: 50%;
+            position: absolute;
+            left: 0px;
+            top: 28px;
+            z-index: 1;
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+        }
+
+        .step-number {
+            background: #007bff;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 16px;
+            box-shadow: 0 4px 10px rgba(0, 86, 179, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頂部導航 -->
+    <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b shadow-sm">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="portfolio.html" class="text-blue-600 font-bold flex items-center hover:text-blue-800 transition-colors">
+                <i class="fas fa-chevron-left mr-2"></i> 返回主頁
+            </a>
+            <h1 class="text-lg font-bold text-gray-800">AI 機器人課程專案</h1>
+            <div class="w-10"></div>
+        </div>
+    </nav>
+
+    <!-- 英雄區塊 -->
+    <header class="hero-gradient text-white py-24 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <div class="inline-block bg-white/20 px-4 py-1 rounded-full text-xs font-semibold mb-6 tracking-widest uppercase">多元選修成果展現</div>
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">AI 機器人：從硬體開發到人工智慧感知</h2>
+            <p class="text-blue-50 text-lg max-w-2xl mx-auto leading-relaxed opacity-90">
+                整合 Micro:bit 嵌入式系統、Python 程式開發與 HuskyLens 機器視覺技術，探索未來科技的實踐路徑。
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto py-20 px-6">
+        
+        <!-- 1. Micro:bit 簡介 -->
+        <section class="mb-24">
+            <div class="flex items-center mb-10">
+                <div class="step-number">1</div>
+                <h3 class="text-2xl font-bold text-gray-800">Micro:bit 硬體核心簡介</h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        Micro:bit 是一台微型開發板，內建多種感測器，如加速度計、磁力計及溫度計，是學習物聯網與硬體控制的最佳核心組件。
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-blue-50 rounded-xl border border-blue-100">
+                            <i class="fas fa-signal text-blue-600 mb-2"></i>
+                            <h4 class="font-bold text-sm">無線通訊</h4>
+                            <p class="text-gray-500 text-xs">藍牙與 RF 無線電廣播</p>
+                        </div>
+                        <div class="p-4 bg-blue-50 rounded-xl border border-blue-100">
+                            <i class="fas fa-microchip text-blue-600 mb-2"></i>
+                            <h4 class="font-bold text-sm">輸入輸出</h4>
+                            <p class="text-gray-500 text-xs">25 個外部接腳 GPIO</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="img-container shadow-md">
+                    <img src="image/AI機器人/microbit基本規格與功能.png">
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 積木程式練習 -->
+        <section class="mb-24">
+            <div class="flex items-center mb-10">
+                <div class="step-number">2</div>
+                <h3 class="text-2xl font-bold text-gray-800">積木程式練習與邏輯開發</h3>
+            </div>
+            <div class="section-card p-10">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="img-container shadow-inner">
+                        <img src="image/AI機器人/積木程式的練習與開發.png">
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-xl mb-6 text-blue-900">建立數位邏輯思維</h4>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            透過 MakeCode 圖形化程式介面，我學習了如何處理事件驅動（Event-driven）的邏輯。藉由組合不同的功能塊，我能快速實踐如條件判斷與變數控制等程式核心概念。
+                        </p>
+                        <div class="flex items-center text-blue-600 font-semibold text-sm">
+                            <i class="fas fa-lightbulb mr-2"></i> 核心成果：感測器驅動邏輯
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 擴充版極小車應用 -->
+        <section class="mb-24">
+            <div class="flex items-center mb-10">
+                <div class="step-number">3</div>
+                <h3 class="text-2xl font-bold text-gray-800">擴充版極小車實體應用</h3>
+            </div>
+            <div class="section-card p-10">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1">
+                        <h4 class="font-bold text-xl mb-6 text-blue-900">實體機器人運動控制</h4>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            將程式從電腦螢幕移向真實世界，我利用極小車擴充板控制直流馬達的轉速與方向。這不僅是程式碼的編寫，更涉及物理力學與空間判斷的整合。
+                        </p>
+                        <div class="space-y-3">
+                            <div class="flex items-center text-sm text-gray-700">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i> 雙馬達差速轉向控制
+                            </div>
+                            <div class="flex items-center text-sm text-gray-700">
+                                <i class="fas fa-check-circle text-green-500 mr-3"></i> 超音波即時避障演算法
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2 img-container shadow-inner">
+                        <img src="image/AI機器人/擴充版與極小車實體應用.png">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Python 進階練習 -->
+        <section class="mb-24">
+            <div class="flex items-center mb-10">
+                <div class="step-number">4</div>
+                <h3 class="text-2xl font-bold text-gray-800">Python 程式開發：無線遙控系統</h3>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- 調整後的照片展示欄位 -->
+                <div class="md:col-span-2">
+                    <div class="img-container shadow-md">
+                        <img src="image/AI機器人/PYTHON無線廣播系統.png">
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 p-8 rounded-2xl flex flex-col justify-center border border-blue-100">
+                    <h4 class="font-bold mb-4 text-blue-800">文字式程式設計</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        從積木轉換到 Python 文字程式，我學會了如何透過 Radio 模組建立通訊群組。這讓機器人具備了「對話」的能力，實現了遠端控制與多機協作的可能性。
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-blue-200">
+                        <p class="text-blue-700 text-xs font-bold uppercase tracking-widest">技術亮點</p>
+                        <p class="text-gray-500 text-xs mt-1">Radio 模組通訊、群組頻道配置</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. HuskyLens 視覺辨識 -->
+        <section class="mb-24">
+            <div class="flex items-center mb-10">
+                <div class="step-number">5</div>
+                <h3 class="text-2xl font-bold text-gray-800">HuskyLens AI 機器視覺</h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="relative pl-10">
+                    <div class="timeline-dot"></div>
+                    <h4 class="font-bold text-lg mb-4 text-blue-900">AI 人臉辨識安防系統</h4>
+                    <p class="text-gray-600 text-sm mb-6">整合視覺模組的人臉特徵提取技術，當識別到註冊人臉時，自動連動 Micro:bit 觸發警報與顯示通行圖示。</p>
+                    <div class="img-container">
+                        <img src="image/AI機器人/人臉識別.jpg">
+                    </div>
+                </div>
+        </section>
+
+        <!-- 學習省思 -->
+        <section class="bg-gray-900 text-white rounded-[3rem] p-12 md:p-16 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+            <div class="relative z-10">
+                <div class="flex items-center mb-8">
+                    <div class="w-10 h-1 bg-blue-500 mr-4"></div>
+                    <h3 class="text-2xl font-bold tracking-wider">學習省思與未來展望</h3>
+                </div>
+                <p class="text-xl text-blue-100 leading-relaxed mb-10 italic">
+                    「AI 機器人課程讓我從一個程式碼的使用者，變成了問題的解決者。透過軟硬體的結合，我學會了如何定義目標、排除障礙，並將想像力轉化為現實。」
+                </p>
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div class="bg-white/5 p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
+                        <h5 class="text-blue-400 font-bold mb-2">系統整合思維</h5>
+                        <p class="text-sm text-gray-400">理解不同硬體模組間的通訊協定，從全局視野思考產品開發流程。</p>
+                    </div>
+                    <div class="bg-white/5 p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
+                        <h5 class="text-blue-400 font-bold mb-2">實作 Debug 毅力</h5>
+                        <p class="text-sm text-gray-400">在多次嘗試與失敗中找到問題根源，磨練出面對未知挑戰的抗壓性。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t py-16 text-center">
+        <div class="max-w-2xl mx-auto px-6">
+            <p class="text-gray-400 text-xs font-bold tracking-[0.3em] uppercase mb-4">AI Robotics Learning Portfolio</p>
+            <p class="text-gray-300 text-[10px]">© 2024 CHANG PO CHUAN. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
