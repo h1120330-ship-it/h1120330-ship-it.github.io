@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATLAB 學習歷程 - 從函數繪圖到 AI 辨識</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Noto Sans TC', 'Poppins', sans-serif;
+            background-color: #fcfdfe;
+            color: #1a202c;
+            overflow-x: hidden;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e40af 50%, #3b82f6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #f1f5f9;
+        }
+
+        .section-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.08);
+            border-color: #e2e8f0;
+        }
+
+        .sidebar-link {
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-link:hover {
+            background-color: #f1f5f9;
+            color: #1e40af;
+            border-left: 3px solid #3b82f6;
+        }
+
+        .syntax-box {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .img-placeholder {
+            background-color: #f8fafc;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            min-height: 200px;
+        }
+
+        .img-placeholder img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .step-badge {
+            background: #f0f7ff;
+            color: #1d4ed8;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 1px solid #dbeafe;
+            text-transform: uppercase;
+        }
+
+        .code-font {
+            font-family: 'Fira Code', monospace;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頂部導航 -->
+    <nav class="bg-white/80 backdrop-blur-xl sticky top-0 z-50 border-b border-slate-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="https://h1120330-ship-it.github.io" class="text-blue-700 font-bold flex items-center hover:translate-x-[-4px] transition-transform">
+                <i class="fas fa-arrow-left mr-2 text-sm"></i> 返回主頁
+            </a>
+            <div class="hidden md:block">
+                <span class="text-slate-400 text-xs font-medium tracking-widest uppercase">Portfolio 2024 / MATLAB Section</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span class="text-xs font-bold text-slate-600">專題展示中</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄區塊 -->
+    <header class="hero-gradient text-white py-24 px-6 overflow-hidden">
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="inline-block px-4 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold mb-6 tracking-widest uppercase">
+                112 學年度第一學期成果
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+                MATLAB 學習歷程<br>
+                <span class="text-blue-200">從函數繪圖到 AI 辨識</span>
+            </h1>
+            <p class="text-lg md:text-xl text-blue-50/80 max-w-2xl leading-relaxed font-light">
+                本課程系統性學習利用 MATLAB 進行科學運算與資料視覺化，並深入探討 Deep Network Designer 於影像分類之應用，實作遷移學習模型。
+            </p>
+        </div>
+        <!-- 背景裝飾 -->
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none"></div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- 左側導覽列 -->
+        <aside class="hidden lg:block lg:col-span-3 sticky top-32 h-fit space-y-2">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest ml-4 mb-4">章節目錄</p>
+            <a href="#intro" class="sidebar-link block px-4 py-3 text-slate-600 rounded-r-lg">前言</a>
+            <a href="#2d-charts" class="sidebar-link block px-4 py-3 text-slate-600 rounded-r-lg">一、基礎圖形語法</a>
+            <a href="#exercises" class="sidebar-link block px-4 py-3 text-slate-600 rounded-r-lg">二、二維圖形練習</a>
+            <a href="#deep-learning" class="sidebar-link block px-4 py-3 text-slate-600 rounded-r-lg">三、Deep Network Designer</a>
+            <a href="#results" class="sidebar-link block px-4 py-3 text-slate-600 rounded-r-lg">四、實驗結果分析</a>
+        </aside>
+
+        <!-- 右側內容 -->
+        <div class="lg:col-span-9 space-y-24">
+            
+            <!-- 前言 -->
+            <section id="intro" class="scroll-mt-32">
+                <div class="flex items-center space-x-4 mb-8">
+                    <div class="w-12 h-1 bg-blue-600 rounded-full"></div>
+                    <h2 class="text-3xl font-bold text-slate-800">前言</h2>
+                </div>
+                <div class="section-card p-8 bg-blue-50/30 border-blue-100">
+                    <p class="text-slate-700 leading-relaxed text-lg">
+                        本次 MATLAB 學習課程中，我學習了利用 MATLAB 繪製各種二維圖形、影像與動畫，最後使用 MATLAB 的 <span class="font-bold text-blue-700">Deep Network Designer</span> 來製作屬於我的圖片辨識程式。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 一、二維圖形 -->
+            <section id="2d-charts" class="scroll-mt-32">
+                <div class="flex items-center space-x-4 mb-8">
+                    <div class="w-12 h-1 bg-blue-600 rounded-full"></div>
+                    <h2 class="text-3xl font-bold text-slate-800">一、課程整理：基礎圖形語法</h2>
+                </div>
+
+                <div class="space-y-12">
+                    <!-- Plot -->
+                    <div class="section-card p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <span class="step-badge mb-2 inline-block">主題一</span>
+                                <h3 class="text-2xl font-bold text-slate-800">Plot 語法實踐</h3>
+                            </div>
+                            <i class="fas fa-chart-line text-slate-200 text-4xl"></i>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="space-y-4">
+                                <div class="syntax-box">
+                                    <span class="text-blue-400">語法：</span>plot(x, y, S)<br>
+                                    <span class="text-slate-400 mt-2 block text-xs">x, y 為座標陣列，S 為顏色、線段風格。</span>
+                                </div>
+                                <p class="text-slate-600 text-sm">
+                                    成果展示：成功繪製 $y=\sin(x)$ 函數，並設定定義域範圍 <code>linspace(-15, 15, 1000)</code>。
+                                </p>
+                            </div>
+                            <div class="img-placeholder">
+                                <span class="text-slate-400 text-xs">圖形成果：y=sin(x)</span>
+                                <img src="image/matlab/matlab 二維圖形 plot.png">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Label & Axis -->
+                    <div class="section-card p-8">
+                        <span class="step-badge mb-2 inline-block">主題二</span>
+                        <h3 class="text-2xl font-bold text-slate-800 mb-6">Label & Axis Box 控制</h3>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="img-placeholder">
+                                <span class="text-slate-400 text-xs">坐標軸控制成果展示</span>
+                                <img src="image/matlab/matlab Label & Axis Box 控制.png">
+                            </div>
+                            <div class="space-y-4">
+                                <p class="text-slate-600 leading-relaxed">
+                                    學習使用 <code>xlabel</code>、<code>ylabel</code> 為圖形標註意義，並利用 <code>axis([xbegin xend ybegin yend])</code> 精確限制顯示範圍。
+                                </p>
+                                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                    <h4 class="font-bold text-sm text-blue-800 mb-2">關鍵代碼：</h4>
+                                    <ul class="text-xs space-y-1 text-slate-500 code-font">
+                                        <li>xlabel('x axis')</li>
+                                        <li>ylabel('y axis')</li>
+                                        <li>axis([-2 3 -1.5 1.5])</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 二、影像取樣練習 -->
+            <section id="exercises" class="scroll-mt-32">
+                <div class="flex items-center space-x-4 mb-8">
+                    <div class="w-12 h-1 bg-blue-600 rounded-full"></div>
+                    <h2 class="text-3xl font-bold text-slate-800">二、影像取樣與縮放練習</h2>
+                </div>
+                
+                <div class="space-y-12">
+                    <div class="section-card p-8">
+                        <h3 class="text-xl font-bold text-slate-800 mb-4">實作原理：矩陣索引操作</h3>
+                        <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+                            影像在 MATLAB 中是以二維（或三維）矩陣儲存。透過調整索引的間隔（Sampling Interval），我們可以快速改變影像的大小與解析度。例如 <code>x(1:3:end, 1:3:end)</code> 代表每隔 3 個像素取一個點，藉此達成影像縮小的效果。
+                        </p>
+                        
+                        <div class="grid lg:grid-cols-2 gap-8">
+                            <div class="space-y-4">
+                                <h4 class="font-bold text-sm text-blue-700 uppercase tracking-wider">實作程式碼：</h4>
+                                <div class="syntax-box text-xs">
+                                    [x, map] = imread('mandrill.tif');<br>
+                                    <span class="text-slate-500">% 不同的取樣間隔生成版本</span><br>
+                                    x3 = x(1:3:end, 1:3:end); <span class="text-blue-400">% 間隔 3</span><br>
+                                    x5 = x(1:5:end, 1:5:end); <span class="text-blue-400">% 間隔 5</span><br>
+                                    x7 = x(1:7:end, 1:7:end); <span class="text-blue-400">% 間隔 7</span><br><br>
+                                    <span class="text-slate-500">% 顯示結果</span><br>
+                                    subplot(1,2,1); image(x); title('取樣間隔:1');<br>
+                                    subplot(1,2,2); image(x3); title('取樣間隔:3');
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <h4 class="font-bold text-sm text-blue-700 uppercase tracking-wider">成果展示：</h4>
+                                <div class="img-placeholder bg-white">
+                                    <img src="image/matlab/MATLAB 山翹取樣練習成果.png">
+                                    <span class="text-slate-400 text-[10px] mt-2 absolute bottom-2">Figure 1: 取樣間隔 1 與 3 之對比</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 三、Deep Network Designer -->
+            <section id="deep-learning" class="scroll-mt-32">
+                <div class="flex items-center space-x-4 mb-8">
+                    <div class="w-12 h-1 bg-blue-600 rounded-full"></div>
+                    <h2 class="text-3xl font-bold text-slate-800">三、Deep Network Designer</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="section-card p-6 border-l-4 border-l-blue-600">
+                        <h3 class="font-bold text-lg mb-4 text-slate-800 underline underline-offset-8 decoration-blue-200">1. 模型選取與分析</h3>
+                        <p class="text-sm text-slate-600 mb-6">選用預訓練模型進行遷移學習，並進行架構分析確保無誤。</p>
+                        <div class="img-placeholder">
+                            <span class="text-slate-400 text-xs">GoogleNet Analyze 畫面</span>
+                            <img src="image/matlab/Deep Network Designer 收集資料.png">
+                        </div>
+                    </div>
+                    <div class="section-card p-6 border-l-4 border-l-indigo-600">
+                        <h3 class="font-bold text-lg mb-4 text-slate-800 underline underline-offset-8 decoration-indigo-200">2. 參數調整與訓練</h3>
+                        <p class="text-sm text-slate-600 mb-6">在訓練前改變「訓練頻率 (Validation Frequency)」等參數以優化模型。</p>
+                        <div class="img-placeholder">
+                            <span class="text-slate-400 text-xs">Training Progress 曲線圖</span>
+                            <img src="image/matlab/Deep Network Designer 訓練.png">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 四、實驗結果分析 -->
+            <section id="results" class="scroll-mt-32">
+                <div class="flex items-center space-x-4 mb-8">
+                    <div class="w-12 h-1 bg-blue-600 rounded-full"></div>
+                    <h2 class="text-3xl font-bold text-slate-800">四、實驗結果與對比分析</h2>
+                </div>
+
+                <div class="section-card overflow-hidden">
+                    <div class="bg-slate-800 p-6 text-white">
+                        <h3 class="text-xl font-bold">圖片辨識測試：Sonic 案例</h3>
+                        <p class="text-slate-400 text-xs mt-2">程式碼實作：<code>imresize(I, [227 227])</code> 並進行 <code>classify</code>。</p>
+                    </div>
+                    <div class="p-8">
+                        <div class="grid md:grid-cols-3 gap-6 mb-12">
+                            <div class="text-center space-y-3">
+                                <div class="img-placeholder aspect-square">
+                                    <img src="image/matlab/Deep Network Designer SONIC.png">
+                                </div>
+                                <span class="block text-sm font-bold text-slate-700">Sonic: 98.7%</span>
+                            </div>
+                            <div class="text-center space-y-3">
+                                <div class="img-placeholder aspect-square">
+                                    <img src="image/matlab/Deep Network Designer 琪亞.png">
+                                </div>
+                                <span class="block text-sm font-bold text-slate-700">Killua: 99.9%</span>
+                            </div>
+                            <div class="text-center space-y-3">
+                                <div class="img-placeholder aspect-square">
+                                    <img src="image/matlab/Deep Network Designer 刺蝟.png">
+                                </div>
+                                <span class="block text-sm font-bold text-slate-700">Hedgehog: 100%</span>
+                            </div>
+                        </div>
+
+                        <!-- 數據對比 -->
+                        <div class="bg-blue-50 rounded-2xl p-6 border border-blue-100">
+                            <h4 class="font-bold text-blue-900 mb-4 flex items-center">
+                                <i class="fas fa-microscope mr-2"></i> 訓練量對辨識率的影響 (關鍵發現)
+                            </h4>
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div class="space-y-2">
+                                    <div class="flex justify-between text-xs font-bold text-slate-500">
+                                        <span>情境 A：匯入 15 張照片訓練</span>
+                                        <span class="text-blue-600">辨識率 98.7%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                                        <div class="bg-blue-600 h-full w-[98.7%]"></div>
+                                    </div>
+                                    <p class="text-[10px] text-slate-400">模型穩定度極高，能準確區分角色細節。</p>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="flex justify-between text-xs font-bold text-slate-500">
+                                        <span>情境 B：匯入 8 張照片訓練</span>
+                                        <span class="text-red-500">辨識率 52.5%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                                        <div class="bg-red-500 h-full w-[52.5%]"></div>
+                                    </div>
+                                    <p class="text-[10px] text-slate-400">數據量不足導致模型產生混淆，辨識率顯著下降。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- 頁尾 -->
+    <footer class="bg-white border-t border-slate-200 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center space-x-2 mb-8">
+                <div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white text-xs font-bold">M</div>
+                <span class="font-bold text-slate-800">MATLAB Learning Journey</span>
+            </div>
+            <p class="text-slate-400 text-xs tracking-widest uppercase mb-4">112學年度第一學期資訊專題 · 張伯全 作品</p>
+            <div class="flex justify-center space-x-6 text-slate-300 mb-10">
+                <i class="fab fa-github hover:text-blue-600 cursor-pointer transition-colors"></i>
+                <i class="fas fa-envelope hover:text-blue-600 cursor-pointer transition-colors"></i>
+                <i class="fas fa-file-pdf hover:text-blue-600 cursor-pointer transition-colors"></i>
+            </div>
+            <p class="text-slate-400 text-[10px]">&copy; 2024 CHANG PO CHUAN. 內容參考自 MATLAB 課程報告原文.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
