@@ -1,42 +1,51 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIOT 專題實作 - 智慧居家控制系統</title>
+    <title>AI 機器人專題實作 - 多元選修成果展示</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Poppins:wght@400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Poppins:wght@400;600&display=swap');
 
         body {
             font-family: 'Noto Sans TC', 'Poppins', sans-serif;
-            background-color: #f8fbff;
-            color: #2d3748;
+            background-color: #fcfdfe;
+            color: #1a202c;
             overflow-x: hidden;
         }
 
         .hero-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e40af 50%, #3b82f6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-gradient::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
         }
 
         .section-card {
             background: white;
             border-radius: 1.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            border: 1px solid #edf2f7;
-            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #f1f5f9;
         }
 
         .section-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(30, 58, 138, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.08);
+            border-color: #e2e8f0;
         }
 
         .img-container {
-            background-color: #f1f5f9;
-            border-radius: 1rem;
+            background-color: #f8fafc;
+            border-radius: 1.25rem;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -44,204 +53,247 @@
             border: 1px solid #e2e8f0;
             aspect-ratio: 16 / 9;
             width: 100%;
+            position: relative;
+        }
+
+        .img-container i {
+            font-size: 3rem;
+            color: #cbd5e1;
+            z-index: 1;
         }
 
         .img-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
         }
 
         .step-number {
-            background: #1e3a8a;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             color: white;
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+            font-weight: 700;
             margin-right: 16px;
-            box-shadow: 0 4px 10px rgba(30, 58, 138, 0.2);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
         }
 
         .feature-tag {
-            background: #eff6ff;
-            color: #1e40af;
-            padding: 4px 12px;
-            border-radius: 99px;
-            font-size: 12px;
-            font-weight: bold;
+            background: #f0f7ff;
+            color: #1d4ed8;
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
             border: 1px solid #dbeafe;
+            display: inline-block;
         }
 
-        .highlight-box {
-            background: linear-gradient(to right, #ffffff, #f0f7ff);
-            border-left: 4px solid #1e3a8a;
-            padding: 2rem;
-            border-radius: 0 1rem 1rem 0;
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
         }
     </style>
 </head>
 <body>
 
     <!-- 頂部導航 -->
-    <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b shadow-sm">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="h1120330-ship-it.github.io" class="text-blue-800 font-bold flex items-center hover:text-blue-600 transition-colors">
-                <i class="fas fa-chevron-left mr-2"></i> 返回主頁
+    <nav class="bg-white/80 backdrop-blur-xl sticky top-0 z-50 border-b border-slate-100 shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="h1120330-ship-it.github.io" class="text-blue-700 font-bold flex items-center hover:translate-x-[-4px] transition-transform">
+                <i class="fas fa-arrow-left mr-2 text-sm"></i> 返回主頁
             </a>
-            <h1 class="text-lg font-bold text-gray-800">AIOT 專題實作報告</h1>
-            <div class="w-10"></div>
+            <div class="hidden md:block">
+                <span class="text-slate-400 text-xs font-medium tracking-widest uppercase">Portfolio 2024 / AI Robot Section</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                <span class="text-xs font-bold text-slate-600">多元選修成果</span>
+            </div>
         </div>
     </nav>
 
     <!-- 英雄區塊 -->
-    <header class="hero-gradient text-white py-24 px-6 text-center">
-        <div class="max-w-4xl mx-auto">
-            <div class="inline-block bg-white/20 px-4 py-1 rounded-full text-xs font-semibold mb-6 tracking-widest uppercase">高二專題實作成果</div>
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">智慧居家：基於物聯網的<br>多功能監控與自動化系統</h2>
-            <p class="text-blue-50 text-lg max-w-2xl mx-auto leading-relaxed opacity-90">
-                整合 ESP32 開發板、RFID 辨識技術與 Blynk 雲端平台，建構具備高度安全性與即時反饋能力的物聯網智慧門禁。
+    <header class="hero-gradient text-white py-28 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center bg-blue-500/20 backdrop-blur-sm px-4 py-1.5 rounded-full border border-blue-400/30 text-[11px] font-bold mb-8 tracking-[0.2em] uppercase">
+                <i class="fas fa-robot mr-2"></i> 高一多元選修成果報告
+            </div>
+            <h2 class="text-4xl md:text-6xl font-extrabold mb-8 leading-tight tracking-tight">
+                AI 機器人：從零建構<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white">智慧視覺與自動化控制系統</span>
+            </h2>
+            <p class="text-blue-100/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
+                融合 Micro:bit 嵌入式系統、Python 程式設計與 HuskyLens 視覺辨識技術，實現自動化小車與人臉識別告警應用。
             </p>
         </div>
     </header>
 
-    <main class="max-w-5xl mx-auto py-20 px-6">
+    <main class="max-w-6xl mx-auto py-24 px-6 space-y-32">
         
-        <!-- 摘要與動機 (已移除照片欄位) -->
-        <section class="mb-24">
-            <div class="flex items-center mb-10">
-                <div class="step-number">壹</div>
-                <h3 class="text-2xl font-bold text-gray-800">研究動機與摘要</h3>
-            </div>
-            <div class="highlight-box shadow-sm">
-                <p class="text-gray-700 leading-relaxed text-lg mb-6">
-                    本報告《智慧居家——基於物聯網的多功能居家監控與自動化控制系統》，旨在開發一套結合多種傳感器的智慧大門系統。隨著科技進步，我對電子鎖及居家自動化產生興趣，希望藉此研究深入了解其運作方式，打造具實際功能的智慧居家系統。
-                </p>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="space-y-4">
-                        <h4 class="font-bold text-blue-900 flex items-center">
-                            <i class="fas fa-bullseye mr-2"></i> 研究目標
-                        </h4>
-                        <p class="text-gray-600 text-sm">利用人體紅外線感測器監測周遭人員移動，並透過 RFID 讀取器進行驗證，將數據傳送至 ESP32 進行判斷並連動馬達與警報系統。</p>
-                    </div>
-                    <div class="space-y-4">
-                        <h4 class="font-bold text-blue-900 flex items-center">
-                            <i class="fas fa-shield-alt mr-2"></i> 核心功能
-                        </h4>
-                        <p class="text-gray-600 text-sm">成功識別合法卡片時開啟大門；識別失敗則發出警報。門磁開關確保大門關閉後自動上鎖，模擬完整電子門鎖運作邏輯。</p>
-                    </div>
+        <!-- 壹、課程概述與動機 -->
+        <section id="introduction">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex items-center mb-8">
+                    <div class="step-number">壹</div>
+                    <h3 class="text-3xl font-bold text-slate-800 tracking-tight">課程概述與研究動機</h3>
                 </div>
-            </div>
-        </section>
-
-        <!-- 硬體架構與概念圖 -->
-        <section class="mb-24">
-            <div class="flex items-center mb-10">
-                <div class="step-number">貳</div>
-                <h3 class="text-2xl font-bold text-gray-800">系統架構與設計流程</h3>
-            </div>
-            <div class="section-card p-10">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="img-container">
-                        <img src="image/AIOT/AIOT運作模式圖.png">
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xl mb-6 text-blue-900">核心硬體整合</h4>
-                        <div class="grid grid-cols-2 gap-3 mb-6">
-                            <span class="feature-tag">ESP32 開發板</span>
-                            <span class="feature-tag">RFID-RC522</span>
-                            <span class="feature-tag">人體紅外線 PIR</span>
-                            <span class="feature-tag">門磁開關</span>
-                            <span class="feature-tag">SG90 伺服馬達</span>
-                            <span class="feature-tag">Blynk IoT 平台</span>
-                        </div>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                            系統利用 ESP32 作為運算核心，整合多種傳感器。當 PIR 偵測到人體移動時啟動系統感應機制，並透過 RFID 讀取卡片 UID 進行身分驗證。
-                        </p>
-                        <div class="bg-gray-50 p-4 rounded-xl border border-dashed border-gray-300">
-                            <p class="text-gray-500 text-xs">開發環境：Arduino IDE / C++ Programming</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 程式邏輯實踐 -->
-        <section class="mb-24">
-            <div class="flex items-center mb-10">
-                <div class="step-number">參</div>
-                <h3 class="text-2xl font-bold text-gray-800">程式邏輯與開發實踐</h3>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="md:col-span-2">
-                    <div class="img-container shadow-md">
-                        <img src="image/AIOT/AIOT程式碼.png">
-                    </div>
-                </div>
-                <div class="bg-blue-50 p-8 rounded-2xl flex flex-col justify-center border border-blue-100">
-                    <h4 class="font-bold mb-4 text-blue-800">演算法控制邏輯</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-6">
-                        在程式開發中，我實作了 RFID 的卡片比對邏輯，並結合 <code>Blynk</code> 函式庫進行 Wi-Fi 連線與遠端狀態顯示。
+                <div class="space-y-6 text-slate-600 leading-relaxed text-lg">
+                    <p>
+                        在人工智慧與自動化技術蓬勃發展的時代，理解機器人如何「感知」與「行動」至關重要。本課程透過 Micro:bit 作為核心控制器，學習如何操作各類感測器。從基礎的積木程式邏輯開始，逐步進階至 Python 腳本撰寫。
                     </p>
-                    <div class="space-y-3">
-                        <div class="flex items-start">
-                            <i class="fas fa-code text-blue-500 mt-1 mr-3 text-xs"></i>
-                            <p class="text-xs text-gray-600">中斷處理 (Interrupts) 應用於 PIR 感測器</p>
+                    <p class="font-medium text-slate-800">
+                        核心學習目標包含：掌握 Micro:bit 硬體架構、學習小車馬達控制邏輯、深入應用 HuskyLens 視覺模組進行人臉識別與物體追蹤，並透過無線電技術實現遠端操控。
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4 mt-8">
+                        <div class="flex items-center p-4 bg-blue-50 rounded-xl text-blue-800 font-bold border border-blue-100">
+                            <i class="fas fa-brain mr-4 text-xl"></i> 程式力：積木與 Python 雙語轉換
                         </div>
-                        <div class="flex items-start">
-                            <i class="fas fa-code text-blue-500 mt-1 mr-3 text-xs"></i>
-                            <p class="text-xs text-gray-600">UID 十六進制格式輸出與驗證</p>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fas fa-code text-blue-500 mt-1 mr-3 text-xs"></i>
-                            <p class="text-xs text-gray-600">非阻塞式 (Non-blocking) 蜂鳴器控制</p>
+                        <div class="flex items-center p-4 bg-blue-50 rounded-xl text-blue-800 font-bold border border-blue-100">
+                            <i class="fas fa-eye mr-4 text-xl"></i> 視覺力：AI 辨識模組實務應用
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 研究結果展示 -->
-        <section class="mb-24">
-            <div class="flex items-center mb-10">
-                <div class="step-number">肆</div>
-                <h3 class="text-2xl font-bold text-gray-800">研究結果與功能驗證</h3>
+        <!-- 貳、硬體與工具介紹 -->
+        <section id="tools">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center justify-center mb-4">
+                    <div class="step-number">貳</div>
+                    <h3 class="text-3xl font-bold text-slate-800">核心工具與硬體架構</h3>
+                </div>
+                <p class="text-slate-500 max-w-xl mx-auto">使用教育界最熱門的 Micro:bit 與高效能 AI 視覺感測器。</p>
             </div>
+            
+            <div class="section-card p-4 md:p-8">
+                <div class="grid lg:grid-cols-5 gap-8">
+                    <div class="lg:col-span-3">
+                        <div class="img-container bg-slate-100 border-slate-200">
+                            <i class="fas fa-microchip"></i>
+                            <img src="image/AI機器人/microbit基本規格與功能.png" alt="Microbit 介紹" onerror="this.style.display='none'">
+                        </div>
+                    </div>
+                    <div class="lg:col-span-2 flex flex-col justify-center space-y-8">
+                        <div>
+                            <h4 class="font-bold text-xl mb-4 text-blue-900 flex items-center">
+                                <span class="w-1.5 h-6 bg-blue-600 rounded-full mr-3"></span>Micro:bit V2 系統
+                            </h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="feature-tag">5x5 LED 陣列</span>
+                                <span class="feature-tag">加速度計/羅盤</span>
+                                <span class="feature-tag">觸摸感測器</span>
+                                <span class="feature-tag">藍芽與無線電</span>
+                                <span class="feature-tag">蜂鳴器</span>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Micro:bit 內建多種感測器，透過 GPIO 擴充能力，我們連接了馬達驅動板與超音波感測器，構建出具備智慧避障功能的小車模型。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 參、實作邏輯：從積木到程式碼 -->
+        <section id="coding">
+            <div class="flex items-center mb-12">
+                <div class="step-number">參</div>
+                <h3 class="text-3xl font-bold text-slate-800 tracking-tight">開發實踐與程式邏輯</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="section-card p-8">
+                    <h4 class="font-bold text-xl text-blue-900 mb-6 flex items-center">
+                        <i class="fas fa-cubes mr-3 text-blue-500"></i> 積木邏輯練習
+                    </h4>
+                    <div class="img-container mb-6 shadow-inner">
+                        <i class="fas fa-th-large"></i>
+                        <img src="image/AI機器人/積木程式的練習與開發.png" alt="積木程式" onerror="this.style.display='none'">
+                    </div>
+                    <p class="text-slate-600 text-sm">
+                        透過 MakeCode 視覺化積木，快速建立「重複無限次」與「條件判斷」的概念。在小車控制中，我們實作了基本的循線與避障功能。
+                    </p>
+                </div>
+                <div class="section-card p-8">
+                    <h4 class="font-bold text-xl text-blue-900 mb-6 flex items-center">
+                        <i class="fab fa-python mr-3 text-blue-500"></i> Python 進階控制
+                    </h4>
+                    <div class="img-container mb-6 shadow-inner">
+                        <i class="fas fa-terminal"></i>
+                        <img src="image/AI_Robot/Python_Code.png" alt="Python 程式碼" onerror="this.style.display='none'">
+                    </div>
+                    <p class="text-slate-600 text-sm">
+                        將積木轉換為 Python 程式碼，實作無線電 (Radio) 通訊協議，學習如何透過數據封包控制另一台 Micro:bit 的 LED 顯示。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 肆、AI 視覺應用展示 -->
+        <section id="ai-vision">
+            <div class="flex items-center mb-12">
+                <div class="step-number">肆</div>
+                <h3 class="text-3xl font-bold text-slate-800">AI 視覺應用：HuskyLens</h3>
+            </div>
+            
             <div class="grid md:grid-cols-2 gap-10">
                 <div class="space-y-6">
-                    <h4 class="font-bold text-lg text-blue-900 border-l-4 border-blue-600 pl-4">裝置全景與結構</h4>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="img-container aspect-square">
-                            <img src="image/AIOT/AIOT正試圖.png">
-                        </div>
-                        <div class="img-container aspect-square">
-                            <img src="image/AIOT/AIOT側視圖.png">
-                        </div>
+                    <h4 class="font-bold text-lg text-blue-900 border-l-4 border-blue-600 pl-4">人臉辨識警報系統</h4>
+                    <div class="img-container aspect-video">
+                        <i class="fas fa-user-shield"></i>
+                        <img src="image/AI機器人/人臉識別.jpg" alt="人臉辨識" onerror="this.style.display='none'">
                     </div>
-                    <p class="text-gray-500 text-sm italic">研究裝置的正視圖與側視圖，展示硬體配線與實體封裝。</p>
+                    <p class="text-slate-600 text-sm">
+                        利用 HuskyLens 的人臉辨識演算法。當偵測到已學習的 ID 時，系統會透過 I2C 通訊通知 Micro:bit，播放成功音效並顯示綠色指示圖示；反之則觸發警報。
+                    </p>
                 </div>
+                
                 <div class="space-y-6">
-                    <h4 class="font-bold text-lg text-blue-900 border-l-4 border-blue-600 pl-4">功能測試與實作畫面</h4>
+                    <h4 class="font-bold text-lg text-blue-900 border-l-4 border-blue-600 pl-4">功能整合清單</h4>
                     <div class="space-y-4">
-                        <div class="flex items-center space-x-4 p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
-                            <div class="w-24 h-16 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
-                                <img src="image/AIOT/AIOT伺服馬達.png" class="w-full h-full object-cover">
+                        <div class="flex items-center space-x-4 p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
+                            <div class="w-16 h-16 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-search text-blue-500 text-xl"></i>
                             </div>
                             <div>
-                                <h5 class="font-bold text-sm">驗證通過：SG90 動作</h5>
-                                <p class="text-xs text-gray-500">正確卡片感應後，伺服馬達轉動模擬開鎖。</p>
+                                <h5 class="font-bold text-sm text-slate-800">物體追蹤功能</h5>
+                                <p class="text-xs text-slate-500">自動追蹤指定顏色或形狀之物體，連動馬達驅動。</p>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-4 p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
-                            <div class="w-24 h-16 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
-                                <img src="image/AIOT/AIOT blynk.png" class="w-full h-full object-cover">
+                        <div class="flex items-center space-x-4 p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
+                            <div class="w-16 h-16 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-rss text-blue-500 text-xl"></i>
                             </div>
                             <div>
-                                <h5 class="font-bold text-sm">Blynk 手機介面控制</h5>
-                                <p class="text-xs text-gray-500">透過雲端開關遠端控制 LED 並監控狀態。</p>
+                                <h5 class="font-bold text-sm text-slate-800">無線電遙控 (Radio)</h5>
+                                <p class="text-xs text-slate-500">藉由封包傳送控制訊號，實現高效率的無線控制。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
+                            <div class="w-16 h-16 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-car text-blue-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-sm text-slate-800">超音波避障</h5>
+                                <p class="text-xs text-slate-500">精準計算物體距離，實現掃地機器人邏輯避障。</p>
                             </div>
                         </div>
                     </div>
@@ -250,23 +302,35 @@
         </section>
 
         <!-- 總結與展望 -->
-        <section class="bg-blue-900 text-white rounded-[3rem] p-12 md:p-16 relative overflow-hidden">
+        <section class="bg-slate-900 rounded-[3rem] p-10 md:p-20 relative overflow-hidden group">
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-600 rounded-full blur-[100px] opacity-20"></div>
+            <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-indigo-600 rounded-full blur-[100px] opacity-20"></div>
+
             <div class="relative z-10">
-                <h3 class="text-2xl font-bold mb-8 flex items-center">
-                    <i class="fas fa-brain text-blue-300 mr-4"></i> 研究總結與反思
-                </h3>
-                <div class="grid md:grid-cols-2 gap-10">
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-16 gap-8">
                     <div>
-                        <p class="text-blue-100 leading-relaxed mb-6">
-                            在此次研究中，我不僅成功模擬了智慧居家系統的實用性，也展示了在技術整合與問題解決方面的能力。在解決 I2C 通訊衝突與優化門磁靈敏度的過程中，我體會到工程設計需要極大的細心與反覆測試。
+                        <h3 class="text-4xl font-bold text-white mb-4 flex items-center">
+                            <i class="fas fa-graduation-cap text-yellow-400 mr-4"></i> 學習總結與展望
+                        </h3>
+                        <p class="text-slate-400 max-w-lg">從單純的硬體邏輯到 AI 視覺識別，見證技術整合的力量。</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-6 text-slate-300 leading-relaxed">
+                        <p>
+                            這堂「AI 機器人」選修課帶領我進入了嵌入式系統與電腦視覺的世界。從最初接觸積木程式的驚奇，到後來能熟練地使用 Python 進行數據處理，我深刻體會到邏輯思考與實作調試的重要性。
+                        </p>
+                        <p>
+                            特別是在實作 HuskyLens 時，我學會了如何優化感測器的閾值，讓辨識在不同光源下都能穩定運作。這份經驗對我日後開發各類自動化系統有著極大的啟發與幫助。
                         </p>
                     </div>
-                    <div class="space-y-4">
-                        <h5 class="text-blue-400 font-bold text-sm uppercase tracking-widest">未來優化重點：</h5>
-                        <ul class="space-y-3 text-sm text-blue-100/80">
-                            <li><i class="fas fa-check text-blue-400 mr-2"></i> 加入人臉辨識模組增強安全性</li>
-                            <li><i class="fas fa-check text-blue-400 mr-2"></i> 開發開門紀錄資料庫與雲端日誌</li>
-                            <li><i class="fas fa-check text-blue-400 mr-2"></i> 優化機構設計以適應真實門體安裝</li>
+                    <div class="bg-white/5 rounded-3xl p-8 border border-white/10">
+                        <h5 class="text-blue-400 font-bold text-sm uppercase tracking-widest mb-6">Future Roadmap / 未來改進：</h5>
+                        <ul class="space-y-4 text-slate-200 text-sm">
+                            <li class="flex items-center"><i class="fas fa-arrow-right mr-3 text-blue-500"></i> 將視覺辨識整合至智慧居家門禁系統</li>
+                            <li class="flex items-center"><i class="fas fa-arrow-right mr-3 text-blue-500"></i> 深入研究 Python OpenCV 進行影像處理</li>
+                            <li class="flex items-center"><i class="fas fa-arrow-right mr-3 text-blue-500"></i> 開發具備自動返航功能的智慧小車</li>
                         </ul>
                     </div>
                 </div>
@@ -275,10 +339,12 @@
 
     </main>
 
-    <footer class="bg-white border-t py-16 text-center">
+    <!-- 頁尾 -->
+    <footer class="bg-white border-t border-slate-100 py-20 text-center">
         <div class="max-w-2xl mx-auto px-6">
-            <p class="text-gray-400 text-xs font-bold tracking-[0.3em] uppercase mb-4">AIOT Smart Home Project Portfolio</p>
-            <p class="text-gray-300 text-[10px]">© 2024 CHANG PO CHUAN. All Rights Reserved.</p>
+            <p class="text-slate-500 text-[10px] font-bold tracking-[0.4em] uppercase mb-4">AI Robot & Computer Vision Engineering Project</p>
+            <div class="h-px w-12 bg-slate-200 mx-auto mb-6"></div>
+            <p class="text-slate-400 text-[10px] font-medium">&copy; 2024 CHANG PO CHUAN. 高一多元選修成果成果.</p>
         </div>
     </footer>
 
