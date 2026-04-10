@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自主學習成果發表 - 張博筌</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        
+        :root {
+            --header-bg: #000000;
+            --accent-color: #3b82f6; /* 藍色系 */
+            --content-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --card-border: #f1f5f9;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--content-bg);
+            color: var(--text-main);
+            scroll-behavior: smooth;
+            margin: 0;
+        }
+
+        .dark-header-section {
+            background-color: var(--header-bg);
+            color: #f8fafc;
+        }
+
+        .activity-card {
+            background: #ffffff;
+            border: 1px solid var(--card-border);
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .activity-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .img-container {
+            background: #f8fafc;
+            border-radius: 1rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 16 / 9;
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-img-horizontal {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .profile-img-horizontal img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section-tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-color);
+            padding: 4px 16px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        /* 外部連結按鈕樣式 */
+        .external-link-btn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 9999px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+
+        .external-link-btn:hover {
+            transform: scale(1.05);
+            background-color: #2563eb;
+            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 導航欄 -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="h1120330-ship-it.github.io" class="flex items-center gap-3 group">
+                <div class="bg-blue-600 w-10 h-10 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:bg-blue-700 transition-colors">
+                    <i class="fas fa-chevron-left text-sm"></i>
+                </div>
+                <div class="hidden sm:block">
+                    <span class="block font-bold text-lg leading-tight text-slate-900">自主學習成果</span>
+                    <span class="block text-[10px] text-slate-500 uppercase tracking-widest">返回主頁</span>
+                </div>
+            </a>
+            <div class="flex gap-6 md:gap-10 text-xs font-bold tracking-widest uppercase text-slate-500">
+                <a href="#role" class="hover:text-blue-600 transition-colors">角色</a>
+                <a href="#production" class="hover:text-blue-600 transition-colors">前導</a>
+                <a href="#mv" class="hover:text-blue-600 transition-colors">MV</a>
+                <a href="#performance" class="hover:text-blue-600 transition-colors">演出</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 標題區 (黑色背景) -->
+    <div class="dark-header-section">
+        <header class="pt-48 pb-24 px-6">
+            <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                <div class="lg:flex-1 text-center lg:text-left">
+                    <span class="section-tag mb-6 inline-block bg-blue-500/20 text-blue-300 uppercase">Self-Directed Learning</span>
+                    <h1 class="text-4xl lg:text-6xl font-black mb-8 leading-tight tracking-tight text-white">
+                        自主學習成果發表<br><span class="text-blue-400">& 表演組組長</span>
+                    </h1>
+                    <p class="text-slate-400 text-lg font-light max-w-xl">
+                        三丁 32 張博筌 — 劇場發想、MV 製作與現場演出的實踐紀錄
+                    </p>
+                </div>
+                <div class="lg:w-2/5 w-full max-w-2xl">
+                    <div class="profile-img-horizontal shadow-2xl">
+                        <img src="image/t/成發/成發 合照.jpg">
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-6 py-20">
+
+        <!-- 情節發想 -->
+        <section id="creative" class="mb-40">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="inline-flex items-center gap-2 text-blue-600 font-bold tracking-widest text-sm uppercase">
+                        <span class="w-8 h-px bg-blue-600"></span>
+                        Creative Concept
+                    </div>
+                    <h2 class="text-4xl font-bold text-slate-900">1851 萬國博覽會</h2>
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        為了結合跨領域知識，我們將場景設定於倫敦「水晶宮」。這場博覽會不僅是學術舞台，更是集結工業革命精華的視覺盛宴。
+                    </p>
+                </div>
+                <div class="activity-card p-4">
+                    <div class="img-container">
+                        <img src="image/t/成發/成發 1851.jpg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 表演組長：亞森．洛克哈特 -->
+        <section id="role" class="mb-40">
+            <div class="bg-slate-50 rounded-[2.5rem] p-10 md:p-16 border border-slate-100 flex flex-col lg:flex-row gap-12 items-center">
+                <div class="lg:w-1/2 space-y-6">
+                    <div class="inline-flex items-center gap-2 text-blue-600 font-bold tracking-widest text-sm uppercase">
+                        <span class="w-8 h-px bg-blue-600"></span>
+                        Leader & Actor
+                    </div>
+                    <h2 class="text-3xl font-bold text-slate-900">表演組長：亞森．洛克哈特</h2>
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        我親自扮演靈魂人物「怪盜亞森．洛克哈特」，透過這個富有神祕感的角色串接整場發表。我不僅負責台上的演繹，更需要規劃整體表演組的走位、服裝調度。
+                    </p>
+                </div>
+                <div class="lg:w-1/2 w-full">
+                    <div class="img-container shadow-lg">
+                        <img src="image/t/成發/成發 怪盜.jpg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 前導片拍攝 (新增連結按鈕) -->
+        <section id="production" class="mb-40">
+            <div class="text-center mb-16">
+                <span class="section-tag mb-4 inline-block">Production</span>
+                <h2 class="text-4xl font-bold text-slate-900">前導片：引導觀眾入戲</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-slate-800">影片情境鋪陳</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        我們透過精細的腳本規劃，在影片中重現了 19 世紀倫敦的繁華，並在結尾巧妙預告怪盜的現身，成功激發觀眾的好奇心與代入感。
+                    </p>
+                    <a href="https://youtu.be/OIygVKRLScM?si=OKd-B9jT51CtQlNk" target="_blank" class="external-link-btn">
+                        <i class="fab fa-youtube"></i> 觀看前導片影片
+                    </a>
+                </div>
+                <div class="activity-card p-4">
+                    <div class="img-container">
+                        <img src="image/t/成發/成發 前導老師.png">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MV 製作區塊 (獨立區塊 + 連結按鈕) -->
+        <section id="mv" class="mb-40">
+            <div class="bg-blue-50 rounded-[2.5rem] p-10 md:p-16 border border-blue-100 flex flex-col lg:flex-row-reverse gap-12 items-center">
+                <div class="lg:w-1/2 space-y-6">
+                    <div class="inline-flex items-center gap-2 text-blue-600 font-bold tracking-widest text-sm uppercase">
+                        <span class="w-8 h-px bg-blue-600"></span>
+                        Music Video
+                    </div>
+                    <h2 class="text-3xl font-bold text-slate-900">原創 MV：霧都光影</h2>
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        為了強化視覺體驗，我們特別錄製了專屬 MV。從分鏡剪輯到後製調色，我與製作團隊密切溝通，確保呈現出「水晶宮」的高級質感。
+                    </p>
+                    <a href="https://youtu.be/A59oaqZy0wY?si=CLCDrnTTsDIskxzi" target="_blank" class="external-link-btn">
+                        <i class="fab fa-youtube"></i> 觀看原創 MV 完整版
+                    </a>
+                </div>
+                <div class="lg:w-1/2 w-full">
+                    <div class="img-container shadow-lg">
+                        <img src="image/t/成發/成發 MV.jpg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 現場演出區塊 (獨立區塊) -->
+        <section id="performance" class="mb-40">
+            <div class="text-center mb-16">
+                <span class="section-tag mb-4 inline-block">Live Performance</span>
+                <h2 class="text-4xl font-bold text-slate-900">現場演繹：劇場式發表</h2>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="activity-card p-4">
+                    <div class="img-container">
+                        <img src="image/t/成發/成發 現場演戲.jpeg">
+                    </div>
+                </div>
+                <div class="p-8 flex flex-col justify-center space-y-6">
+                    <h3 class="text-2xl font-bold">即興與互動的魅力</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        在現場演出中，怪盜不斷穿插於各學科報告之間，透過與觀眾的即興互動，化解了學術報告原本生硬的氣氛，讓全場參與者直到最後都沈浸在劇場感中。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 結語 -->
+        <section class="mb-20">
+            <div class="bg-black rounded-[2.5rem] p-12 md:p-20 text-white relative overflow-hidden">
+                <div class="relative z-10 flex flex-col md:flex-row gap-12 items-center">
+                    <div class="md:w-2/3 space-y-6">
+                        <h2 class="text-3xl font-bold text-blue-400">團隊合作的最高收穫</h2>
+                        <p class="text-slate-300 text-lg italic border-l-4 border-blue-500 pl-6">
+                            「當所有人朝著同一個創意目標前進時，平凡的發表也能成為奇蹟。」
+                        </p>
+                        <p class="text-slate-400">
+                            這段自主學習的過程證明了我具備跨組協作與領導創意的能力，這是我高中生涯中最深刻的一場演出。
+                        </p>
+                    </div>
+                    <div class="md:w-1/3 text-center">
+                        <div class="w-24 h-24 bg-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center text-3xl font-bold">博</div>
+                        <h4 class="text-xl font-bold">張博筌</h4>
+                        <p class="text-blue-400 text-sm tracking-widest uppercase">表演組長 / 三丁 32</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 成果發表連結區 (含照片與大連結) -->
+        <section id="external-link" class="mb-40">
+            <div class="max-w-4xl mx-auto">
+                <div class="activity-card overflow-hidden border-2 border-blue-100">
+                    <div class="grid md:grid-cols-2">
+                        <div class="h-64 md:h-full">
+                            <img src="image/t/成發/成發 網頁.png" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-10 md:p-12 flex flex-col justify-center space-y-6">
+                            <h2 class="text-2xl font-bold text-slate-900">前往成發展示專頁</h2>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                點擊下方按鈕觀看本次自主學習成果發表的完整網頁與詳細互動內容。
+                            </p>
+                            <a href="https://victorian-cynosure.github.io/victorian-cynosure/index.html#nav" target="_blank" class="external-link-btn w-fit">
+                                <span>立即前往成發網頁</span>
+                                <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 text-center border-t border-slate-100 text-slate-400 text-xs tracking-widest uppercase">
+        <p>© 2024 張博筌 — 自主學習學習歷程成果</p>
+    </footer>
+
+</body>
+</html>
