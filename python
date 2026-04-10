@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>進階程式設計成果展示 - 張博筌</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Noto Sans TC', 'Poppins', sans-serif;
+            background-color: #fcfdfe;
+            color: #1a202c;
+            overflow-x: hidden;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e40af 50%, #3b82f6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-gradient::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #f1f5f9;
+        }
+
+        .section-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.08);
+            border-color: #e2e8f0;
+        }
+
+        .img-container {
+            background-color: #f8fafc;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e2e8f0;
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            position: relative;
+        }
+
+        .img-container i {
+            font-size: 3rem;
+            color: #cbd5e1;
+            z-index: 1;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 16px;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+        }
+
+        .feature-tag {
+            background: #f0f7ff;
+            color: #1d4ed8;
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #dbeafe;
+            display: inline-block;
+        }
+
+        code {
+            font-family: 'Poppins', monospace;
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #1e40af;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頂部導航 -->
+    <nav class="bg-white/80 backdrop-blur-xl sticky top-0 z-50 border-b border-slate-100 shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="h1120330-ship-it.github.io" class="text-blue-700 font-bold flex items-center hover:translate-x-[-4px] transition-transform">
+                <i class="fas fa-arrow-left mr-2 text-sm"></i> 返回主頁
+            </a>
+            <div class="hidden md:block">
+                <span class="text-slate-400 text-xs font-medium tracking-widest uppercase">Portfolio 2024 / Advanced Programming</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                <span class="text-xs font-bold text-slate-600">進階程式設計成果</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄區塊 -->
+    <header class="hero-gradient text-white py-28 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center bg-blue-500/20 backdrop-blur-sm px-4 py-1.5 rounded-full border border-blue-400/30 text-[11px] font-bold mb-8 tracking-[0.2em] uppercase">
+                <i class="fas fa-code mr-2"></i> 高二進階程式設計課程
+            </div>
+            <h2 class="text-4xl md:text-6xl font-extrabold mb-8 leading-tight tracking-tight">
+                Python 自動化控制：<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white">影音處理與語音辨識整合</span>
+            </h2>
+            <p class="text-blue-100/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
+                從基礎語法到高階 API 應用，建構一個能自動下載、裁切並將 YouTube 影音內容轉化為雲端歸檔的自動化系統。
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto py-24 px-6 space-y-32">
+        
+        <!-- 壹、課程重點 -->
+        <section id="highlights">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex items-center mb-8">
+                    <div class="step-number">壹</div>
+                    <h3 class="text-3xl font-bold text-slate-800 tracking-tight">課程核心學習重點</h3>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 mt-10">
+                    <div class="section-card p-6">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-terminal text-blue-600"></i>
+                        </div>
+                        <h4 class="font-bold text-xl mb-3">基礎語法與判斷</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            深入掌握 <code>if</code> 條件判斷、比較運算子與邏輯運算子 (and, or, not)，建立嚴密的程式判斷邏輯。
+                        </p>
+                    </div>
+                    <div class="section-card p-6">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-database text-blue-600"></i>
+                        </div>
+                        <h4 class="font-bold text-xl mb-3">資料結構進階應用</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            學習 Python 核心資料結構，包括字典 (Dictionary)、集合 (Set) 與數組 (Tuple) 的操作與差異。
+                        </p>
+                    </div>
+                    <div class="section-card p-6">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-microphone-alt text-blue-600"></i>
+                        </div>
+                        <h4 class="font-bold text-xl mb-3">語音與文字處理</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            運用 <code>SpeechRecognition</code> 等套件進行聲音頻率捕捉與文字轉譯，處理複雜的非結構化數據。
+                        </p>
+                    </div>
+                    <div class="section-card p-6">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-cloud-upload-alt text-blue-600"></i>
+                        </div>
+                        <h4 class="font-bold text-xl mb-3">雲端資源整合</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            實作 Google Colab 與 Google Drive 的對接，學習如何在遠端環境下進行自動化檔案存取。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 貳、期末專題設計 -->
+        <section id="final-project">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center justify-center mb-4">
+                    <div class="step-number">貳</div>
+                    <h3 class="text-3xl font-bold text-slate-800">期末專題：YouTube 自動化處理系統</h3>
+                </div>
+                <p class="text-slate-500 max-w-xl mx-auto">整合多項 Python 套件，實現一鍵式的影音處理工作流。</p>
+            </div>
+            
+            <div class="section-card p-8 md:p-12">
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div class="space-y-8">
+                        <div>
+                            <h4 class="font-bold text-2xl text-blue-900 mb-4">專題構想</h4>
+                            <p class="text-slate-600 leading-relaxed">
+                                本專題旨在解決使用者下載 YouTube 影音時繁瑣的流程。使用者僅需提供連結與想要裁切的時間點，系統便會自動完成下載、精確裁切，並依據使用者指定的輸出格式歸檔至雲端硬碟。
+                            </p>
+                        </div>
+                        <div class="space-y-4">
+                            <h5 class="font-bold text-slate-800 flex items-center"><i class="fas fa-tools mr-3 text-blue-500"></i> 使用技術棧</h5>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="feature-tag">pytubefix (下載核心)</span>
+                                <span class="feature-tag">moviepy (影像處理)</span>
+                                <span class="feature-tag">SpeechRecognition (語音辨識)</span>
+                                <span class="feature-tag">Google Drive API</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="img-container bg-slate-100 border-slate-200">
+                        <i class="fab fa-python"></i>
+                        <img src="image/Advanced_Prog/Project_Architecture.png" alt="專題架構圖" onerror="this.style.display='none'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 參、實作過程與功能細節 -->
+        <section id="implementation">
+            <div class="flex items-center mb-12">
+                <div class="step-number">參</div>
+                <h3 class="text-3xl font-bold text-slate-800">核心功能實作說明</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- 下載與輸入 -->
+                <div class="section-card p-6 flex flex-col">
+                    <div class="text-blue-600 mb-4 font-bold">Step 01.</div>
+                    <h4 class="font-bold text-lg mb-4">下載與解析</h4>
+                    <div class="img-container h-40 mb-4">
+                        <i class="fas fa-download"></i>
+                        <img src="image/Advanced_Prog/Step1_Download.png" alt="下載程式碼" onerror="this.style.display='none'">
+                    </div>
+                    <p class="text-slate-500 text-sm flex-grow">
+                        讀取 YouTube 網址，利用 <code>pytubefix</code> 獲取最高畫質串流，並暫存於環境中。
+                    </p>
+                </div>
+                <!-- 裁切與處理 -->
+                <div class="section-card p-6 flex flex-col">
+                    <div class="text-blue-600 mb-4 font-bold">Step 02.</div>
+                    <h4 class="font-bold text-lg mb-4">影像裁切與調整</h4>
+                    <div class="img-container h-40 mb-4">
+                        <i class="fas fa-cut"></i>
+                        <img src="image/Advanced_Prog/Step2_Edit.png" alt="裁切處理" onerror="this.style.display='none'">
+                    </div>
+                    <p class="text-slate-500 text-sm flex-grow">
+                        根據使用者輸入的時間點進行 <code>MoviePy</code> 剪輯，同步調整畫面大小與效果（如淡入淡出）。
+                    </p>
+                </div>
+                <!-- 輸出與歸檔 -->
+                <div class="section-card p-6 flex flex-col">
+                    <div class="text-blue-600 mb-4 font-bold">Step 03.</div>
+                    <h4 class="font-bold text-lg mb-4">雲端歸檔</h4>
+                    <div class="img-container h-40 mb-4">
+                        <i class="fas fa-cloud"></i>
+                        <img src="image/Advanced_Prog/Step3_Cloud.png" alt="雲端存儲" onerror="this.style.display='none'">
+                    </div>
+                    <p class="text-slate-500 text-sm flex-grow">
+                        依據輸出的內容性質（影片或純音訊），自動分類存入 Google Drive 相應的資料夾。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 肆、心得與反思 -->
+        <section class="bg-slate-900 rounded-[3rem] p-10 md:p-20 relative overflow-hidden group">
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-600 rounded-full blur-[100px] opacity-20"></div>
+            <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-indigo-600 rounded-full blur-[100px] opacity-20"></div>
+
+            <div class="relative z-10">
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-16 gap-8">
+                    <div>
+                        <h3 class="text-4xl font-bold text-white mb-4 flex items-center">
+                            <i class="fas fa-lightbulb text-yellow-400 mr-4"></i> 心得感想與學習反思
+                        </h3>
+                        <p class="text-slate-400 max-w-lg">從單純的邏輯編寫到解決實際問題的開發者思維。</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-6 text-slate-300 leading-relaxed">
+                        <p>
+                            在進階程式設計課程中，我不再只是學習「如何寫程式」，而是學習「如何用程式解決問題」。這次期末專題的開發讓我深刻體會到開源套件的強大，以及不同技術模組之間整合的難度。
+                        </p>
+                        <p>
+                            最大的挑戰在於處理各種異常狀況，例如不正確的網址輸入或 API 限制。透過不斷的 Debug 與測試，我學會了如何優化程式的穩定性，這對我未來在軟體開發的道路上非常有幫助。
+                        </p>
+                    </div>
+                    <div class="bg-white/5 rounded-3xl p-8 border border-white/10">
+                        <h5 class="text-blue-400 font-bold text-sm uppercase tracking-widest mb-6">Future Vision / 未來展望：</h5>
+                        <ul class="space-y-4 text-slate-200 text-sm">
+                            <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-blue-500"></i> 優化語音轉文字的精確度（引入 Whisper 模型）</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-blue-500"></i> 增加批次處理功能，一次下載多個影片</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle mr-3 text-blue-500"></i> 嘗試製作更直觀的 GUI 圖形介面</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 頁尾 -->
+    <footer class="bg-white border-t border-slate-100 py-20 text-center">
+        <div class="max-w-2xl mx-auto px-6">
+            <p class="text-slate-500 text-[10px] font-bold tracking-[0.4em] uppercase mb-4">Advanced Programming & Automation Engineering</p>
+            <div class="h-px w-12 bg-slate-200 mx-auto mb-6"></div>
+            <p class="text-slate-400 text-[10px] font-medium">&copy; 2024 CHANG PO CHUAN. 進階程式設計期末成果.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
