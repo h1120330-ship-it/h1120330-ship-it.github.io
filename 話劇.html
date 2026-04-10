@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英語話劇比賽歷程 - 張博筌</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        
+        :root {
+            --header-bg: #000000;
+            --accent-color: #3b82f6;
+            --content-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --card-border: #f1f5f9;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--content-bg);
+            color: var(--text-main);
+            scroll-behavior: smooth;
+            margin: 0;
+        }
+
+        .dark-header-section {
+            background-color: var(--header-bg);
+            color: #f8fafc;
+        }
+
+        .activity-card {
+            background: #ffffff;
+            border: 1px solid var(--card-border);
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .activity-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .img-container {
+            background: #f8fafc;
+            border-radius: 1rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 16 / 9;
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-img-horizontal {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .profile-img-horizontal img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section-tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-color);
+            padding: 4px 16px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        section {
+            scroll-margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 導航欄 (返回主頁連結) -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="bg-blue-600 w-10 h-10 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:bg-blue-700 transition-colors">
+                    <i class="fas fa-chevron-left text-sm"></i>
+                </div>
+                <div class="hidden sm:block">
+                    <span class="block font-bold text-lg leading-tight text-slate-900">英語話劇比賽</span>
+                    <span class="block text-[10px] text-slate-500 uppercase tracking-widest">返回主頁</span>
+                </div>
+            </a>
+            <div class="flex gap-6 md:gap-10 text-xs font-bold tracking-widest uppercase text-slate-500">
+                <a href="#intro" class="hover:text-blue-600 transition-colors">概述</a>
+                <a href="#first-play" class="hover:text-blue-600 transition-colors">高一</a>
+                <a href="#second-play" class="hover:text-blue-600 transition-colors">高二</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 標題區 (黑色背景) -->
+    <div class="dark-header-section">
+        <header class="pt-48 pb-24 px-6">
+            <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                <div class="lg:flex-1 text-center lg:text-left">
+                    <span class="section-tag mb-6 inline-block bg-blue-500/20 text-blue-300 uppercase">English Drama Contest</span>
+                    <h1 class="text-4xl lg:text-6xl font-black mb-8 leading-tight tracking-tight text-white">
+                        英語話劇比賽：<br><span class="text-blue-400">從配角到主角的成長</span>
+                    </h1>
+                    <p class="text-slate-400 text-lg font-light max-w-xl">
+                        三丁 32 張博筌 — 跨越三年的舞台實踐，榮獲最佳男配角與最佳團體獎
+                    </p>
+                </div>
+                <div class="lg:w-2/5 w-full max-w-2xl">
+                    <div class="profile-img-horizontal shadow-2xl">
+                        <img src="image/話劇/話劇 團體照.jpg">
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-6 py-20">
+
+        <!-- 概述：全班動員的年度盛事 -->
+        <section id="intro" class="mb-40">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="inline-flex items-center gap-2 text-blue-600 font-bold tracking-widest text-sm uppercase">
+                        <span class="w-8 h-px bg-blue-600"></span>
+                        Overview
+                    </div>
+                    <h2 class="text-4xl font-bold text-slate-900">不僅是語言學習，<br>更是全班的共同記憶</h2>
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        英語話劇是我們高中生活中一項全班動員的年度盛事。從零開始親手製作布景、道具、服裝，到排戲、導演與演出，這個過程培養了彼此的合作默契，也讓每個人發揮專長。這是我高中三年中最具成就感的集體回憶。
+                    </p>
+                </div>
+                <div class="activity-card p-4">
+                    <div class="img-container">
+                        <img src="image/話劇/話劇 共同努力.jpg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第一次話劇：總召與男配角 -->
+        <section id="first-play" class="mb-40">
+            <div class="bg-slate-50 rounded-[2.5rem] p-10 md:p-16 border border-slate-100 flex flex-col lg:flex-row gap-12 items-center">
+                <div class="lg:w-1/2 space-y-6">
+                    <div class="inline-flex items-center gap-2 text-blue-600 font-bold tracking-widest text-sm uppercase">
+                        <span class="w-8 h-px bg-blue-600"></span>
+                        Grade 10 / Best Supporting Actor
+                    </div>
+                    <h2 class="text-3xl font-bold text-slate-900">高一：擔任總召與男配角</h2>
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        在高一時，我身兼總召與男配角。我負責協調服裝、道具、燈光等各組進度，確保在有限預算下完成。同時，我細心琢磨劇本中每一字句的語氣與肢體動作。
+                    </p>
+                    <div class="bg-white p-6 rounded-2xl border border-blue-100 shadow-sm">
+                        <p class="text-blue-600 font-bold mb-2"><i class="fas fa-trophy mr-2"></i>榮獲獎項</p>
+                        <p class="text-slate-700 font-medium">最佳團體獎 & 最佳男配角獎</p>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 w-full">
+                    <div class="img-container shadow-lg">
+                        <img src="image/話劇/話劇 最佳男配.JPG">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第二次話劇：編劇與男主角 -->
+        <section id="second-play" class="mb-40">
+            <div class="text-center mb-16">
+                <span class="section-tag mb-4 inline-block">Grade 11 / Lead Actor & Screenwriter</span>
+                <h2 class="text-4xl font-bold text-slate-900">高二：挑戰編劇與領銜主演</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-slate-800">劇本的靈魂建構</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        高二我選擇挑戰編劇工作，將原本生硬的對話轉化為充滿戲劇張力的場景。作為男主角，我必須在台上撐起整部戲的節奏，將編劇時預設的情感層次透過現場演出傳達給觀眾。
+                    </p>
+                    <div class="activity-card p-4">
+                        <div class="img-container">
+                            <img src="image/話劇/話劇 編劇.jpg">
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-slate-800">深度情感演繹</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        這份經歷讓我深刻體會到戲劇的完整性。從文字發想到舞台演繹，每一場戲的背後都是無數次排練後的精準呈現。這是我在實作中學會表達、協作與解決問題的最佳舞台。
+                    </p>
+                    <div class="activity-card p-4">
+                        <div class="img-container">
+                            <img src="image/話劇/話劇 男主.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 結語 -->
+        <section class="mb-20">
+            <div class="bg-black rounded-[2.5rem] p-12 md:p-20 text-white relative overflow-hidden">
+                <div class="relative z-10 flex flex-col md:flex-row gap-12 items-center">
+                    <div class="md:w-2/3 space-y-6">
+                        <h2 class="text-3xl font-bold text-blue-400">舞台帶給我的成長</h2>
+                        <p class="text-slate-300 text-lg italic border-l-4 border-blue-500 pl-6">
+                            「舞台不只是表演的地方，更是讓我們學會溝通與協作的重要課堂。」
+                        </p>
+                        <p class="text-slate-400">
+                            透過這三年的英語話劇比賽，我學會了如何從幕後的協調整合到幕前的演藝表達。這份熱情與勇於挑戰的精神，將是我未來職涯中最重要的軟實力。
+                        </p>
+                    </div>
+                    <div class="md:w-1/3 text-center">
+                        <div class="w-24 h-24 bg-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center text-3xl font-bold">博</div>
+                        <h4 class="text-xl font-bold">張博筌</h4>
+                        <p class="text-blue-400 text-sm tracking-widest uppercase">總召、編劇、主演 / 三丁 32</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 text-center border-t border-slate-100 text-slate-400 text-xs tracking-widest uppercase">
+        <p>© 2024 張博筌 — 多元表現學習歷程</p>
+    </footer>
+
+</body>
+</html>
