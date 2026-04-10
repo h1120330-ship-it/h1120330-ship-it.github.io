@@ -37,7 +37,6 @@
             box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
         }
 
-        /* 統一圖片樣式 */
         .img-container {
             background-color: #f1f5f9;
             border-radius: 12px;
@@ -76,14 +75,17 @@
     <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
-                <div class="flex items-center gap-2">
+                <!-- 左側 Logo 與標題，點擊可回首頁 -->
+                <a href="#intro" class="flex items-center gap-2 hover:opacity-80 transition">
                     <div class="bg-blue-600 p-2 rounded-lg text-white">
-                        <i class="fas fa-microchip"></i>
+                        <i class="fas fa-home"></i>
                     </div>
                     <span class="font-bold text-xl tracking-tight">自主學習成果</span>
-                </div>
+                </a>
+                
+                <!-- 右側導覽連結 -->
                 <div class="hidden md:flex space-x-8 font-medium">
-                    <a href="#intro" class="hover:text-blue-600 transition">學習動機</a>
+                    <a href="#intro" class="text-blue-600 border-b-2 border-blue-600 pb-1">返回主頁</a>
                     <a href="#onshape" class="hover:text-blue-600 transition">Onshape 自學</a>
                     <a href="#project" class="hover:text-blue-600 transition">核心開發</a>
                     <a href="#results" class="hover:text-blue-600 transition">成果流程</a>
@@ -120,7 +122,6 @@
                 <div class="flex-1 w-full max-w-md">
                     <div class="bg-white/5 p-4 rounded-2xl border border-white/10 backdrop-blur-sm">
                         <div class="aspect-square img-container bg-slate-800 blueprint-bg">
-                            <!--  -->
                             <img src="image/自動獎牌/自動獎牌 封面2.0.png" onerror="this.parentElement.innerHTML='<i class=\'fas fa-cube text-6xl text-blue-400\'></i><p class=\'absolute bottom-4 text-xs text-slate-400\'>3D 總組合模型圖片</p>'">
                         </div>
                     </div>
@@ -209,7 +210,6 @@
                             </p>
                         </div>
                         <div class="img-container aspect-video">
-                            <!--  -->
                             <img src="image/自動獎牌/自動獎牌 量測照片.jpg" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-slate-400\'>量測過程照片</p>'">
                         </div>
                     </div>
@@ -230,12 +230,10 @@
                         </div>
                         <div class="space-y-4">
                             <div class="img-container h-32 w-full">
-                                <!--  -->
                                 <img src="image/自動獎牌/自動獎牌 齒輪與齒條.png" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-slate-400\'>方案一：齒輪齒條機構示意圖</p>'">
                             </div>
                             <div class="img-container h-32 w-full border-blue-400 border-2 relative">
                                 <div class="absolute top-2 right-2 px-2 py-0.5 bg-blue-600 text-white text-[10px] rounded shadow-sm z-10">最終採納</div>
-                                <!--  -->
                                 <img src="image/自動獎牌/自動獎牌 往復曲柄滑塊.png" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-blue-700 font-medium\'>方案二：往復曲柄滑塊機構</p>'">
                             </div>
                         </div>
@@ -253,7 +251,6 @@
                             </p>
                         </div>
                         <div class="img-container aspect-video">
-                            <!--  -->
                             <img src="image/自動獎牌/自動獎牌 推動臂.png" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-slate-400\'>固定臂建模截圖 / 零件照片</p>'">
                         </div>
                     </div>
@@ -279,9 +276,7 @@
                         <!-- 左上: Step 1 -->
                         <div class="space-y-3">
                             <div class="img-container aspect-square blueprint-bg">
-                                <!--  -->
-                                <img src="image/自動獎牌/自動獎牌 1.png
-" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-slate-400\'>1. 獎牌推入照片</p>'">
+                                <img src="image/自動獎牌/自動獎牌 1.png" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-slate-400\'>1. 獎牌推入照片</p>'">
                             </div>
                             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
                                 <span class="font-bold text-blue-600 text-sm">Step 1. 獎牌進入</span>
@@ -297,7 +292,6 @@
                         <!-- 右上: Step 2 -->
                         <div class="space-y-3">
                             <div class="img-container aspect-square blueprint-bg">
-                                <!--  -->
                                 <img src="image/自動獎牌/自動獎牌 2.png" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-slate-400\'>2. 手臂固定照片</p>'">
                             </div>
                             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
@@ -314,7 +308,6 @@
                         <!-- 右下: Step 3 -->
                         <div class="row-start-3 col-start-3 space-y-3">
                             <div class="img-container aspect-square blueprint-bg">
-                                <!--  -->
                                 <img src="image/自動獎牌/自動獎牌 3.png" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-slate-400\'>3. 開始雷雕照片</p>'">
                             </div>
                             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
@@ -331,7 +324,6 @@
                         <!-- 左下: Step 4 -->
                         <div class="row-start-3 col-start-1 space-y-3">
                             <div class="img-container aspect-square blueprint-bg">
-                                <!--  -->
                                 <img src="image/自動獎牌/自動獎牌 1.png" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-slate-400\'>4. 成品推出照片</p>'">
                             </div>
                             <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
