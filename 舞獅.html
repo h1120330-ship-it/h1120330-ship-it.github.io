@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>舞獅活動表演與比賽 - 張博筌</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        
+        :root {
+            --header-bg: #000000;
+            --accent-color: #3b82f6;
+            --content-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --card-border: #f1f5f9;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--content-bg);
+            color: var(--text-main);
+            scroll-behavior: smooth;
+            margin: 0;
+        }
+
+        .dark-header-section {
+            background-color: var(--header-bg);
+            color: #f8fafc;
+        }
+
+        .activity-card {
+            background: #ffffff;
+            border: 1px solid var(--card-border);
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .activity-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .img-container {
+            background: #f8fafc;
+            border-radius: 1rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 16 / 9;
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-img-horizontal {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .profile-img-horizontal img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section-tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-color);
+            padding: 4px 16px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        .step-badge {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 導航欄 (返回主頁連結) -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="h1120330-ship-it.github.io" class="flex items-center gap-3 group">
+                <div class="bg-blue-600 w-10 h-10 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:bg-blue-700 transition-colors">
+                    <i class="fas fa-chevron-left text-sm"></i>
+                </div>
+                <div class="hidden sm:block">
+                    <span class="block font-bold text-lg leading-tight text-slate-900">舞獅活動與比賽</span>
+                    <span class="block text-[10px] text-slate-500 uppercase tracking-widest">返回主頁</span>
+                </div>
+            </a>
+            <div class="flex gap-6 md:gap-10 text-xs font-bold tracking-widest uppercase text-slate-500">
+                <a href="#motivation" class="hover:text-blue-600 transition-colors">起源</a>
+                <a href="#planning" class="hover:text-blue-600 transition-colors">籌備</a>
+                <a href="#execution" class="hover:text-blue-600 transition-colors">練習</a>
+                <a href="#result" class="hover:text-blue-600 transition-colors">成果與比賽</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 標題區 (黑色背景) -->
+    <div class="dark-header-section">
+        <header class="pt-48 pb-24 px-6">
+            <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                <div class="lg:flex-1 text-center lg:text-left">
+                    <span class="section-tag mb-6 inline-block bg-blue-500/20 text-blue-300 uppercase">Traditional Lion Dance</span>
+                    <h1 class="text-4xl lg:text-6xl font-black mb-8 leading-tight tracking-tight text-white">
+                        舞獅活動：<br><span class="text-blue-400">重啟傳統，舞動青春</span>
+                    </h1>
+                    <p class="text-slate-400 text-lg font-light max-w-xl">
+                        三丁 32 張博筌 — 從基層學習者到活動發起人，統籌元宵慶典與全國競賽的跨部協作。
+                    </p>
+                </div>
+                <div class="lg:w-2/5 w-full max-w-2xl">
+                    <div class="profile-img-horizontal shadow-2xl border-blue-500/30">
+                        <img src="image/舞獅/舞獅 封面照.jpg">
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-6 py-20">
+
+        <!-- 活動起源：重啟斷裂的傳統 -->
+        <section id="motivation" class="mb-40">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="inline-flex items-center gap-2 text-blue-600 font-bold tracking-widest text-sm uppercase">
+                        <span class="w-8 h-px bg-blue-600"></span>
+                        Initiative & Passion
+                    </div>
+                    <h2 class="text-4xl font-bold text-slate-900">自告奮勇，<br>重啟舞獅生涯</h2>
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        從小學三年級開始學習舞獅，對這項千年技藝情有獨鍾。高一時因小學部取消元宵慶祝活動，我主動向校方提議，由我負責統籌中學部的表演。這不僅是對技藝的熱愛，更是對傳統文化傳承的責任感。
+                    </p>
+                </div>
+                <div class="activity-card p-4">
+                    <div class="img-container">
+                        <img src="image/舞獅/舞獅 小學.jpg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 籌劃流程：人員與道具統籌 -->
+        <section id="planning" class="mb-40">
+            <div class="bg-slate-50 rounded-[2.5rem] p-10 md:p-16 border border-slate-100">
+                <div class="text-center mb-16">
+                    <span class="section-tag mb-4 inline-block">Management & Coordination</span>
+                    <h2 class="text-3xl font-bold text-slate-900">跨部溝通：從人員到道具</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- 人員招募 -->
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="step-badge">01</div>
+                            <h3 class="text-xl font-bold">人員招募與家長授權</h3>
+                        </div>
+                        <p class="text-slate-600">
+                            我主動招募同樣由小學部直升、具備舞獅基礎的學弟妹，並逐一確保班導師與家長的同意，維持隊員的積極度與熱誠。
+                        </p>
+                    </div>
+                    <!-- 道具協調 -->
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="step-badge">02</div>
+                            <h3 class="text-xl font-bold">道具清單與貨車調度</h3>
+                        </div>
+                        <p class="text-slate-600">
+                            我必須協調中小學部雙方校方的時間作息，派遣貨車借用道具，並確保擺放地點與歸還時程與校方同步。
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-12">
+                    <div class="img-container shadow-sm border-slate-200">
+                        <img src="image/舞獅/舞獅 道具運送.jpg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 辦事流程：自主練習 -->
+        <section id="execution" class="mb-40">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="activity-card p-4">
+                    <div class="img-container">
+                        <img src="image/舞獅/舞獅 自主練習.jpg">
+                    </div>
+                </div>
+                <div class="space-y-8">
+                    <div class="inline-flex items-center gap-2 text-blue-600 font-bold tracking-widest text-sm uppercase">
+                        <span class="w-8 h-px bg-blue-600"></span>
+                        Practice & Discipline
+                    </div>
+                    <h2 class="text-4xl font-bold text-slate-900">台上一分鐘，<br>台下十年功</h2>
+                    <p class="text-slate-600 leading-relaxed text-lg">
+                        由於中學部沒有教練協助，我們必須利用課餘及假日自主練習。我同時擔任教練與表演人員，將大家在小學所學重新編織、互相指導與修正，確保獅子的每一個動作都能注入靈魂與生命力。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 成果區塊：分為正式表演與競賽挑戰 -->
+        <section id="result" class="space-y-16 mb-40">
+            <!-- 正式表演 -->
+            <div class="bg-blue-50 rounded-[2.5rem] p-10 md:p-16 border border-blue-100">
+                <div class="text-center mb-16">
+                    <span class="section-tag mb-4 inline-block">Final Performance</span>
+                    <h2 class="text-3xl font-bold text-slate-900">正式表演：像一頭真正的雄獅</h2>
+                    <p class="text-slate-500 mt-4 max-w-2xl mx-auto">在元宵慶典當天，我們向全校師生展現了精湛的舞獅技藝，讓斷層的傳統在校園中重生。</p>
+                </div>
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <div class="activity-card p-4 lg:col-span-2">
+                        <div class="img-container">
+                            <img src="image/舞獅/舞獅 表演.jpg">
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-center space-y-6">
+                        <div class="p-6 bg-white rounded-2xl shadow-sm border border-blue-100">
+                            <h4 class="font-bold text-blue-600 mb-2">領袖擔當</h4>
+                            <p class="text-slate-600 text-sm">擔任隊長負責統籌九十人規模活動的各項細節與溝通。</p>
+                        </div>
+                        <div class="p-6 bg-white rounded-2xl shadow-sm border border-blue-100">
+                            <h4 class="font-bold text-blue-600 mb-2">文化傳承</h4>
+                            <p class="text-slate-600 text-sm">成功延續校園傳統，並帶領學弟妹體會技藝背後的汗水。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 競賽挑戰 (新增欄位) -->
+            <div class="grid md:grid-cols-2 gap-12 items-stretch">
+                <div class="activity-card p-8 flex flex-col justify-center bg-slate-900 text-white">
+                    <div class="inline-flex items-center gap-2 text-blue-400 font-bold tracking-widest text-sm uppercase mb-6">
+                        <span class="w-8 h-px bg-blue-400"></span>
+                        Competition Challenge
+                    </div>
+                    <h2 class="text-3xl font-bold mb-6 text-white">競賽挑戰：<br>全國性的技藝交流</h2>
+                    <p class="text-slate-400 leading-relaxed mb-8">
+                        除了校內的表演，我也帶領隊員參加全國性的舞獅競賽。在賽場上，我們不僅是為了榮譽，更是為了與來自各地的頂尖隊伍交流。這段參賽經歷磨練了我們在高壓環境下的應變能力，也讓我們看到自己技藝上的不足與精進的空間。
+                    </p>
+                    <div class="flex items-center gap-4 text-sm font-bold">
+                        <div class="bg-blue-600/20 text-blue-400 px-4 py-2 rounded-lg border border-blue-600/30">
+                            團隊精神
+                        </div>
+                        <div class="bg-blue-600/20 text-blue-400 px-4 py-2 rounded-lg border border-blue-600/30">
+                            技術突破
+                        </div>
+                    </div>
+                </div>
+                <div class="activity-card p-4">
+                    <div class="img-container h-full">
+                        <img src="image/舞獅/舞獅 比賽.jpg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 結語 -->
+        <section class="mb-20">
+            <div class="bg-black rounded-[2.5rem] p-12 md:p-20 text-white relative overflow-hidden">
+                <div class="relative z-10 flex flex-col md:flex-row gap-12 items-center">
+                    <div class="md:w-2/3 space-y-6">
+                        <h2 class="text-3xl font-bold text-blue-400">從熱愛到統籌的蛻變</h2>
+                        <p class="text-slate-300 text-lg italic border-l-4 border-blue-500 pl-6">
+                            「舞獅不只是我的技藝，更是我學習領導與溝通的起點。」
+                        </p>
+                        <p class="text-slate-400">
+                            這次活動讓我明白，要成就一場完美的表演，除了個人的技藝，更需要對團隊負責、與多方校方協作的耐心。這是我在課堂之外，學會最寶貴的「處事之道」。
+                        </p>
+                    </div>
+                    <div class="md:w-1/3 text-center">
+                        <div class="w-24 h-24 bg-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center text-3xl font-bold">博</div>
+                        <h4 class="text-xl font-bold">張博筌</h4>
+                        <p class="text-blue-400 text-sm tracking-widest uppercase">活動發起人 / 隊長 / 三丁 32</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 text-center border-t border-slate-100 text-slate-400 text-xs tracking-widest uppercase">
+        <p>© 2024 張博筌 — 多元表現學習歷程成果</p>
+    </footer>
+
+</body>
+</html>
