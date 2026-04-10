@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自主學習成果展示 - 自動獎牌列印機</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f8fafc;
+            scroll-behavior: smooth;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -6px rgba(0, 0, 0, 0.04);
+        }
+
+        .timeline-dot {
+            width: 14px;
+            height: 14px;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            position: absolute;
+            left: -7px;
+            top: 24px;
+            border: 3px solid white;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+
+        /* 統一圖片樣式 */
+        .img-container {
+            background-color: #f1f5f9;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .blueprint-bg {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .flow-arrow {
+            color: #3b82f6;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="bg-blue-600 p-2 rounded-lg text-white">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight">自主學習成果</span>
+                </div>
+                <div class="hidden md:flex space-x-8 font-medium">
+                    <a href="#intro" class="hover:text-blue-600 transition">學習動機</a>
+                    <a href="#onshape" class="hover:text-blue-600 transition">Onshape 自學</a>
+                    <a href="#project" class="hover:text-blue-600 transition">核心開發</a>
+                    <a href="#results" class="hover:text-blue-600 transition">成果流程</a>
+                    <a href="#reflection" class="hover:text-blue-600 transition">心得展望</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="intro" class="pt-32 pb-20 gradient-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="flex-1 space-y-6">
+                    <div class="inline-block px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-sm font-semibold border border-blue-500/30">
+                        多元表現 - 3D 建模與自動化控制
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+                        Onshape 自主學習 <br>
+                        <span class="text-blue-400">& 自動獎牌列印機</span>
+                    </h1>
+                    <p class="text-lg text-slate-300 max-w-2xl leading-relaxed">
+                        本專案利用 Onshape 進行高精度建模，打造自動化生產線結構，解決人工雷雕定位不準與效率低下的問題。
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <div class="flex items-center gap-2 text-sm bg-white/10 px-4 py-2 rounded-full">
+                            <i class="fas fa-user"></i> 三丁 32 張博筌
+                        </div>
+                        <div class="flex items-center gap-2 text-sm bg-white/10 px-4 py-2 rounded-full">
+                            <i class="fas fa-calendar"></i> 114 學年度
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 w-full max-w-md">
+                    <div class="bg-white/5 p-4 rounded-2xl border border-white/10 backdrop-blur-sm">
+                        <div class="aspect-square img-container bg-slate-800 blueprint-bg">
+                            <!--  -->
+                            <img src="image/自動獎牌/自動獎牌 封面2.0.png" onerror="this.parentElement.innerHTML='<i class=\'fas fa-cube text-6xl text-blue-400\'></i><p class=\'absolute bottom-4 text-xs text-slate-400\'>3D 總組合模型圖片</p>'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        
+        <!-- Part 1: Onshape -->
+        <section id="onshape" class="mb-24">
+            <div class="flex items-center gap-4 mb-10">
+                <h2 class="text-3xl font-bold">1. Onshape 自主學習</h2>
+                <div class="h-1 flex-1 bg-slate-200 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 card-hover">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <i class="fas fa-lightbulb text-yellow-500"></i> 學習動機
+                        </h3>
+                        <p class="text-slate-600 leading-relaxed">
+                            從 TinkerCAD 進階到專業精度的 Onshape。學習如何透過更強大的特徵工具，將創意轉化為可實行的工業模型。
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 card-hover">
+                        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                            <i class="fas fa-cloud text-blue-500"></i> Onshape 核心邏輯
+                        </h3>
+                        <ul class="space-y-3 text-slate-600">
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <span><strong>雲端與協作：</strong> 免安裝且支援團隊即時共編。</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <span><strong>參數化設計：</strong> 嚴謹的幾何約束與數值驅動。</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 rounded-2xl overflow-hidden p-1 shadow-xl">
+                    <div class="bg-slate-800 p-4 border-b border-slate-700 flex justify-between items-center">
+                        <span class="text-white font-mono text-sm">Learning_Progress.log</span>
+                    </div>
+                    <div class="p-8 space-y-8">
+                        <div class="flex gap-4">
+                            <div class="text-blue-400 font-bold">01</div>
+                            <div class="text-slate-300">
+                                <h4 class="font-bold text-white mb-1">基礎特徵工具</h4>
+                                <p class="text-sm">學習 Sketch, Extrude, Revolve 等指令。</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="text-blue-400 font-bold">02</div>
+                            <div class="text-slate-300">
+                                <h4 class="font-bold text-white mb-1">進階組合件 (Mate)</h4>
+                                <p class="text-sm">在零件間建立旋轉與滑動物理關係。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 2: Project - Core Development -->
+        <section id="project" class="mb-24">
+            <div class="flex items-center gap-4 mb-10">
+                <h2 class="text-3xl font-bold">2. 核心開發流程</h2>
+                <div class="h-1 flex-1 bg-slate-200 rounded-full"></div>
+            </div>
+
+            <div class="relative pl-8 border-l-2 border-slate-100 space-y-16">
+                <!-- Step 1: Research -->
+                <div class="relative">
+                    <div class="timeline-dot"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                        <div>
+                            <h4 class="text-xl font-bold text-blue-600 mb-2">一、事前準備與量測</h4>
+                            <p class="text-slate-600 leading-relaxed mb-4 text-sm">
+                                量測雷雕機的孔徑、孔距及獎牌形狀。精確數據是確保 3D 列印件能完美契合雷雕機床的基礎。
+                            </p>
+                        </div>
+                        <div class="img-container aspect-video">
+                            <!--  -->
+                            <img src="image/自動獎牌/自動獎牌 量測照片.jpg" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-slate-400\'>量測過程照片</p>'">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Mechanical Design -->
+                <div class="relative">
+                    <div class="timeline-dot"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                        <div>
+                            <h4 class="text-xl font-bold text-blue-600 mb-2">二、機械結構發想</h4>
+                            <p class="text-slate-600 leading-relaxed mb-4 text-sm">
+                                針對馬達限制，比較「齒輪齒條」與「往復曲柄滑塊」結構。考慮到列印尺寸限制與穩定性，最終選擇往復曲柄滑塊。
+                            </p>
+                            <div class="bg-blue-50 p-3 rounded-lg text-xs text-blue-700">
+                                <strong>關鍵考量：</strong>齒輪機構需要較大齒輪，可能超出列印範圍，且機構複雜度較高。
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="img-container h-32 w-full">
+                                <!--  -->
+                                <img src="image/自動獎牌/自動獎牌 齒輪與齒條.png" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-slate-400\'>方案一：齒輪齒條機構示意圖</p>'">
+                            </div>
+                            <div class="img-container h-32 w-full border-blue-400 border-2 relative">
+                                <div class="absolute top-2 right-2 px-2 py-0.5 bg-blue-600 text-white text-[10px] rounded shadow-sm z-10">最終採納</div>
+                                <!--  -->
+                                <img src="image/自動獎牌/自動獎牌 往復曲柄滑塊.png" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-blue-700 font-medium\'>方案二：往復曲柄滑塊機構</p>'">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Fixing Arms -->
+                <div class="relative">
+                    <div class="timeline-dot"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                        <div>
+                            <h4 class="text-xl font-bold text-blue-600 mb-2">三、固定臂實作 (Fixing Arms)</h4>
+                            <p class="text-slate-600 leading-relaxed mb-4 text-sm">
+                                設計四組固定手臂，在雷雕過程中將獎牌穩固地限制在特定區域，確保每次雷雕位置完全一致。
+                            </p>
+                        </div>
+                        <div class="img-container aspect-video">
+                            <!--  -->
+                            <img src="image/自動獎牌/自動獎牌 推動臂.png" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-slate-400\'>固定臂建模截圖 / 零件照片</p>'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 3: Results Display -->
+        <section id="results" class="mb-24">
+            <div class="flex items-center gap-4 mb-10">
+                <h2 class="text-3xl font-bold">3. 成果展示與流程</h2>
+                <div class="h-1 flex-1 bg-slate-200 rounded-full"></div>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                <h3 class="text-xl font-bold mb-10 flex items-center gap-2">
+                    <i class="fas fa-sync-alt text-blue-500"></i> 生產作業流程環狀展示
+                </h3>
+                
+                <div class="relative max-w-4xl mx-auto">
+                    <div class="grid grid-cols-[1fr,80px,1fr] grid-rows-[auto,80px,auto] items-center">
+                        
+                        <!-- 左上: Step 1 -->
+                        <div class="space-y-3">
+                            <div class="img-container aspect-square blueprint-bg">
+                                <!--  -->
+                                <img src="image/自動獎牌/自動獎牌 1.png
+" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-slate-400\'>1. 獎牌推入照片</p>'">
+                            </div>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <span class="font-bold text-blue-600 text-sm">Step 1. 獎牌進入</span>
+                                <p class="text-[11px] text-slate-500 mt-1 leading-tight">推動臂將原料獎牌由儲料槽精確推入雷雕區中心。</p>
+                            </div>
+                        </div>
+
+                        <!-- 右箭頭 (上) -->
+                        <div class="flow-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+
+                        <!-- 右上: Step 2 -->
+                        <div class="space-y-3">
+                            <div class="img-container aspect-square blueprint-bg">
+                                <!--  -->
+                                <img src="image/自動獎牌/自動獎牌 2.png" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-slate-400\'>2. 手臂固定照片</p>'">
+                            </div>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <span class="font-bold text-blue-600 text-sm">Step 2. 自動鎖定</span>
+                                <p class="text-[11px] text-slate-500 mt-1 leading-tight">四組固定臂同步收合，確保獎牌在雕刻時不發生位移。</p>
+                            </div>
+                        </div>
+
+                        <!-- 下箭頭 (右) -->
+                        <div class="col-start-3 row-start-2 flow-arrow">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+
+                        <!-- 右下: Step 3 -->
+                        <div class="row-start-3 col-start-3 space-y-3">
+                            <div class="img-container aspect-square blueprint-bg">
+                                <!--  -->
+                                <img src="image/自動獎牌/自動獎牌 3.png" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-slate-400\'>3. 開始雷雕照片</p>'">
+                            </div>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <span class="font-bold text-blue-600 text-sm">Step 3. 高度加工</span>
+                                <p class="text-[11px] text-slate-500 mt-1 leading-tight">雷雕機依照預設圖案進行精密印刷，全程自動化定位。列印完成後，固定臂鬆開，下一枚獎牌推入時順勢將成品送出。</p>
+                            </div>
+                        </div>
+
+                        <!-- 左箭頭 (下) -->
+                        <div class="row-start-3 col-start-2 flow-arrow">
+                            <i class="fas fa-arrow-left"></i>
+                        </div>
+
+                        <!-- 左下: Step 4 -->
+                        <div class="row-start-3 col-start-1 space-y-3">
+                            <div class="img-container aspect-square blueprint-bg">
+                                <!--  -->
+                                <img src="image/自動獎牌/自動獎牌 1.png" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-slate-400\'>4. 成品推出照片</p>'">
+                            </div>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <span class="font-bold text-blue-600 text-sm">Step 4. 成品產出</span>
+                                <p class="text-[11px] text-slate-500 mt-1 leading-tight">將推動臂收回，重新放入獎牌，並重複先前的動作。</p>
+                            </div>
+                        </div>
+
+                        <!-- 上箭頭 (左) -->
+                        <div class="row-start-2 col-start-1 flow-arrow">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 4: Reflection -->
+        <section id="reflection">
+            <div class="flex items-center gap-4 mb-10">
+                <h2 class="text-3xl font-bold">未來展望與心得</h2>
+                <div class="h-1 flex-1 bg-slate-200 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-6">優化點與展望</h3>
+                    <ul class="space-y-4">
+                        <li class="flex gap-4">
+                            <span class="w-2 h-2 mt-2 rounded-full bg-blue-500 flex-shrink-0"></span>
+                            <p class="text-slate-600 text-sm"><strong>材料強度：</strong> 未來考慮使用碳纖維填充料，增加零件耐用度。</p>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="w-2 h-2 mt-2 rounded-full bg-blue-500 flex-shrink-0"></span>
+                            <p class="text-slate-600 text-sm"><strong>結構精進：</strong> 優化曲柄滑塊的軌道摩擦力，使作動更順暢。</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-blue-600 p-8 rounded-2xl text-white shadow-lg">
+                    <h3 class="text-xl font-bold mb-4">實作總結</h3>
+                    <p class="text-blue-100 text-sm leading-relaxed italic">
+                        「這場自主學習讓我了解，工程設計不僅是畫圖，更是對每個細節精確度的執著。解決定位誤差的過程，是我最大的收穫。」
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs">
+            <p>© 2024 張博筌 - 自主學習專案展示</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
