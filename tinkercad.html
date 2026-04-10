@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自主學習成果展示 - 3D校園建模</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f8fafc;
+            scroll-behavior: smooth;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -6px rgba(0, 0, 0, 0.04);
+        }
+
+        .img-container {
+            background-color: #f1f5f9;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .tag-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(30, 27, 75, 0.8);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .blueprint-grid {
+            background-image: radial-gradient(#c7d2fe 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4338ca;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="h1120330-ship-it.github.io" class="flex items-center gap-2 hover:opacity-80 transition">
+                    <!-- 更換為房子圖標作為返回主頁圖像 -->
+                    <div class="bg-indigo-700 p-2 rounded-lg text-white">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-indigo-950">自主學習成果</span>
+                </a>
+                
+                <div class="hidden md:flex space-x-8 font-medium">
+                    <a href="#intro" class="text-slate-600 hover:text-indigo-700 transition">計畫初衷</a>
+                    <a href="#process" class="text-slate-600 hover:text-indigo-700 transition">建模過程</a>
+                    <a href="#showcase" class="text-slate-600 hover:text-indigo-700 transition">成果對比</a>
+                    <a href="#reflection" class="text-slate-600 hover:text-indigo-700 transition">心得反思</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="intro" class="pt-32 pb-20 gradient-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="flex-1 space-y-6">
+                    <div class="inline-block px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-200 text-sm font-semibold border border-indigo-500/30">
+                        3D 建模自主學習計畫
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+                        建一個自己的 <br>
+                        <span class="text-indigo-300">中學校園 3D 模型</span>
+                    </h1>
+                    <p class="text-lg text-indigo-100 max-w-2xl leading-relaxed opacity-90">
+                        從回饋母校的想法出發，利用 Tinkercad 將記憶中的建築細節精確重現，讓學弟妹透過 3D 視角探索未來的校園。
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <div class="flex items-center gap-2 text-sm bg-white/10 px-4 py-2 rounded-full border border-white/10">
+                            <i class="fas fa-user"></i> 二丁 32 張博筌
+                        </div>
+                        <div class="flex items-center gap-2 text-sm bg-white/10 px-4 py-2 rounded-full border border-white/10">
+                            <i class="fas fa-tools"></i> Tinkercad / 3D Modeling
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 w-full max-w-md">
+                    <div class="bg-white/5 p-4 rounded-2xl border border-white/10 backdrop-blur-sm">
+                        <div class="aspect-video img-container bg-indigo-950 blueprint-grid">
+                            <img src="image/tinkercad/tinkercad 封面照.png" alt="" onerror="this.parentElement.innerHTML='<i class=\'fas fa-city text-6xl text-indigo-300\'></i><p class=\'absolute bottom-4 text-xs text-indigo-200/60\'>校園全景模型圖片</p>'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <!-- 製作動機 -->
+        <section class="mb-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-bold border-l-4 border-indigo-700 pl-4">製作動機</h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        在重返小學校園與老師攀談時，我發現學弟妹對中學生活充滿好奇，卻難以想像校園的整體構造。我萌生了「建一個中學校園」的想法，希望能透過 3D 建模：
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="bg-indigo-100 p-1 rounded text-indigo-700 mt-1">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <span>展示 Google Map 衛星影像難以捕捉的建築細節。</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="bg-indigo-100 p-1 rounded text-indigo-700 mt-1">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <span>按正確比例重現門窗、櫃子等內部物件。</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 text-indigo-900">使用工具：Tinkercad</h3>
+                    <p class="text-slate-500 text-sm mb-6 leading-relaxed">
+                        Tinkercad 是一款適合基礎建模的軟體，透過幾何形狀的組合與修剪，能快速建立出建築雛形。
+                    </p>
+                    <div class="flex justify-center py-4 bg-indigo-50 rounded-xl">
+                        <i class="fas fa-shapes text-6xl text-indigo-200"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 製作流程 -->
+        <section id="process" class="mb-24">
+            <h2 class="text-3xl font-bold mb-10 text-center">核心製作流程</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 card-hover">
+                    <div class="text-indigo-600 text-3xl mb-4"><i class="fas fa-camera"></i></div>
+                    <h3 class="text-xl font-bold mb-2 text-indigo-900">資料蒐集</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">拍攝校園各個角度，並利用進德樓屋頂觀察成英樓等上方結構，輔以空拍照與衛星圖補足細節。</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 card-hover">
+                    <div class="text-indigo-600 text-3xl mb-4"><i class="fas fa-ruler-combined"></i></div>
+                    <h3 class="text-xl font-bold mb-2 text-indigo-900">比例運算</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">確保門窗數量與物件擺設符合真實比例。針對視線死角，則由內部觀測來推測外部結構。</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 card-hover">
+                    <div class="text-indigo-600 text-3xl mb-4"><i class="fas fa-layer-group"></i></div>
+                    <h3 class="text-xl font-bold mb-2 text-indigo-900">精緻建模</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">從操場、進德樓到各樓層特色，逐步將點、線、面組合成完整的校園建築群。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 成果展示 -->
+        <section id="showcase" class="mb-24">
+            <div class="flex items-center gap-4 mb-10">
+                <h2 class="text-3xl font-bold">成果展示：Reality vs 3D Model</h2>
+                <div class="h-1 flex-1 bg-slate-200 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="space-y-4">
+                    <div class="img-container aspect-square">
+                        <span class="tag-label">Reality</span>
+                        <img src="image/tinkercad/tinkercad 1.jpg" alt="" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-slate-400\'>真實校園照片 1</p>'">
+                    </div>
+                    <div class="img-container aspect-square border-indigo-200 border-2">
+                        <span class="tag-label bg-indigo-700">3D Model</span>
+                        <img src="image/tinkercad/tinkercad 1-1.jpg" alt="" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-indigo-600\'>3D 模型截圖 1</p>'">
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="img-container aspect-square">
+                        <span class="tag-label">Reality</span>
+                        <img src="image/tinkercad/tinkercad 2.jpg" alt="" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-slate-400\'>真實校園照片 2</p>'">
+                    </div>
+                    <div class="img-container aspect-square border-indigo-200 border-2">
+                        <span class="tag-label bg-indigo-700">3D Model</span>
+                        <img src="image/tinkercad/tinkercad 2-2" alt="" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-indigo-600\'>3D 模型截圖 2</p>'">
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="img-container aspect-square">
+                        <span class="tag-label">Reality</span>
+                        <img src="image/tinkercad/tinkercad 3" alt="" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-slate-400\'>真實校園照片 3</p>'">
+                    </div>
+                    <div class="img-container aspect-square border-indigo-200 border-2">
+                        <span class="tag-label bg-indigo-700">3D Model</span>
+                        <img src="image/tinkercad/tinkercad 3-3" alt="" onerror="this.parentElement.innerHTML='<p class=\'text-xs text-indigo-600\'>3D 模型截圖 3</p>'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 心得反思 -->
+        <section id="reflection" class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="bg-indigo-950 text-white p-8 rounded-2xl shadow-xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-10">
+                    <i class="fas fa-lightbulb text-9xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-2 relative z-10">
+                    <i class="fas fa-exclamation-triangle text-amber-400"></i> 遇到的挑戰
+                </h3>
+                <div class="space-y-6 relative z-10">
+                    <div class="border-l-2 border-indigo-700 pl-4">
+                        <h4 class="font-bold text-indigo-200 text-sm">效能瓶頸</h4>
+                        <p class="text-xs text-slate-300 mt-1 leading-relaxed">Tinkercad 在處理複雜且過大的建築檔案時，容易發生卡頓或閃退。</p>
+                    </div>
+                    <div class="border-l-2 border-indigo-700 pl-4">
+                        <h4 class="font-bold text-indigo-200 text-sm">視線死角</h4>
+                        <p class="text-xs text-slate-300 mt-1 leading-relaxed">進德樓後方為民宅區，部分區域需仰賴內部空間比例反向推測外部形狀。</p>
+                    </div>
+                    <div class="border-l-2 border-indigo-700 pl-4">
+                        <h4 class="font-bold text-indigo-200 text-sm">比例誤差</h4>
+                        <p class="text-xs text-slate-300 mt-1 leading-relaxed">體會到數據量測的重要性，偏差雖小但會影響整體模型的嚴謹度。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col justify-between">
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
+                    <h3 class="text-xl font-bold mb-4 text-indigo-900">心得與反思</h3>
+                    <p class="text-slate-600 text-sm italic leading-relaxed border-l-4 border-indigo-200 pl-4">
+                        「這次自主學習不僅精進了建模技巧，更訓練了我觀察環境細節的能力。將腦中的想法實體化為 3D 模型，那種成就感是無可比擬的。」
+                    </p>
+                </div>
+                <div class="mt-8 p-6 bg-indigo-50 rounded-2xl">
+                    <h3 class="text-lg font-bold mb-3 text-indigo-900">未來展望</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        希望能學習 Onshape 等更精確的建模軟體，並將校園模型應用於 VR 導覽，讓更多人體驗虛擬校園的魅力。
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-500 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs">
+            <p class="mb-2 text-slate-400">© 2024 張博筌 - 3D 建模自主學習計畫</p>
+            <p>本展示網頁為多元表現成果之一部分</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
