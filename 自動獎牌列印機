@@ -76,7 +76,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <!-- 左側 Logo 與標題，點擊可回首頁 -->
-                <a href="#intro" class="flex items-center gap-2 hover:opacity-80 transition">
+                <a href="h1120330-ship-it.github.io" class="flex items-center gap-2 hover:opacity-80 transition">
                     <div class="bg-blue-600 p-2 rounded-lg text-white">
                         <i class="fas fa-home"></i>
                     </div>
